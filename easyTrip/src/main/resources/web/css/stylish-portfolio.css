@@ -175,7 +175,7 @@ fieldset {
     margin: 15px;
 }
 
-input[type=text] {
+input[type=text], input[type=number] {
     border-radius: 10px;
     line-height: 24px;
     vertical-align: middle;
@@ -184,5 +184,11 @@ input[type=text] {
     background-color: rgba(15,15,15,0.65);
     color: orange;
     margin: 1%;
+}
+
+input[type=text] {
     min-width: 20%;
+}
+input[type=number] {
+    width: 10%;
 }

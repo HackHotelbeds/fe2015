@@ -32,8 +32,14 @@ public class easyTripController {
                                @RequestParam(value = "startDate") String startDate,
                                @RequestParam(value = "finishDate") String finishDate,
                                @RequestParam(value = "numPassenger") String passenger) {
-        if(connection.getRestToken()==null || connection.getRestToken().equals("")){
+        if((connection.getRestToken()==null || connection.getRestToken().equals("")) && (connection.getSoapToken()==null || connection.getSoapToken().equals(""))){
             connection.connectSabreAPI();
+            try {
+                connection.callloginSoap(connection.createSecurityRequest(),"https://sws3-crt.cert.sabre.com");
+            } catch (Exception ex){
+                return "connection problem";
+            }
+
         }
         Itinerary itinerary= new Itinerary();
         itinerary.setListCar(carServices.getRentalCars("","","","",1,connection.getRestToken()));

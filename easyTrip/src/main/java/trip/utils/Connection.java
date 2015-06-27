@@ -10,10 +10,17 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.xml.sax.SAXException;
+import trip.parse.ConsecionarioParse;
+import trip.parse.SecurityParse;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import javax.xml.soap.SOAPConnection;
 import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPMessage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -28,6 +35,15 @@ import java.util.List;
 public class Connection {
 
     private String restToken="";
+    private String soapToken="";
+
+    public String getSoapToken() {
+        return soapToken;
+    }
+
+    public void setSoapToken(String soapToken) {
+        this.soapToken = soapToken;
+    }
 
     public String getRestToken() {
         return restToken;
@@ -39,16 +55,46 @@ public class Connection {
 
 
 
-    public String callSoap(final String request, final String url) throws SOAPException {
+    public String callloginSoap(final String request, final String urlSoap) throws SOAPException, IOException, ParserConfigurationException, SAXException {
         // Create SOAP Connection
-        SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-        SOAPConnection soapConnection = soapConnectionFactory.createConnection();
+        //Code to make a webservice HTTP request
+        String responseString = "";
+        String outputString = "";
 
-        // Send SOAP Message to SOAP Server
-       //test https://sws3-sts.cert.sabre.com
-        //customer https://sws3-crt.cert.sabre.com
-        //SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(), url);
-        return null;
+        URL url = new URL(urlSoap);
+        URLConnection connection = url.openConnection();
+        HttpURLConnection httpConn = (HttpURLConnection)connection;
+        ByteArrayOutputStream bout = new ByteArrayOutputStream();
+        String xmlInput = createSecurityRequest();
+        byte[] buffer = new byte[xmlInput.length()];
+        buffer = xmlInput.getBytes();
+        bout.write(buffer);
+        byte[] b = bout.toByteArray();
+        String SOAPAction =                "";
+// Set the appropriate HTTP parameters.
+        httpConn.setRequestProperty("Content-Length",
+                String.valueOf(b.length));
+        httpConn.setRequestProperty("Content-Type", "text/xml; charset=utf-8");
+        httpConn.setRequestProperty("SOAPAction", SOAPAction);
+        httpConn.setRequestMethod("POST");
+        httpConn.setDoOutput(true);
+        httpConn.setDoInput(true);
+        OutputStream out = httpConn.getOutputStream();
+//Write the content of the request to the outputstream of the HTTP Connection.
+        out.write(b);
+        out.close();
+//Ready with sending the request.
+        //Read the response.
+        InputStreamReader isr =
+                new InputStreamReader(httpConn.getInputStream());
+        BufferedReader in = new BufferedReader(isr);
+
+//Write the SOAP message response to a String.
+        while ((responseString = in.readLine()) != null) {
+            outputString = outputString + responseString;
+        }
+        soapToken=soapToken + outputString.substring(outputString.indexOf("Shared/IDL:IceSess"),outputString.indexOf("</wsse:BinarySecurityToken>"));
+        return soapToken;
     }
 
 
@@ -179,7 +225,19 @@ public class Connection {
 
 
 
-    private String createSecurityRequest(){
-        String request=""
+    public String createSecurityRequest(){
+        String request="<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+        request=request+"<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:eb=\"http://www.ebxml.org/namespaces/messageHeader\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsd=\"http://www.w3.org/1999/XMLSchema\">";
+        request=request+"<SOAP-ENV:Header>";
+        request=request+"<eb:MessageHeader SOAP-ENV:mustUnderstand=\"1\" eb:version=\"1.0\">";
+        request=request+"<eb:ConversationId>1234567890987654321</eb:ConversationId>";
+        request=request+"<eb:From><eb:PartyId type=\"urn:x12.org:IO5:01\">999999</eb:PartyId></eb:From>";
+        request=request+"<eb:To><eb:PartyId type=\"urn:x12.org:IO5:01\">123123</eb:PartyId></eb:To>";
+        request=request+"<eb:CPAId>3YAB</eb:CPAId><eb:Service eb:type=\"OTA\">SessionCreateRQ</eb:Service><eb:Action>SessionCreateRQ</eb:Action>";
+        request=request+"<eb:MessageData><eb:MessageId>1000</eb:MessageId><eb:Timestamp>2015-06-27T11:15:12Z</eb:Timestamp><eb:TimeToLive>2015-06-29T11:15:12Z</eb:TimeToLive></eb:MessageData>";
+        request=request+"</eb:MessageHeader><wsse:Security xmlns:wsse=\"http://schemas.xmlsoap.org/ws/2002/12/secext\" xmlns:wsu=\"http://schemas.xmlsoap.org/ws/2002/12/utility\">";
+        request=request+"<wsse:UsernameToken><wsse:Username>10621</wsse:Username><wsse:Password>WS061015</wsse:Password><Organization>3YAB</Organization><Domain>AA</Domain></wsse:UsernameToken>";
+        request=request+"</wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><SessionCreateRQ><POS><Source PseudoCityCode=\"3YAB\"/></POS></SessionCreateRQ></SOAP-ENV:Body></SOAP-ENV:Envelope>";
+        return request;
     }
 }

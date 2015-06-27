@@ -25,7 +25,7 @@ public class HotelbedsService {
             wr.write(soapXml);
             wr.flush();
             // Read the response
-            java.io.BufferedReader rd = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
+            java.io.BufferedReader rd = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream(), "UTF8"));
             String line;
             while ((line = rd.readLine()) != null) {
                 System.out.println(line);

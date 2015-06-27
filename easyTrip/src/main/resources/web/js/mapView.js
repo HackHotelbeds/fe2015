@@ -43,7 +43,7 @@
 
         $(window).on("resize", applyMargins);
 
-        var map = new ol.Map({
+        /*var map = new ol.Map({
           target: "map",
           layers: [
             new ol.layer.Tile({
@@ -56,5 +56,5 @@
           })
         });
         applyInitialUIState();
-        applyMargins();
+        applyMargins();*/
       });

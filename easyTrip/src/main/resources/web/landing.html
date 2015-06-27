@@ -38,6 +38,7 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='css/font-rock-salt.css' rel='stylesheet' type='text/css'>
+    <link href='css/jquery-ui.css' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -105,8 +106,25 @@
                 <label>People in the trip</label>
                 <input type="number" name="paxes" value="2" min="1"/>
             </fieldset>
+            <form id="form">
+                <fieldset>
+                    <input type="text" name="origin" placeholder="Origin of the trip"/>
+                    <input type="text" name="start-date" id="start-date" placeholder="And date"/>
+                </fieldset>
+
+                <fieldset>
+                    <input type="text" name="destination" placeholder="End of your trip"/>
+                    <input type="text" name="end-date" id="end-date" placeholder="And date"/>
+                </fieldset>
+
+                <fieldset>
+                    <label>People in the trip</label>
+                    <input type="number" name="paxes" value="2" min="1"/>
+                </fieldset>
+            </form>
                 
             <a href="#about" class="btn btn-dark btn-lg">Find me a trip!</a>
+            <a href="mapView.html" id="submit-form" class="btn btn-dark btn-lg">Find me a trip!</a>
         </div>
     </header>
 

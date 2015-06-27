@@ -94,17 +94,23 @@
             <form id="form">
                 <fieldset>
                     <input type="text" name="origin" placeholder="Origin of the trip"/>
-                    <input type="text" name="start-date" id="start-date" placeholder="And date"/>
+                    <input type="text" name="start-date" class="datepicker" placeholder="And date"/>
                 </fieldset>
 
                 <fieldset>
                     <input type="text" name="destination" placeholder="End of your trip"/>
-                    <input type="text" name="end-date" id="end-date" placeholder="And date"/>
+                    <input type="text" name="end-date" class="datepicker" placeholder="And date"/>
                 </fieldset>
 
                 <fieldset>
-                    <label>People in the trip</label>
-                    <input type="number" name="paxes" value="2" min="1"/>
+                    <ul id="travellerList">
+                        <img id="pax1" class="traveller" />
+                        <img id="pax2" class="traveller" />
+                        <img id="pax3" class="traveller" />
+                        <img id="pax4" class="traveller" />
+                        <img id="pax5" class="traveller" />
+                    </ul>
+                    <input type="hidden" id="paxes" value="2"/>
                 </fieldset>
             </form>
                 

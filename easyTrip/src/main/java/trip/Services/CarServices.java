@@ -16,7 +16,7 @@ import java.util.List;
 public class CarServices {
 
     public List<Car> getRentalCars(final String startAirport, final String finishAirpot,
-                                   final String startDate, final String endDate, final int numberOfPassenger){
+                                   final String startDate, final String endDate, final int numberOfPassenger, final String restToken){
 
         ClassLoader classLoader = getClass().getClassLoader();
 
@@ -43,5 +43,18 @@ public class CarServices {
 
         }
         return null;
+    }
+
+
+    public String createRequestConsecionario(final String startAirport){
+        String request= new String();
+        request= request+ "<VehLocationListRQ Version=\"2.0.0\" xmlns=\"http://webservices.sabre.com/sabreXML/2011/10\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"> ";
+        request= request+ "\n<VehAvailRQCore>";
+        request= request+ "\n<VehRentalCore>";
+        request= request+ "\n<PickUpLocation LocationCode=\""+startAirport+"\"/>  ";
+        request= request+ "\n</VehRentalCore>";
+        request= request+ "\n</VehAvailRQCore>";
+        request= request+ "\n</VehLocationListRQ>";
+        return request;
     }
 }

@@ -18,6 +18,6 @@ $(document).ready(function() {
         pause:   1, 
         speed: 2000,
         timeout: 4000,
-        startingSlide: Math.random() * 9
+        startingSlide: Math.random() * 12
     });         
 });

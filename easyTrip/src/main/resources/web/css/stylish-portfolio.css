@@ -23,6 +23,13 @@ body {
     vertical-align: middle;
 }
 
+.slogan, .sidebar-brand {
+    background-image: url('../img/route99.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 33%;    
+}
+
 .text-vertical-center h1 {
     margin: 0;
     padding: 0;

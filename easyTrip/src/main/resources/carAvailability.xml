@@ -1,0 +1,370 @@
+<OTA_VehAvailRateRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.4.0">
+    <stl:ApplicationResults status="Complete">
+        <stl:Success timeStamp="2012-10-31T10:12:01-05:00" />
+    </stl:ApplicationResults>
+    <VehAvailRSCore>
+        <HeaderInfo>
+            <Text>*RATES RETURNED VIA DIRECT CONNECT</Text>
+            <Text>
+                R C USD RATE/PLAN MI CHG APPROX
+            </Text>
+            <Text>
+                ALL TOTAL PRICES ARE RETURNED DIRECT CONNECT FROM CAR ASSOCIATE
+            </Text>
+            <Text>* BEST PUBLICLY AVAILABLE RATE</Text>
+            <Text>
+                C COMMISSION FX FIXED 05 PERCENTAGE BLANK-COMM UNKNOWN
+            </Text>
+            <Text>
+                R RATE AND/OR VEHICLE ON REQUEST  CURRENCY CONVERTED
+            </Text>
+            <Text>
+                - AMOUNT TOO LARGE P DEPOSIT REQUIRED
+            </Text>
+            <Text>
+                G GUARANTEE REQUIRED C CONTRACT RATE
+            </Text>
+            <Text>L INCLUSIVE RATE</Text>
+            <Text>
+                PLAN D-DAILY E-WEEKEND W-WEEKLY M-MONTHLY B-BUNDLED
+            </Text>
+            <Text>CQ*R LINE RATE DETAILS AND RULES</Text>
+            <Text>
+                CQ*P LOCATION INFO IE.MAKES,EQUIPMENT,PAYMENT AND MORE
+            </Text>
+            <Text>CQ*X EXTRA DAY AND HOUR RATES</Text>
+            <Text>0C LINE SELL CAR</Text>
+            <Text>
+                MIN AGE 21 - MOST CAR CLASSES. 21-24 RATE DIFFERENTIAL
+            </Text>
+            <Text>FOR RENTERS UNDER 25 YRS OF AGE SEE KEYWORD AGE</Text>
+        </HeaderInfo>
+        <VehRentalCore NumDays="9" NumHours="0" PickUpDateTime="12-21T09:00" ReturnDateTime="12-29T11:00">
+            <DropOffLocationDetails LocationCode="DFW" />
+            <LocationDetails CounterLocation="A" LocationCode="DFW" LocationName="DALLAS FT WORTH" LocationOwner="C">
+                <OperationSchedule>
+                    <OperationTimes>
+                        <OperationTime End="23:59" Start="00:00" />
+                    </OperationTimes>
+                </OperationSchedule>
+            </LocationDetails>
+        </VehRentalCore>
+        <VehVendorAvails>
+            <VehVendorAvail RPH="1">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>ECAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="311.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="44.49" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="22.25" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="590.88" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="2">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>CCAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="319.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="45.64" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="22.82" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="604.06" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="3">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>ICAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="334.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="47.78" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="23.89" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="628.69" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="4">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>ICAH</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="299.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="42.78" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="21.39" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="571.19" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="5">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>SCAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="345.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="49.35" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="24.68" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="646.75" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="6">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>FCAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="345.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="49.35" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="24.68" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="646.75" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="7">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>PBAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="333.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="47.64" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="23.82" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="627.06" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="8">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>PCAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="621.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="88.78" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="44.39" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="1100.18" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="9">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>LCAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="610.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="87.21" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="43.61" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="1082.11" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="10">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>LDAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="573.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="81.93" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="40.97" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="1021.34" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="11">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>IFAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="355.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="50.78" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="25.39" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="663.19" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="12">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>SFAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="365.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="52.22" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="26.11" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="679.64" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="13">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>FFAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="598.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="85.50" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="42.75" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="1062.40" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="14">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>PFAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="643.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="91.93" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="45.97" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="1136.34" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+            <VehVendorAvail RPH="15">
+                <VehAvailCore>
+                    <RentalRate AvailabilityStatus="S" RateCode="MCLW" STM_RatePlan="W">
+                        <Vehicle>
+                            <VehType>LFAR</VehType>
+                        </Vehicle>
+                    </RentalRate>
+                    <VehicleCharges>
+                        <VehicleCharge Amount="773.49" CurrencyCode="USD" GuaranteeInd="G">
+                            <AdditionalDayHour>
+                                <Day CurrencyCode="USD" MileageAllowance="UNL" Rate="110.50" />
+                                <Hour CurrencyCode="USD" MileageAllowance="UNL" Rate="55.25" />
+                            </AdditionalDayHour>
+                            <Mileage Allowance="UNL" CurrencyCode="USD" ExtraMileageCharge=".00" UnitOfMeasure="MI" />
+                            <SpecialEquipTotalCharge CurrencyCode="USD" />
+                            <TotalCharge Amount="1349.90" CurrencyCode="USD" />
+                        </VehicleCharge>
+                    </VehicleCharges>
+                </VehAvailCore>
+                <Vendor Code="ZE" CompanyShortName="HERTZ" ParticipationLevel="B" />
+            </VehVendorAvail>
+        </VehVendorAvails>
+    </VehAvailRSCore>
+</OTA_VehAvailRateRS>

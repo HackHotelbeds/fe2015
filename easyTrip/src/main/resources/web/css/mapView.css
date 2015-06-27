@@ -6,14 +6,30 @@ body {
   text-shadow: -1px 0 black, 0 2px black, 1px 0 black, 0 -1px black; 
 }
 
+.container-fluid {
+  padding: 0px;
+}
+
 #map * {
   text-shadow: none; 
 }
 
-.navbar-collapse h3 {
+#top-bar {
+  background-image: url('../img/sidebar-wood.jpg');
+}
+
+#top-bar h3 {
   display: table;
   width: 100%;
   text-align: center;
+}
+
+#top-bar a {
+  text-decoration: none;
+  color: orange;
+}
+#top-bar a:hover {
+  font-weight: bolder;
 }
 
 #map { position: absolute; top: 50px; bottom: 0px; left: 0px; right: 0px; font-family: Helvetica; text-shadow: 0px;}
@@ -42,7 +58,57 @@ body {
 
 #map { z-index: 35; }
 
-.sidebar { z-index: 45; }
+.sidebar { 
+  z-index: 45; 
+  margin-top: 50px;
+  margin-left: 50px;
+  border-radius: 10px;
+}
+
+.panel {
+  background-image: url('../img/sidebar-white-wood.jpg');
+  background-size: cover;
+}
+
+.panel-default > .panel-heading {
+  background-color: transparent;
+  border: 0px;
+  margin: 5px;
+}
+
+.panel-default > .panel-heading a {
+  color: #FFB500;
+  text-decoration: none;
+}
+.panel-default > .panel-collapse a {
+  color: #FFA500;
+}
+.panel-default a:hover {
+    color: #fff;
+    background: none;
+    text-decoration: none;
+}
+
+.pull-right.slide-submenu {
+    border-radius: 15px;
+    color: #333;
+    background-color: rgba(191,159,115,0.9);
+    padding: 5px;
+}
+
+.list-group-item {
+  border: none;
+  background-color: transparent;
+  display: block;
+  text-decoration: none;
+  color: #FFB500;  
+}
+.list-group-item:hover {
+  display: block;
+  text-decoration: none;
+  color: #FFB500;;
+  background: rgba(255,255,255,0.2);
+}
 
 .main-row { position: relative; top: 0; }
 

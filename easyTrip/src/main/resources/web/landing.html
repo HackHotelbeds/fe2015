@@ -92,12 +92,20 @@
             <!-- HERE GOES THE SEARCH FORM -->           
 
             <fieldset>
-                <input type="text" name="origin" placeholder="Origin of your trip"/>
+                <input type="text" name="origin" placeholder="Origin of the trip"/>
+                <input type="text" name="start-date" placeholder="And date"/>
+            </fieldset>
+                
+            <fieldset>
                 <input type="text" name="destination" placeholder="End of your trip"/>
-                <input type="text" name="start-date" placeholder="When to start the trip"/>
-                <input type="text" name="end-date" placeholder="When to end the trip"/>
+                <input type="text" name="end-date" placeholder="And date"/>
             </fieldset>
 
+            <fieldset>
+                <label>People in the trip</label>
+                <input type="number" name="paxes" value="2" min="1"/>
+            </fieldset>
+                
             <a href="#about" class="btn btn-dark btn-lg">Find me a trip!</a>
         </div>
     </header>

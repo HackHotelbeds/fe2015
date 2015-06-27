@@ -12,11 +12,12 @@ $("#menu-toggle").click(function(e) {
 });
 
 $(document).ready(function() {
-        $('#slideshow').cycle({
+    $('#slideshow').cycle({
         fx: 'fade',
         pager: '#smallnav', 
         pause:   1, 
-        speed: 1800,
-        timeout:  3500 
+        speed: 2000,
+        timeout: 4000,
+        startingSlide: Math.random() * 9
     });         
 });

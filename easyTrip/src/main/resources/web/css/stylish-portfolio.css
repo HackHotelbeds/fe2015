@@ -197,6 +197,10 @@ input[type=number] {
     width: 10%;
 }
 
+#travellerList {
+    margin: 0px;
+    padding: 0px;
+}
 img.traveller {
     width: 32px;
     content: url('../img/bagpacker-inactive.png');

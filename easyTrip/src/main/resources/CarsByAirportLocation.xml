@@ -1,0 +1,507 @@
+<VehLocationListRS Version="2.0.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
+    <stl:ApplicationResults status="Complete">
+        <stl:Success timeStamp="2014-03-11T13:42:10-05:00"/>
+    </stl:ApplicationResults>
+    <VehAvailRSCore>
+        <VehVendorAvails>
+            <VehVendorAvail RPH="1">
+                <LocationDetails Direction="E" Distance="0.9" ExtendedLocationCode="C039" LocationCode="HNL" LocationName="HNLC39  BRADLEY PACIFIC AVI" UnitOfMeasure="MI">
+                    <Address Latitude="21.320642" Longitude="-157.910972">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>98 KAPALULU PLACE</StreetNmbr>
+                        <StreetNmbr>FOR PRIVATE FLIGHTS ONLY</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="2">
+                <LocationDetails Direction="NE" Distance="1.0" LocationCode="HNL" LocationName="HONOLULU INTERNATIONAL AIRP" UnitOfMeasure="MI">
+                    <Address Latitude="21.335565" Longitude="-157.918657">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>300 RODGERS BLVD</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZI" CompanyShortName="AVIS"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="3">
+                <LocationDetails Direction="NE" Distance="1.0" LocationCode="HNL" LocationName="HONOLULU" UnitOfMeasure="MI">
+                    <Address Latitude="21.335565" Longitude="-157.918657">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>300 RODGERS BLVD</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="AD" CompanyShortName="ADVANTAGE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="4">
+                <LocationDetails Direction="NE" Distance="1.0" LocationCode="HNL" LocationName="HONOLULU INTERNATIONAL AIRP" UnitOfMeasure="MI">
+                    <Address Latitude="21.335565" Longitude="-157.918657">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>300 RODGERS BULVARD</StreetNmbr>
+                        <StreetNmbr>PLEASE GO TO ADVANTAGE COUNTER</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="EP" CompanyShortName="EUROPCAR"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="5">
+                <LocationDetails Direction="NE" Distance="1.0" LocationCode="HNL" LocationName="HONOLULU INTL AIRPORT" UnitOfMeasure="MI">
+                    <Address Latitude="21.335565" Longitude="-157.918657">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>300 RODGERS BLVD</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZD" CompanyShortName="BUDGET"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="6">
+                <LocationDetails Direction="N" Distance="1.0" LocationCode="HNL" LocationName="HONOLULU INTERNATIONAL AIRP" UnitOfMeasure="MI">
+                    <Address Latitude="21.335900" Longitude="-157.918700">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>300 RODGERS BLVD</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="7">
+                <LocationDetails Direction="NE" Distance="1.0" LocationCode="HNL" LocationName="HNLHNL HONOLULU AIR ON SITE" UnitOfMeasure="MI">
+                    <Address Latitude="21.333268" Longitude="-157.913984">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>3255 AOLELE ST</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="8">
+                <LocationDetails Direction="NE" Distance="1.2" LocationCode="HNL" LocationName="HONOLULU AIRPORT FIREFLY" UnitOfMeasure="MI">
+                    <Address Latitude="21.337093" Longitude="-157.916508">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>3365 NORTH NIMITZ HIGHWAY</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="FF" CompanyShortName="FIREFLY"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="9">
+                <LocationDetails Direction="NE" Distance="1.2" ExtendedLocationCode="C019" LocationCode="HNL" LocationName="HNLC19  NIMITZ OAP" UnitOfMeasure="MI">
+                    <Address Latitude="21.337093" Longitude="-157.916508">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>3365 NORTH NIMITZ HIGHWAY</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="10">
+                <LocationDetails Direction="NE" Distance="1.2" LocationCode="HNL" LocationName="ECONOMY RENT A CAR" UnitOfMeasure="MI">
+                    <Address Latitude="21.336800" Longitude="-157.913330">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>3251 N NIMITZ HWY</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="EY" CompanyShortName="ECONOMY"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="11">
+                <LocationDetails Direction="NE" Distance="1.3" LocationCode="HNL" LocationName="HNL  HONOLULU INTL AIRPORT" UnitOfMeasure="MI">
+                    <Address Latitude="21.336218" Longitude="-157.911145">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>3179 NORTH NIMITZ HIGHWAY</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZR" CompanyShortName="DOLLAR"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="12">
+                <LocationDetails Direction="NE" Distance="1.3" LocationCode="HNL" LocationName="HNL    HONOLULU" UnitOfMeasure="MI">
+                    <Address Latitude="21.336200" Longitude="-157.910500">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>3147 N NIMITZ HWY</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZT" CompanyShortName="THRIFTY"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="13">
+                <LocationDetails Direction="NE" Distance="1.4" LocationCode="HNL" LocationName="HNLHNL HONOLULU INTL" UnitOfMeasure="MI">
+                    <Address Latitude="21.335852" Longitude="-157.908058">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>3055 N NIMITZ HWY</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="AL" CompanyShortName="ALAMO"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="14">
+                <LocationDetails Direction="NE" Distance="1.6" LocationCode="HNL" LocationName="HONOLULU INTERNATIONAL AIRP" UnitOfMeasure="MI">
+                    <Address Latitude="21.331952" Longitude="-157.902321">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2912 AOLELE STREET</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZL" CompanyShortName="NATIONAL"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="15">
+                <LocationDetails Direction="NE" Distance="1.9" ExtendedLocationCode="C003" LocationCode="HNL" LocationName="HNLC03 AHUA MAPUNAPUNA NO A" UnitOfMeasure="MI">
+                    <Address Latitude="21.335080" Longitude="-157.898800">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>609 AHUA STREET</StreetNmbr>
+                        <StreetNmbr>NO AIRPRT SVC</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="16">
+                <LocationDetails Direction="NW" Distance="3.0" ExtendedLocationCode="N009" LocationCode="HNL" LocationName="HNLN09 PEARLHBR MILITARY ON" UnitOfMeasure="MI">
+                    <Address Latitude="21.360869" Longitude="-157.947135">
+                        <CityName>PEARL HARBOR</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>BLDG 1237 AVE A</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZL" CompanyShortName="NATIONAL"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="17">
+                <LocationDetails Direction="E" Distance="4.1" ExtendedLocationCode="C018" LocationCode="HNL" LocationName="HNLC18 NIMITZ CENTER" UnitOfMeasure="MI">
+                    <Address Latitude="21.326464" Longitude="-157.861430">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>1130 N NIMITZ HWY</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="18">
+                <LocationDetails Direction="E" Distance="4.3" ExtendedLocationCode="C011" LocationCode="HNL" LocationName="HNLC11 KAKAAKO ALAMOANA" UnitOfMeasure="MI">
+                    <Address Latitude="21.297717" Longitude="-157.862124">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>677 ALA MOANA BLVD</StreetNmbr>
+                        <StreetNmbr>STE 100</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="19">
+                <LocationDetails Direction="W" Distance="4.7" ExtendedLocationCode="N009" LocationCode="HNL" LocationName="HNLN09 PEARL HARBOR MILITAR" UnitOfMeasure="MI">
+                    <Address Latitude="21.337580" Longitude="-157.996063">
+                        <CityName>PEARL HARBOR</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>PEARL HARBOR MILITARY ONLY</StreetNmbr>
+                        <StreetNmbr>BLDG 1786 AVE A</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="20">
+                <LocationDetails Direction="N" Distance="5.1" ExtendedLocationCode="N005" LocationCode="HNL" LocationName="HNLN05 AIEA PEARL CITY" UnitOfMeasure="MI">
+                    <Address Latitude="21.391787" Longitude="-157.952715">
+                        <CityName>AIEA</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>98 761 OIHANA PL</StreetNmbr>
+                        <StreetNmbr>STE D4</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="21">
+                <LocationDetails Direction="E" Distance="5.3" ExtendedLocationCode="C004" LocationCode="HNL" LocationName="HNLC04 KAPIOLANI" UnitOfMeasure="MI">
+                    <Address Latitude="21.295187" Longitude="-157.847335">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>1221 KAPIOLANI BLVD</StreetNmbr>
+                        <StreetNmbr>SUITE 114</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="22">
+                <LocationDetails Direction="E" Distance="5.7" ExtendedLocationCode="C022" LocationCode="HNL" LocationName="HNLC22  PAGODA HOTEL HLE" UnitOfMeasure="MI">
+                    <Address Latitude="21.295947" Longitude="-157.840625">
+                        <CityName>HONOLULU AP OAHU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>1525 RYCROFT STREET</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="23">
+                <LocationDetails Direction="SE" Distance="6.1" ExtendedLocationCode="R071" LocationCode="HNL" LocationName="HNLR71 WAIKIKI DISCOVERY BA" UnitOfMeasure="MI">
+                    <Address Latitude="21.285090" Longitude="-157.838115">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>1778 ALA MOANA BLVD</StreetNmbr>
+                        <StreetNmbr>STE 206</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="AL" CompanyShortName="ALAMO"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="24">
+                <LocationDetails Direction="SE" Distance="6.1" ExtendedLocationCode="C001" LocationCode="HNL" LocationName="HNLC01 WAIKIKI ALA MOANA BL" UnitOfMeasure="MI">
+                    <Address Latitude="21.284981" Longitude="-157.838061">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>1778 ALA MOANA BLVD</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZL" CompanyShortName="NATIONAL"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="25">
+                <LocationDetails Direction="SE" Distance="6.1" ExtendedLocationCode="C003" LocationCode="HNL" LocationName="HNLC03  ADV HONOLULU ILIKAI" UnitOfMeasure="MI">
+                    <Address Latitude="21.284782" Longitude="-157.838149">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>1777 ALA MOANA BLVD</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="AD" CompanyShortName="ADVANTAGE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="26">
+                <LocationDetails Direction="SE" Distance="6.1" ExtendedLocationCode="C003" LocationCode="HNL" LocationName="HNLC003 HONOLULU ALA MOANA" UnitOfMeasure="MI">
+                    <Address Latitude="21.284782" Longitude="-157.838149">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>1777 ALA MOANA BOULEVARD II LOBBY LEVEL</StreetNmbr>
+                        <StreetNmbr>PLEASE GO TO ADVANTAGE COUNTER</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="EP" CompanyShortName="EUROPCAR"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="27">
+                <LocationDetails Direction="SE" Distance="6.1" ExtendedLocationCode="C062" LocationCode="HNL" LocationName="HNLC62 WAIKIKI DISCOVERY BA" UnitOfMeasure="MI">
+                    <Address Latitude="21.284952" Longitude="-157.838059">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>1778 ALA MOANA BLVD</StreetNmbr>
+                        <StreetNmbr>STE 202</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="28">
+                <LocationDetails Direction="SE" Distance="6.3" ExtendedLocationCode="R004" LocationCode="HNL" LocationName="HNLR04 HILTON HAWAIIAN VILL" UnitOfMeasure="MI">
+                    <Address Latitude="21.284273" Longitude="-157.835764">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2005 KALIA RD</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZL" CompanyShortName="NATIONAL"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="29">
+                <LocationDetails Direction="SE" Distance="6.4" ExtendedLocationCode="C002" LocationCode="HNL" LocationName="HNLC02         HALE KOA HOT" UnitOfMeasure="MI">
+                    <Address Latitude="21.282700" Longitude="-157.834600">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2055 KALIA DRIVE</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZR" CompanyShortName="DOLLAR"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="30">
+                <LocationDetails Direction="SE" Distance="6.5" ExtendedLocationCode="C004" LocationCode="HNL" LocationName="HNLC04           KALAKAUA A" UnitOfMeasure="MI">
+                    <Address Latitude="21.284787" Longitude="-157.832114">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2002 KALAKAUA AVE</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZR" CompanyShortName="DOLLAR"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="31">
+                <LocationDetails Direction="SE" Distance="6.5" ExtendedLocationCode="C059" LocationCode="HNL" LocationName="HNLC59  HN9 KALAKAUA" UnitOfMeasure="MI">
+                    <Address Latitude="21.284787" Longitude="-157.832114">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2002 KALAKAUA AVENUE</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZT" CompanyShortName="THRIFTY"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="32">
+                <LocationDetails Direction="SE" Distance="6.6" ExtendedLocationCode="R061" LocationCode="HNL" LocationName="HNLR61 OUTRIGGER REEF" UnitOfMeasure="MI">
+                    <Address Latitude="21.278826" Longitude="-157.832415">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2169 KALIA RD</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="33">
+                <LocationDetails Direction="SE" Distance="6.7" ExtendedLocationCode="C014" LocationCode="HNL" LocationName="HNLC14  IMPERIAL HOTEL" UnitOfMeasure="MI">
+                    <Address Latitude="21.278509" Longitude="-157.831518">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>205 LEWERS STREET</StreetNmbr>
+                        <StreetNmbr>2ND FLOOR</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="34">
+                <LocationDetails Direction="SE" Distance="6.8" ExtendedLocationCode="C002" LocationCode="HNL" LocationName="HNLC02 SHERATON WAIKIKI" UnitOfMeasure="MI">
+                    <Address Latitude="21.278868" Longitude="-157.828702">
+                        <CityName>HONOLULU OAHU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2255 KALAKAUA AVE</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZI" CompanyShortName="AVIS"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="35">
+                <LocationDetails Direction="SE" Distance="6.9" ExtendedLocationCode="C061" LocationCode="HNL" LocationName="HNLC61 WAIKIKI" UnitOfMeasure="MI">
+                    <Address Latitude="21.280961" Longitude="-157.826228">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>445 SEASIDE AVE</StreetNmbr>
+                        <StreetNmbr>SUITE 3C</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="36">
+                <LocationDetails Direction="SE" Distance="7.1" ExtendedLocationCode="C063" LocationCode="HNL" LocationName="HNLC63 ERAC WAIKIKI KAIULAN" UnitOfMeasure="MI">
+                    <Address Latitude="21.277228" Longitude="-157.824813">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>151 KAIULANI AVE</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="37">
+                <LocationDetails Direction="SE" Distance="7.1" ExtendedLocationCode="R073" LocationCode="HNL" LocationName="HNLR73 WAIKIKI KAIULANI" UnitOfMeasure="MI">
+                    <Address Latitude="21.277228" Longitude="-157.824813">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>151 KAIULANI AVE</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="AL" CompanyShortName="ALAMO"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="38">
+                <LocationDetails Direction="SE" Distance="7.1" ExtendedLocationCode="C010" LocationCode="HNL" LocationName="HNLC10  WAIKIKI BEACH HYATT" UnitOfMeasure="MI">
+                    <Address Latitude="21.276000" Longitude="-157.825400">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2424 KALAKAUA AVENUE</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="39">
+                <LocationDetails Direction="SE" Distance="7.1" ExtendedLocationCode="C001" LocationCode="HNL" LocationName="HNLC01 HONOLULU HI" UnitOfMeasure="MI">
+                    <Address Latitude="21.275800" Longitude="-157.825000">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2424 KALAKAUA AVE</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZD" CompanyShortName="BUDGET"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="40">
+                <LocationDetails Direction="E" Distance="7.2" ExtendedLocationCode="C052" LocationCode="HNL" LocationName="HNLC52 UNIVERSITY OF HAWAII" UnitOfMeasure="MI">
+                    <Address Latitude="21.302176" Longitude="-157.814420">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>1951 E WEST RD</StreetNmbr>
+                        <StreetNmbr>RM 118</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="41">
+                <LocationDetails Direction="SE" Distance="7.2" ExtendedLocationCode="C003" LocationCode="HNL" LocationName="HNLC03   PACIFIC BEACH HOTE" UnitOfMeasure="MI">
+                    <Address Latitude="21.274200" Longitude="-157.824000">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2490 KALAKAUA AVENUE</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZR" CompanyShortName="DOLLAR"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="42">
+                <LocationDetails Direction="SE" Distance="7.3" ExtendedLocationCode="R011" LocationCode="HNL" LocationName="HNLR11  WAIKIKI BEACH MARRI" UnitOfMeasure="MI">
+                    <Address Latitude="21.272700" Longitude="-157.823200">
+                        <CityName>HONOLULU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>2552 KALAKAUA AVENUE</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="43">
+                <LocationDetails Direction="NW" Distance="7.4" ExtendedLocationCode="N001" LocationCode="HNL" LocationName="HNLN01 WAIPAHU" UnitOfMeasure="MI">
+                    <Address Latitude="21.377395" Longitude="-158.024443">
+                        <CityName>WAIPAHU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>94 050 FARRINGTON HWY</StreetNmbr>
+                        <StreetNmbr>STE E3 2</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+            <VehVendorAvail RPH="44">
+                <LocationDetails Direction="NW" Distance="8.7" ExtendedLocationCode="N016" LocationCode="HNL" LocationName="HNLN16 WAIPIO GENTRY" UnitOfMeasure="MI">
+                    <Address Latitude="21.428517" Longitude="-157.997856">
+                        <CityName>WAIPAHU</CityName>
+                        <CountryCode>US</CountryCode>
+                        <StateProv StateCode="HI"/>
+                        <StreetNmbr>94 1299 KA UKA BLVD</StreetNmbr>
+                    </Address>
+                </LocationDetails>
+                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+            </VehVendorAvail>
+        </VehVendorAvails>
+    </VehAvailRSCore>
+</VehLocationListRS>

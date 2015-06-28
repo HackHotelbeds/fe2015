@@ -17,6 +17,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
+import java.net.URLDecoder;
 
 @RestController
 public class easyTripController {
@@ -29,8 +30,15 @@ public class easyTripController {
 
     @RequestMapping("/")
     public String isAlive(HttpServletRequest request, HttpServletResponse response) {
-        response.addHeader("Access-Control-Allow-Origin", "*");
+        addCorsHeaders(response);
         return "Server UP";
+    }
+
+    private void addCorsHeaders(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with, x-requested-by");
     }
 
     @RequestMapping(value="/getItinerary")
@@ -53,9 +61,9 @@ public class easyTripController {
 
         }
         Itinerary itinerary= new Itinerary();
-        itinerary.setListCar(carServices.getRentalCars(obj.getOriginAirport().getIata(),obj.getDestinationAirport().getIata(),obj.getStartDate(),obj.getEndDate(),Integer.valueOf(obj.getPaxes()),connection));
+        itinerary.setListCar(carServices.getRentalCars(obj.getOriginAirport().getIata(), obj.getDestinationAirport().getIata(), obj.getStartDate(), obj.getEndDate(), Integer.valueOf(obj.getPaxes()), connection));
 
-        response.addHeader("Access-Control-Allow-Origin", "*");
+        addCorsHeaders(response);
         return new UtilsParse().convertObjectToJson(itinerary);
     }
 

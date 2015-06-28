@@ -35,7 +35,6 @@ public class HotelbedsService {
             while ((line = rd.readLine()) != null) {
                 response.append(line);
             }
-            System.out.println(response);
         } catch (MalformedURLException e) {
         } catch (IOException e) {
         }

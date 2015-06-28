@@ -18,7 +18,7 @@ public class AvailabilityManager {
 
     List<Ticket> ticketServices = new ArrayList<>();
     List<Hotel> hotelServices = new ArrayList<>();
-    List<Car> listCar = null;
+    List<Car> listCar = new ArrayList<>();
 
     private Connection connection=new Connection();
 

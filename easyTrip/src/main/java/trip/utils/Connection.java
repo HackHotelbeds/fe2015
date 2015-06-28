@@ -1,16 +1,23 @@
 package trip.utils;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.http.*;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.RequestWrapper;
+import org.apache.http.protocol.HTTP;
 import org.codehaus.jettison.json.JSONObject;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.soap.SOAPException;
+
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 
 /**
  * Created by Ibram on 27/06/2015.
@@ -37,8 +44,13 @@ public class Connection {
     }
 
 
+    public void callLoginSoap(final String request, final String urlSoap) throws SOAPException, IOException, ParserConfigurationException, SAXException {
+        String result=callSoap(request,urlSoap);
+        soapToken= result.substring(result.indexOf("Shared/IDL:IceSess"),result.indexOf("</wsse:BinarySecurityToken>"));
 
-    public String callloginSoap(final String request, final String urlSoap) throws SOAPException, IOException, ParserConfigurationException, SAXException {
+    }
+
+    public String callSoap(final String request, final String urlSoap) throws SOAPException, IOException, ParserConfigurationException, SAXException {
         // Create SOAP Connection
         //Code to make a webservice HTTP request
         String responseString = "";
@@ -48,17 +60,16 @@ public class Connection {
         URLConnection connection = url.openConnection();
         HttpURLConnection httpConn = (HttpURLConnection)connection;
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        String xmlInput = createSecurityRequest();
+        String xmlInput = request;
         byte[] buffer = new byte[xmlInput.length()];
         buffer = xmlInput.getBytes();
         bout.write(buffer);
         byte[] b = bout.toByteArray();
-        String SOAPAction =                "";
+
 // Set the appropriate HTTP parameters.
         httpConn.setRequestProperty("Content-Length",
                 String.valueOf(b.length));
-        httpConn.setRequestProperty("Content-Type", "text/xml; charset=utf-8");
-        httpConn.setRequestProperty("SOAPAction", SOAPAction);
+        httpConn.setRequestProperty("Content-Type", "text/xml");
         httpConn.setRequestMethod("POST");
         httpConn.setDoOutput(true);
         httpConn.setDoInput(true);
@@ -76,9 +87,37 @@ public class Connection {
         while ((responseString = in.readLine()) != null) {
             outputString = outputString + responseString;
         }
-        soapToken=soapToken + outputString.substring(outputString.indexOf("Shared/IDL:IceSess"),outputString.indexOf("</wsse:BinarySecurityToken>"));
-        return soapToken;
+        return outputString;
     }
+
+    public String callSoapConnection(final String request, final String urlSoap) throws IOException, URISyntaxException, org.apache.http.ProtocolException {
+        // Creating the HttpURLConnection object
+        URL oURL = new URL(urlSoap);
+        HttpURLConnection con
+                = (HttpURLConnection) oURL.openConnection();
+        con.setRequestMethod("POST");
+        con.setRequestProperty(
+                "Content-type", "text/xml");
+        con.setDoOutput(true);
+        con.setDoInput(true);
+        OutputStreamWriter infWebSvcReqWriter = new OutputStreamWriter(con.getOutputStream());
+        infWebSvcReqWriter.write(request);
+        infWebSvcReqWriter.flush();
+        BufferedReader infWebSvcReplyReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String line;
+        String infWebSvcReplyString = "";
+        while ((line = infWebSvcReplyReader.readLine()) != null) {
+            infWebSvcReplyString = infWebSvcReplyString.concat(line);
+        }
+        infWebSvcReqWriter.close();
+        infWebSvcReplyReader.close();
+        con.disconnect();
+        System.out.println(infWebSvcReplyString);
+
+        return infWebSvcReplyString;
+    }
+
+
 
 
     public void  connectSabreAPI(){
@@ -199,13 +238,6 @@ public class Connection {
         }
         return strRet;
     }
-
-
-
-
-
-
-
 
 
     public String createSecurityRequest(){

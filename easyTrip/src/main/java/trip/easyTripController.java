@@ -35,14 +35,14 @@ public class easyTripController {
         if((connection.getRestToken()==null || connection.getRestToken().equals("")) && (connection.getSoapToken()==null || connection.getSoapToken().equals(""))){
             connection.connectSabreAPI();
             try {
-                connection.callloginSoap(connection.createSecurityRequest(),"https://sws3-crt.cert.sabre.com");
+                connection.callLoginSoap(connection.createSecurityRequest(), "https://sws3-crt.cert.sabre.com");
             } catch (Exception ex){
                 return "connection problem";
             }
 
         }
         Itinerary itinerary= new Itinerary();
-        itinerary.setListCar(carServices.getRentalCars("","","","",1,connection.getRestToken()));
+        itinerary.setListCar(carServices.getRentalCars(startAirport,"",startDate,finishDate,1,connection));
 
         return new UtilsParse().convertObjectToJson(itinerary);
     }

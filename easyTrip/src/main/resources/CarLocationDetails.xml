@@ -1,0 +1,337 @@
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap-env:Header>
+        <eb:MessageHeader eb:version="1.0" soap-env:mustUnderstand="1" xmlns:eb="http://www.ebxml.org/namespaces/messageHeader">
+            <eb:From>
+                <eb:PartyId eb:type="URI">123123</eb:PartyId>
+            </eb:From>
+            <eb:To>
+                <eb:PartyId eb:type="URI">99999</eb:PartyId>
+            </eb:To>
+            <eb:CPAId>ABC</eb:CPAId>
+            <eb:ConversationId>abc123</eb:ConversationId>
+            <eb:Service eb:type="OTA">OTA_VehLocDetailLLSRQ</eb:Service>
+            <eb:Action>OTA_VehLocDetailLLSRS</eb:Action>
+            <eb:MessageData>
+                <eb:MessageId>244b12fa-c337-40ee-94f4-f59083473d85@61</eb:MessageId>
+                <eb:Timestamp>2015-06-28T01:38:19</eb:Timestamp>
+                <eb:RefToMessageId>mid:20001209-133003-2333@clientofsabre.com</eb:RefToMessageId>
+            </eb:MessageData>
+        </eb:MessageHeader>
+        <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
+            <wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3519101429287537792!1704826!0</wsse:BinarySecurityToken>
+        </wsse:Security>
+    </soap-env:Header>
+    <soap-env:Body>
+        <OTA_VehLocDetailRS Version="2.1.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
+            <stl:ApplicationResults status="Complete">
+                <stl:Success timeStamp="2015-06-27T20:38:19-05:00"/>
+            </stl:ApplicationResults>
+            <VehAvailRSCore>
+                <VehVendorAvails>
+                    <VehVendorAvail>
+                        <LocationDetails CounterLocation="OFF" LocationName="LOS ANGELES" LocationOwner="CORP" UnitOfMeasure="MI">
+                            <AdditionalInfo>
+                                <Age>
+                                    <Surcharges>RENTERS AND ADDITIONAL DRIVERS BETWEEN THE AGES OF 21</Surcharges>
+                                    <Surcharges>AND 24 WILL BE SUBJECT TO A 5.00 USD TO 15.00 USD PER</Surcharges>
+                                    <Surcharges>DAY SURCHANGE.  SURCHARGE WILL VARY DEPENDING ON</Surcharges>
+                                    <Surcharges>VEHICLE TYPE AND LOCATION.</Surcharges>
+                                    <Text>-RENTERS AND ADDITIONAL DRIVERS MUST BE AT LEAST 21</Text>
+                                    <Text>YEARS OLD TO RENT OUR NON-LUXURY CARS.  DRIVERS UNDER</Text>
+                                    <Text>THE AGE OF 25 WILL BE SUBJECT TO A FEE OF 5.00 USD TO</Text>
+                                    <Text>15.00 PER DAY DEPENDING ON VEHICLE AND LOCATION.</Text>
+                                    <Text>-THE FOLLOWING CAR TYPES REQUIRE RENTERS AND ADDITIONAL</Text>
+                                    <Text>DRIVERS TO BE AT LEAST 25 YEARS OF AGE - LUXURY CARS,</Text>
+                                    <Text>LUXURY ELITE, 7 PASSENGER SUVS AND 15 PASSENGER VANS.</Text>
+                                </Age>
+                                <Driver>
+                                    <AdditionalDriverFee>THERE IS NO FEE FOR AN ADDITIONAL DRIVER, HOWEVER, IF</AdditionalDriverFee>
+                                    <AdditionalDriverFee>THEY ARE BETWEEN THE AGES OF 21 AND 24 THEY WILL BE</AdditionalDriverFee>
+                                    <AdditionalDriverFee>SUBJECT TO A 10.00 USD PER DAY SURCHARGE.</AdditionalDriverFee>
+                                    <Text>ADDITIONAL DRIVERS MUST MEET THE SAME AGE AND DRIVERS</Text>
+                                    <Text>LICENSE REQUIREMENTS AS THE RENTER.</Text>
+                                </Driver>
+                                <DropOff>
+                                    <Text>DROP POLICY VARIES BY LOCATION AND CAR TYPE.  DROP</Text>
+                                    <Text>CHARGES CAN BE REQUESTED IN A SHOP REQUEST BY USING THE</Text>
+                                    <Text>FOLLOWING FORMAT  CQMWXXX-YYY/DDMMM-DDMMM/TIME-TIME/</Text>
+                                    <Text>CAR TYPE.  DROP CHARGES CAN ALSO BE CONFIRMED BY</Text>
+                                    <Text>ADDING /DO-XXX TO SELL REQUEST.</Text>
+                                    <Text>MIDWAY VEHICLES MAY ALSO BE RETURNED TO A LOCATION</Text>
+                                    <Text>WHICH MAY NOT BE LISTED IN SABRE.  PLEASE CONTACT</Text>
+                                    <Text>LOCATION OR SPEAK TO MANAGER OF LOCATION AT TIME OF</Text>
+                                    <Text>RENTAL FOR FULL DETAILS.</Text>
+                                    <Text>SPECIAL CONSIDERATIONS ARE TAKEN FOR MILITARY</Text>
+                                    <Text>PERSONNEL.</Text>
+                                </DropOff>
+                                <Fuel>
+                                    <Text>YOUR CAR IS RENTED WITH A FULL TANK OF GAS AND SHOULD</Text>
+                                    <Text>BE RETURNED WITH A FULL TANK OF GAS TO AVOID ADDITIONAL</Text>
+                                    <Text>CHARGES.</Text>
+                                </Fuel>
+                                <GeographicRestrictions>
+                                    <Text>-MIDWAY VEHICLES MAY ONLY BE DRIVEN IN CALIFORNIA AND</Text>
+                                    <Text>NEVADA. PLEASE SPEAK WITH LOCATION DIRECTLY IF YOU</Text>
+                                    <Text>WOULD LIKE TO DISCUSS AN EXCEPTION TO THE DRIVING</Text>
+                                    <Text>RESTICTION.</Text>
+                                    <Text>-VEHICLES MAY NOT BE DRIVEN IN MEXICO.</Text>
+                                </GeographicRestrictions>
+                                <Insurance>
+                                    <Custom Name="RENTERS LIABILITY INSURANCE-">
+                                        <Text>COST IS 14.95 USD PER DAY.  RENTERS LIABILITY</Text>
+                                        <Text>PROTECTION *RLP* PROVIDES SECONDARY LIABILITY</Text>
+                                        <Text>PROTECTION FOR INJURY AND PROPERTY DAMAGE TO THIRD</Text>
+                                        <Text>PARTIES, AS MANDATED BY CALIFORNIA LAW, AND AT THE</Text>
+                                        <Text>LIMITS IMPOSED BY CALIFORNIA LAW.  BY ACCEPTING ON THE</Text>
+                                        <Text>SIGNED RENTAL AGREEMENT WHERE RLP IS LISTED, YOU ACCEPT</Text>
+                                        <Text>RLP IN ACCORDANCE WITH THE CERTIFICATE OF INSURANCE</Text>
+                                        <Text>ATTACHED TO THE RENTAL AGREEMENT.  THIS IS SECONDARY</Text>
+                                        <Text>COVERAGE TO ALL OTHER AVAILABLE COVERAGE THAT MAY</Text>
+                                        <Text>INSURE YOU.  IF YOU ACCEPT RLP, A CERTIFICATE OF</Text>
+                                        <Text>INSURANCE WILL BE DELIVERED TO YOU WITH YOUR RENTAL</Text>
+                                        <Text>AGREEMENT AND JACKET.</Text>
+                                    </Custom>
+                                    <Custom Name="SUPPLEMENTAL LIABILITY INS-">
+                                        <Text>COST IS 24.90 USD PER DAY.  SUPPLEMENTAL LIABILITY</Text>
+                                        <Text>INSURANCE *SLI* PROVIDES SUPPLEMENTAL THIRD-PARTY</Text>
+                                        <Text>LIABILITY INSURANCE STARTING AT 35,000 USD UP TO</Text>
+                                        <Text>1,000,000.  SLI IS SUPPLEMENTAL AND NOT PRIMARY</Text>
+                                        <Text>COVERAGE.  IT IS SECONDARY TO ALL OTHER AVAILABLE</Text>
+                                        <Text>INSURANCE THAT MAY COVER THE RENTER.  IF YOU PURCHASE</Text>
+                                        <Text>SLI YOU WILL RECEIVE A CERTIFICATE OF INSURANCE.  THE</Text>
+                                        <Text>SLI POLICY IS AVAILABLE FOR REVIEW UPON REQUEST OR YOU</Text>
+                                        <Text>MAY REVIEW IT ONLINE.</Text>
+                                    </Custom>
+                                    <PersonalAccident>COST IS 6.95 USD PER DAY.  PERSONAL ACCIDENT / PERSONAL</PersonalAccident>
+                                    <PersonalAccident>EFFECTS PROTECTION *PAI/PEC* IS OPTIONAL AND PROVIDES</PersonalAccident>
+                                    <PersonalAccident>RENTER AND ANY AUTHORIZED DRIVERS WITH ACCIDENTAL</PersonalAccident>
+                                    <PersonalAccident>DEATH, ACCIDENTAL MEDICAL EXPENSE INCLUDING AMBULANCE</PersonalAccident>
+                                    <PersonalAccident>BENEFIT, AND PERSONAL EFFECTS BENEFITS DURING THE TERM</PersonalAccident>
+                                    <PersonalAccident>OF YOUR RENTAL.  ALL BENEFITS ARE SUBJECT TO THE</PersonalAccident>
+                                    <PersonalAccident>EXCLUSIONS, TERMS, CONDITIONS, LIMITATIONS AND</PersonalAccident>
+                                    <PersonalAccident>COVERAGES AS EXPRESSLY DESCRIBED IN THE UNDERLYING</PersonalAccident>
+                                    <PersonalAccident>POLICY, WHICH IS AVAILABLE FOR INSPECTION AT THE CAR</PersonalAccident>
+                                    <PersonalAccident>RENTAL OFFICE, AND ARE CONDITIONED UPON COMPLIANCE WITH</PersonalAccident>
+                                    <PersonalAccident>THE TERMS OF YOUR RENTAL AGREEMENT.  THE PURCHASE OF</PersonalAccident>
+                                    <PersonalAccident>PERSONAL ACCIDENT / PERSONAL EFFECTS PROTECTION IS</PersonalAccident>
+                                    <PersonalAccident>ENTIRELY OPTIONAL - YOU ARE NOT REQUIRED TO PURCHASE IT</PersonalAccident>
+                                    <PersonalAccident>IN ORDER TO RENT A CAR.</PersonalAccident>
+                                    <PersonalAccident>DESCRIPTION                     RENTER     PASSENGER</PersonalAccident>
+                                    <PersonalAccident>-----------                     ------     ---------</PersonalAccident>
+                                    <PersonalAccident>LOSS OF LIFE                  100,000 USD  10,000 USD</PersonalAccident>
+                                    <PersonalAccident>MEDICAL EXPENSES                1,000 USD   1,000 USD</PersonalAccident>
+                                    <PersonalAccident>AMBULANCE EXPENSES                250 USD     250 USD</PersonalAccident>
+                                    <PersonalAccident>PERSONAL EFFECTS COVERAGE         525 USD     525 USD</PersonalAccident>
+                                    <PersonalAccident>THE MAXIMUM PERSONAL EFFECTS AMOUNT PER PERSON IS</PersonalAccident>
+                                    <PersonalAccident>525.00 USD.  A PER CLAIM DEDUCTIBLE OF 25.00 USD</PersonalAccident>
+                                    <PersonalAccident>APPLIES.  THE MAXIMUM TOTAL BENEFIT THAT SHALL BE</PersonalAccident>
+                                    <PersonalAccident>PAYABLE FOR ANY ONE OCCURRENCE, REGARDLESS OF THE</PersonalAccident>
+                                    <PersonalAccident>NUMBER OF PEOPLE FOR PAI IS 150,000 USD AND PEC IS</PersonalAccident>
+                                    <PersonalAccident>1,500 USD.</PersonalAccident>
+                                    <Text>** NOTICE TO RENTERS **</Text>
+                                    <Text>THE STATE OF CALIFORNIA REQUIRES YOU HAVE PROOF OF</Text>
+                                    <Text>LIABILITY INSURANCE WHILE DRIVING A VEHICLE.  YOUR</Text>
+                                    <Text>PERSONAL AUTOMOBILE INSURANCE CARRIER OR INSURANCE</Text>
+                                    <Text>PROVIDED BY YOUR CREDIT CARD COMPANY MAY PROVIDE SOME</Text>
+                                    <Text>OF THE OPTIONAL COVERAGES LISTED IN THIS SECTION.</Text>
+                                    <Text>PLEASE CHECK WITH YOUR INSURANCE CARRIER AND/OR YOUR</Text>
+                                    <Text>CREDIT CARD COMPANY BEFORE YOU PURCHASE ANY OPTIONAL</Text>
+                                    <Text>COVERAGES TO AVOID DUPLICATE COVERAGES.</Text>
+                                    <Text>.</Text>
+                                    <Text>PLEASE BE ADVISED THAT YOUR OPTIONAL COVERAGE MAY BE</Text>
+                                    <Text>VOID IF THE DAMAGE OR LOSS IS A RESULT OF AN</Text>
+                                    <Text>AUTHORIZED DRIVERS /A/ INTENTIONAL, WILLFUL, WANTON, OR</Text>
+                                    <Text>RECKLESS CONDUCT, /B/ OPERATION OF THE VEHICLE UNDER</Text>
+                                    <Text>THE INFLUENCE OF DRUGS OR ALCOHOL, /C/ TOWING OR</Text>
+                                    <Text>PUSHING ANYTHING, /D/ OPERATION OF THE VEHICLE ON AN</Text>
+                                    <Text>UNPAVED ROAD IF THE DAMAGE OR LOSS IS A DIRECT RESULT</Text>
+                                    <Text>OF THE ROAD OR DRIVING CONDITIONS, /E/ USED FOR</Text>
+                                    <Text>COMMERCIAL HIRE, /F/ USED IN CONNECTION WITH CONDUCT</Text>
+                                    <Text>WHICH COULD BE PROPERLY CHARGED AS A FELONY, /G/</Text>
+                                    <Text>INVOLVED IN A SPEED TEST OR CONTEST OR IN DRIVER</Text>
+                                    <Text>TRAINING ACTIVITY, /H/ OPERATED BY A PERSON OTHER THAN</Text>
+                                    <Text>AN AUTHORIZED DRIVER, /I/ OPERATED OUTSIDE OF THE</Text>
+                                    <Text>UNITED STATES, /J/ RENTER PROVIDED FRAUDULENT</Text>
+                                    <Text>INFORMATION TO THE RENTAL COMPANY, /K/ CARRY HAZARDOUS</Text>
+                                    <Text>MATERIAL, /L/ PROVIDED FALSE INFORMATION AND THE RENTAL</Text>
+                                    <Text>COMPANY WOULD NOT HAVE RENTED THE VEHICLE IF IT HAD</Text>
+                                    <Text>INSTEAD RECEIVED TRUE INFORMATION.  THESE PROHIBITED</Text>
+                                    <Text>USES FOR THE RENTAL VEHICLE ARE OUTLINED IN PARAGRAPH 2</Text>
+                                    <Text>ON THE BACK OF THE RENTAL AGREEMENT.  PLEASE READ YOUR</Text>
+                                    <Text>RENTAL AGREEMENT BEFORE SIGNING.</Text>
+                                </Insurance>
+                                <License>
+                                    <Text>RENTER MUST HAVE A VALID DRIVERS LICENSE.  IF RENTER</Text>
+                                    <Text>HAS AN INTERNATIONAL DRIVERS LICENSE, IT MUST BE</Text>
+                                    <Text>WRITTEN IN ENGLISH AND BE ACCOMPANIED BY A VALID</Text>
+                                    <Text>PASSPORT.</Text>
+                                </License>
+                                <Makes>
+                                    <MakeModel Capacity="4" Example="HYUNDAI ACCENT OR SIMILAR" NumBags="1" NumDoors="3" Type="ECAR"/>
+                                    <MakeModel Capacity="4" Example="NISSAN VERSA OR SIMILAR" NumBags="2" NumDoors="4" Type="CCAR"/>
+                                    <MakeModel Capacity="5" Example="TOYOTA COROLLA OR SIMILAR" NumBags="2" NumDoors="4" Type="ICAR"/>
+                                    <MakeModel Capacity="5" Example="FORD FUSION OR SIMILAR" NumBags="2" NumDoors="5" Type="SCAR"/>
+                                    <MakeModel Capacity="5" Example="TOYOTA CAMRY OR SIMILAR" NumBags="2" NumDoors="4" Type="FCAR"/>
+                                    <MakeModel Capacity="5" Example="VOLVO S60 OR SIMILAR" NumBags="2" NumDoors="4" Type="PCAR"/>
+                                    <MakeModel Capacity="5" Example="MERCEDES C250 OR SIMILAR" NumBags="2" NumDoors="4" Type="LCAR"/>
+                                    <MakeModel Capacity="4" Example="FORD MUSTANG OR SIMILAR" NumBags="2" NumDoors="2" Type="STAR"/>
+                                    <MakeModel Capacity="4" Example="CHEVROLET CAMARO 1LT OR S" NumBags="2" NumDoors="2" Type="PBAR"/>
+                                    <MakeModel Capacity="2" Example="MERCEDES SLK250 OR SIMILA" NumBags="1" NumDoors="2" Type="PTAR"/>
+                                    <MakeModel Capacity="5" Example="MERCEDES E CLASS OR SIMIL" NumBags="3" NumDoors="4" Type="PDAR"/>
+                                    <MakeModel Capacity="4" Example="AUDI A5 OR SIMILAR" NumBags="2" NumDoors="2" Type="LTAR"/>
+                                    <MakeModel Capacity="5" Example="JEEP LIBERTY OR SIMILAR" NumBags="4" NumDoors="4" Type="IFAR"/>
+                                    <MakeModel Capacity="5" Example="FORD EXPLORER OR SIMLAR" NumBags="4" NumDoors="4" Type="SFAR"/>
+                                    <MakeModel Capacity="7" Example="CHEVROLET SUBURBAN OR SIM" NumBags="4" NumDoors="4" Type="FFAR"/>
+                                    <MakeModel Capacity="7" Example="DODGE CARAVAN OR SIMILAR" NumBags="3" NumDoors="3" Type="MVAR"/>
+                                    <MakeModel Capacity="15" Example="FORD 15 PASSENGER VAN" NumBags="5" NumDoors="4" Type="FVAR"/>
+                                    <Text>** ABOVE MODELS ARE REPRESENTATIVE ONLY **</Text>
+                                    <Text>MAKE/MODEL CANNOT BE GUARANTEED</Text>
+                                </Makes>
+                                <PaymentInformation>
+                                    <Payment Code="P">
+                                        <Text>THE AUTHORIZATION AMOUNT REQUIRED ON THE RENTERS CREDIT</Text>
+                                        <Text>CARD OR DEBIT CARD MAY VARY. RENTERS ARE ENCOURAGED TO</Text>
+                                        <Text>CONTACT THE OFFICE LOCATION DIRECTLY PRIOR TO THE</Text>
+                                        <Text>SCHEDULED PICK UP DATE TO CONFIRM THE EXACT AMOUNT.</Text>
+                                        <Text>PLEASE BE AWARE THAT DEBIT CARD REFUNDS CAN TAKE UP TO</Text>
+                                        <Text>10 BUSINESS DAYS TO PROCESS. MIDWAY CAR RENTAL DOES NOT</Text>
+                                        <Text>ACCEPT PREPAID OR 3RD PARTY CARDS.</Text>
+                                    </Payment>
+                                    <Payment Code="R">
+                                        <PaymentCard Code="AX" Type="AMERICAN EXPRESS"/>
+                                        <PaymentCard Code="DC" Type="DINERS CLUB"/>
+                                        <PaymentCard Code="DS" Type="DISCOVER/NOVUS"/>
+                                        <PaymentCard Code="CA" Type="MASTERCARD"/>
+                                        <PaymentCard Code="JC" Type="JCB INTERNATIONAL"/>
+                                        <PaymentCard Code="VI" Type="VISA/BANKAMERICARD"/>
+                                    </Payment>
+                                    <Payment Code="C">
+                                        <Text>MIDWAY DOES NOT CURRENTLY RENT ON A CASH BASIS.</Text>
+                                    </Payment>
+                                </PaymentInformation>
+                                <ShuttleInformation>
+                                    <Shuttle Information="Y">
+                                        <Text>SEE PICKUP INSTRUCTIONS</Text>
+                                    </Shuttle>
+                                    <Shuttle Information="H">
+                                        <Text>THE SHUTTLE SERVICE RUNS DURING NORMAL BUSINESS HOURS.</Text>
+                                        <Text>AFTER HOURS RETURN SERVICE IS AVAILABLE.  PLEASE SEE</Text>
+                                        <Text>AGENT AT THE TIME OF THE RENTAL FOR ADDITIONAL</Text>
+                                        <Text>INFORMATION REGARDING THIS SERVICE.</Text>
+                                    </Shuttle>
+                                    <Shuttle Information="F">
+                                        <Text>THE JOES AIRPORT PARKING BUS RUNS AUTOMATICALLY EVERY</Text>
+                                        <Text>5-10 MINUTES</Text>
+                                    </Shuttle>
+                                    <Shuttle Information="P">
+                                        <Text>PLEASE TAKE THE JOES AIRPORT PARKING SHUTTLE</Text>
+                                        <Text>LOCATED UNDER THE RED HOTEL AND COURTESY SIGN MARKED</Text>
+                                        <Text>*HOTEL AND COURTESY SHUTTLE*</Text>
+                                        <Text>CUSTOMERS MAY ALSO CALL JOES AIRPORT PARKING DIRECTLY</Text>
+                                        <Text>FOR AIRPORT PICK UP AT 310-670-0290</Text>
+                                    </Shuttle>
+                                    <Shuttle Information="S">
+                                        <Text>SHUTTLE SERVICE TO THE MIDWAY OFFICE IS FREE OF CHARGE.</Text>
+                                    </Shuttle>
+                                    <Shuttle Information="D">
+                                        <Text>MIDWAY IS LOCATED LESS THAN ONE MILE FROM THE LAX</Text>
+                                        <Text>AIRPORT.</Text>
+                                    </Shuttle>
+                                    <Shuttle Information="T">
+                                        <Text>TRAVEL TIME TO VEHICLE IS APROXIMATELY 5-10 MINUTES.</Text>
+                                    </Shuttle>
+                                </ShuttleInformation>
+                                <SpecialEquipmentInformation>
+                                    <Custom>
+                                        <Text>COST FOR A VIP BAGGAGE MEET IS 75.00</Text>
+                                        <Text>FOR THIS SERVICE PLEASE PROVIDE THE FLIGHT DETAILS IN</Text>
+                                        <Text>THE ARR FIELD WHEN SELLING. IF YOU CHOOSE THIS SERVICE</Text>
+                                        <Text>WE WILL TRACK THE RENTERS FLIGHT AND MEET THEM IN THE</Text>
+                                        <Text>BAGGAGE CLAIM AREA WITH A SIGN WITH THEIR LAST NAME ON</Text>
+                                        <Text>IT. WE WILL THEN ASSIST THE GUEST WITH THEIR LUGGAGE</Text>
+                                        <Text>AND ESCORT THEM OUTSIDE TO THE LUXURY TRANSPORTATION</Text>
+                                        <Text>VEHICLE THAT WILL TAKE THEM TO THE LAX OFFICE. PLEASE</Text>
+                                        <Text>BOOK THIS SERVICE AT LEAST 24HRS IN ADVANCE.</Text>
+                                    </Custom>
+                                    <SpecialEquipment Code="CSI" Name="CHILD SEAT/INFANT-">
+                                        <Text>COST FOR CHILD SEAT IS 10.00 USD PER DAY.</Text>
+                                        <Text>IF MORE THAN 3 SEATS ARE REQUIRED FOR A LONG PERIOD OF</Text>
+                                        <Text>TIME, MIDWAY WILL ADJUST PRICING ACCORDINGLY.</Text>
+                                    </SpecialEquipment>
+                                    <SpecialEquipment Code="CST" Name="CHILD SEAT/TODDLER-">
+                                        <Text>COST FOR CHILD SEAT IS 10.00 USD PER DAY.</Text>
+                                    </SpecialEquipment>
+                                    <SpecialEquipment Code="NAV" Name="NAVIGATIONAL SYSTEM-">
+                                        <Text>COST FOR NAVIGATION SYSTEM IS  5.00 USD PER DAY.</Text>
+                                    </SpecialEquipment>
+                                    <SpecialEquipment Code="BST" Name="CHILD SEAT/BOOSTER-">
+                                        <Text>COST FOR BOOSTER SEAT IS 10.00 USD PER DAY.</Text>
+                                    </SpecialEquipment>
+                                </SpecialEquipmentInformation>
+                                <Taxes>
+                                    <Text>9 PERCENT SALES TAX</Text>
+                                </Taxes>
+                                <Waivers>
+                                    <CollisionDamages>PRICES VARY.  RENTERS ARE RESPONSIBLE FOR ALL LOSS AND</CollisionDamages>
+                                    <CollisionDamages>DAMAGE TO THE RENTAL VEHICLE UP TO THE FULL VALUE OF</CollisionDamages>
+                                    <CollisionDamages>THE VEHICLE REGARDLESS OF FAULT.  IF YOU PURCHASE CDW</CollisionDamages>
+                                    <CollisionDamages>AT THE TIME OF THE RENTAL ALL DAMAGES ARE WAIVED UNLESS</CollisionDamages>
+                                    <CollisionDamages>THE DAMAGE IS A RESULT OF PROHIBITED USE LISTED IN</CollisionDamages>
+                                    <CollisionDamages>PARAGRAPH 2 OF THE RENTAL AGREEMENT TERMS STATED IN THE</CollisionDamages>
+                                    <CollisionDamages>RENTAL JACKET.</CollisionDamages>
+                                </Waivers>
+                            </AdditionalInfo>
+                            <AddressInformation>
+                                <Address Type="L">
+                                    <AddressLine>MIDWAY CAR RENTAL</AddressLine>
+                                    <CityName>LOS ANGELES</CityName>
+                                    <CountryCode>US</CountryCode>
+                                    <PostalCode>90045-5392</PostalCode>
+                                    <StateProv StateCode="CA"/>
+                                    <StreetNmbr>6151 WEST CENTURY BLVD</StreetNmbr>
+                                </Address>
+                            </AddressInformation>
+                            <ContactNumbers>
+                                <ContactNumber Phone="310-649-5549"/>
+                            </ContactNumbers>
+                            <OperationSchedule>
+                                <OperationTimes>
+                                    <OperationTime DayOfWeek="SUN">
+                                        <Close RPH="1">23:00</Close>
+                                        <Open RPH="1">06:00</Open>
+                                    </OperationTime>
+                                    <OperationTime DayOfWeek="MON">
+                                        <Close RPH="1">23:00</Close>
+                                        <Open RPH="1">06:00</Open>
+                                    </OperationTime>
+                                    <OperationTime DayOfWeek="TUE">
+                                        <Close RPH="1">23:00</Close>
+                                        <Open RPH="1">06:00</Open>
+                                    </OperationTime>
+                                    <OperationTime DayOfWeek="WED">
+                                        <Close RPH="1">23:00</Close>
+                                        <Open RPH="1">06:00</Open>
+                                    </OperationTime>
+                                    <OperationTime DayOfWeek="THU">
+                                        <Close RPH="1">23:00</Close>
+                                        <Open RPH="1">06:00</Open>
+                                    </OperationTime>
+                                    <OperationTime DayOfWeek="FRI">
+                                        <Close RPH="1">23:00</Close>
+                                        <Open RPH="1">06:00</Open>
+                                    </OperationTime>
+                                    <OperationTime DayOfWeek="SAT">
+                                        <Close RPH="1">23:00</Close>
+                                        <Open RPH="1">06:00</Open>
+                                    </OperationTime>
+                                </OperationTimes>
+                            </OperationSchedule>
+                        </LocationDetails>
+                        <VehicleProvider Code="MW" CompanyShortName="MIDWAY"/>
+                        <Vendor Code="MW" CompanyShortName="MIDWAY"/>
+                    </VehVendorAvail>
+                </VehVendorAvails>
+            </VehAvailRSCore>
+        </OTA_VehLocDetailRS>
+    </soap-env:Body>
+</soap-env:Envelope>

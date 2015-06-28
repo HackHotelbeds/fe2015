@@ -4,6 +4,7 @@ import trip.Services.CarServices;
 import trip.Services.HotelbedsService;
 import trip.Services.TabService;
 import trip.pojo.*;
+import trip.utils.Connection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +45,8 @@ public class AvailabilityManager {
         CompletionService<List<Hotel>> hotelbedsCompService = new ExecutorCompletionService<>(executor);
         CompletionService<List<Ticket>> ticketCompService = new ExecutorCompletionService<>(executor);
         CompletionService<List<Ticket>> tabCompService = new ExecutorCompletionService<>(executor);
-
-        CarTask carTask = new CarTask("","","","",1,"");
+        //TODO FIXME
+        CarTask carTask = new CarTask("","","","",1,null);
         VueloIdaTask vueloIdaTask = new VueloIdaTask();
         VueloVueltaTask vueloVueltaTask = new VueloVueltaTask();
         carCompService.submit(carTask);
@@ -98,23 +99,23 @@ public class AvailabilityManager {
         String finishAirpot;
         String startDate;
         String endDate;
-        String restToken;
+        Connection connection;
         int numberOfPassenger;
 
         CarTask(final String pStartAirport, final String pFinishAirpot,
                 final String pStartDate, final String pEndDate, final int pNumberOfPassenger,
-                final String pRrestToken){
+                final Connection pConnection){
             startAirport = pStartAirport;
             finishAirpot = pFinishAirpot;
             startDate = pStartDate;
             endDate = pEndDate;
             numberOfPassenger = pNumberOfPassenger;
-            restToken = pRrestToken;
+            connection = pConnection;
             carServices = new CarServices();
         }
 
         @Override public List<Car> call() throws Exception {
-            return carServices.getRentalCars(startAirport, finishAirpot, startDate, endDate, numberOfPassenger, restToken);
+            return carServices.getRentalCars(startAirport, finishAirpot, startDate, endDate, numberOfPassenger, connection);
         }
     }
 

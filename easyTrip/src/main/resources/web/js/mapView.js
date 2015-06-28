@@ -29,6 +29,190 @@ function getPoints() {
   return [{}];
 }
 
+function buildResultsPanel(name, title, values, useCheckbox) {
+  var resultsPanel = '';
+  resultsPanel += '<div class="panel panel-default results-panel ">';
+  resultsPanel += '<div class="panel-heading resultsPanel-heading">';
+  resultsPanel += '<h4 class="panel-title">';
+  resultsPanel += '<a data-toggle="collapse" href="#' + name + '"><i class="fa fa-list-alt"></i> ' + title + '</a>';
+  resultsPanel += '</h4>';
+  resultsPanel += '</div>';
+
+  resultsPanel += '<div id="' + name + '" class="panel-collapse collapse in">';
+  resultsPanel += '<div class="panel-body">';
+
+  if (useCheckbox) {
+    resultsPanel += '<div class="input-group">';
+    resultsPanel += '  <span class="input-group-addon rate-option">';
+    resultsPanel += '    <input type="radio" name="' + name + 'EmptyRate" value="null">';
+    resultsPanel += '  </span>';
+    resultsPanel += '  <div class="form-control no-shadow">No ticket for this day</div>';
+    resultsPanel += '</div>';
+  }
+
+  for (var v = 0; v < values.length; v++) {
+    resultsPanel += '<div class="input-group">';
+    resultsPanel += '  <span class="input-group-addon rate-option">';
+    if (useCheckbox) {
+      resultsPanel += '    <input type="checkbox" name="' + name + values[v].id + '">';
+    } else {
+      resultsPanel += '    <input type="radio" name="' + name + 'Rate" value="'+ values[v].id + '">';
+    }
+    resultsPanel += '  </span>';
+    resultsPanel += '  <div class="col-md-8 result-item no-shadow">' + values[v].text + '</div>';
+    resultsPanel += '  <div class="col-md-4 result-price no-shadow">' + values[v].price + '</div>';
+    resultsPanel += '</div>';
+  }
+  resultsPanel += '</div>';
+  resultsPanel += '</div>';
+  resultsPanel += '</div>';
+
+  return resultsPanel;
+}
+
+function showItineraryWithRates(rates) {
+  var summary = '';
+
+  var arrivalFlights = [];
+  for (var f = 0; f < rates.ida.length; f++) {
+    var flight = rates.ida[f];
+    var flightText = flight.startAirport+'-'+flight.endAirport;
+    flightText += ' ('+flight.departureDate+' '+flight.departureHour+'-'+flight.arrivalDate+' '+flight.arrivalHour+')';
+    var flightPrice = '  ' + flight.price + ' ' + flight.currency;
+
+    arrivalFlights[f] = {
+      "id": flight.id,
+      "text": flightText,
+      "price": flightPrice
+    }
+  }
+  summary += buildResultsPanel('arrivalFlight', 'Arrival flight', arrivalFlights);
+
+  var carRented = [];
+  for (var f = 0; f < rates.listCar.length; f++) {
+    var car = rates.listCar[f];
+    var carText = car.carName;
+    var carPrice = '  ' + car.price + ' ' + car.currency;
+
+    carRented[f] = {
+      "id": car.id,
+      "text": carText,
+      "price": carPrice
+    }
+  }
+  summary += buildResultsPanel('carRented', 'Car rented', carRented);
+
+  for (var hotelOption = 0; hotelOption < rates.hotelOptionDays.length; hotelOption++) {
+    var hotels = [];
+    for (var f = 0; f < rates.hotelOptionDays[hotelOption].listHotel.length; f++) {
+      var hotel = rates.hotelOptionDays[hotelOption].listHotel[f];
+      var hotelText = hotel.name + ' ' + hotel.roomtype + ' ' + hotel.board;
+      var hotelPrice = '  ' + hotel.price + ' ' + hotel.currency;
+
+      hotels[f] = {
+        "id": hotel.id,
+        "text": hotelText,
+        "price": hotelPrice
+      }
+    }
+    summary += buildResultsPanel('hotelOption' + hotelOption, 'Hotels, day ' + rates.hotelOptionDays[hotelOption].day, hotels);
+  }
+
+  for (var ticketOption = 0; ticketOption < rates.ticketOptionDays.length; ticketOption++) {
+    var tickets = [];
+    for (var f = 0; f < rates.ticketOptionDays[ticketOption].listTicket.length; f++) {
+      var ticket = rates.ticketOptionDays[ticketOption].listTicket[f];
+      var ticketText = ticket.name;
+      var ticketPrice = '  ' + ticket.price + ' ' + ticket.currency;
+
+      tickets[f] = {
+        "id": ticket.id,
+        "text": ticketText,
+        "price": ticketPrice
+      }
+    }
+    summary += buildResultsPanel('ticketOption' + ticketOption, 
+      'Tickets, day ' + rates.ticketOptionDays[ticketOption].day, 
+      tickets,
+      'useCheckbox'
+    );
+  }
+
+  var departureFlights = [];
+  for (var f = 0; f < rates.vuelta.length; f++) {
+    var flight = rates.vuelta[f];
+    var flightText = flight.startAirport+'-'+flight.endAirport;
+    flightText += ' ('+flight.departureDate+' '+flight.departureHour+'-'+flight.arrivalDate+' '+flight.arrivalHour+')';
+    var flightPrice = '  ' + flight.price + ' ' + flight.currency;
+
+    departureFlights[f] = {
+      "id": flight.id,
+      "text": flightText,
+      "price": flightPrice
+    }
+  }
+  summary += buildResultsPanel('departureFlight', 'Departure flight', departureFlights);
+
+  bootbox.dialog({
+    title: '<h4>Choose the rates</h4>',
+    message: '<form id="rateSelection">'+summary+'</form>',
+    buttons: {
+      cancel: {
+        label: "Back to the map",
+        className: "btn-cancel"
+      },
+      success: {
+          label: "Go pay!",
+          className: "btn-success",
+          callback: function () {
+              // guardar formulario con seleccion
+
+              showPaymentForm(rates);
+          }
+      }
+    }
+  });
+
+  $(document).on("shown.bs.modal", function (e) {
+
+    $('.modal-body .results-panel').find('a[data-toggle="collapse"]').each(function(index) {
+      if(index > 0) {
+        $(this).click();
+      }
+    });
+
+    $('.modal-body .results-panel .rate-option input[type=radio]').click(function(e) {
+      var thisHeading = $(this).parents('.panel-collapse').prev();
+      $(thisHeading).find('a[data-toggle="collapse"]').click();
+      $(thisHeading).parent('.results-panel').next().find('.resultsPanel-heading a[data-toggle="collapse"]').click();
+    });
+
+  });
+}
+
+function showPaymentForm(ratesSelected) {
+  bootbox.dialog({
+    title: '<h4>Complete your personal information for paying</h4>',
+    message: '....',
+    buttons: {
+        cancel: {
+          label: "Back to the rates",
+          className: "btn-cancel",
+          callback: function(ratesSelected) {
+            showItineraryWithRates(ratesSelected);
+          }
+        },
+        success: {
+            label: "Go pay!",
+            className: "btn-success",
+            callback: function (ratesSelected) {
+              bootbox.alert('...confirmando...');
+            }
+        }
+    }
+  });  
+}
+
 $(document).ready(function() {
   $('.sidebar-left .slide-submenu').on('click',function() {
     var thisEl = $(this);
@@ -49,6 +233,123 @@ $(document).ready(function() {
 
   $('#all-aboard-submit').click(function(e) {
 
+    var rates = {
+    "hotelOptionDays": [
+      {
+        "listHotel": [
+          {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"Trivago"},
+          {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"Expedia"},
+          {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"Bedsonline"}
+        ], 
+        "day": "1/7/15"
+      },
+      {"listHotel": [
+        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"Booking"},
+        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"Bedsonline"},
+        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"Sabre"}
+      ], "day": "2/7/15"},
+      {"listHotel": [
+        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"Bedsonline"},
+        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"Trivago"},
+        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"Sabre"}
+      ], "day": "3/7/15"},
+      {"listHotel": [
+        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"Bedsonline"},
+        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"Expedia"},
+        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"Sabre"}
+      ], "day": "4/7/15"},
+    ],
+    "ida": [{
+      "id": "125676789",
+      "startAirport": "MAD",
+      "endAirport": "MIL",
+      "departureDate": "1/7/15", "departureHour": "11:00",
+      "arrivalDate": "1/7/15", "arrivalHour": "12:00",
+      "flightNumber": "A123", "price": "123.27", "currency": "EUR"
+    },{
+      "id": "452349153",
+      "startAirport": "MAD",
+      "endAirport": "MIL",
+      "departureDate": "1/7/15", "departureHour": "13:00",
+      "arrivalDate": "1/7/15", "arrivalHour": "14:00",
+      "flightNumber": "A321", "price": "113.27", "currency": "EUR"
+    }],
+    "listCar": [
+        {
+            "addionalString": null,
+            "capacity": "4",
+            "carCode": "ECAR",
+            "carName": "HYUNDAI ACCENT OR SIMILAR",
+            "carType": "ECAR",
+            "endString": null,
+            "garanty": "G",
+            "numDays": null,
+            "participationLevel": "B",
+            "price": "1496.57",
+            "rateCode": "WEB",
+            "startString": null
+        },
+        {
+            "addionalString": null,
+            "capacity": "4",
+            "carCode": "CCAR",
+            "carName": "NISSAN VERSA OR SIMILAR",
+            "carType": "CCAR",
+            "endString": null,
+            "garanty": "G",
+            "numDays": null,
+            "participationLevel": "B",
+            "price": "1620.83",
+            "rateCode": "WEB",
+            "startString": null
+        },
+        {
+            "addionalString": null,
+            "capacity": "5",
+            "carCode": "ICAR",
+            "carName": "TOYOTA COROLLA OR SIMILAR",
+            "carType": "ICAR",
+            "endString": null,
+            "garanty": "G",
+            "numDays": null,
+            "participationLevel": "B",
+            "price": "1752.72",
+            "rateCode": "WEB",
+            "startString": null
+        }
+    ],
+    "ticketOptionDays": [
+      {"listTicket": [
+        {"name":"Exc1", "price":"57.00", "currency":"EUR", "company":"Disney"},
+        {"name":"Exc2", "price":"58.00", "currency":"EUR", "company":"Isango"},
+        {"name":"Exc3", "price":"59.00", "currency":"EUR", "company":"Tab"}
+      ], "day": "1/7/15"},
+      {"listTicket": [
+        {"name":"Exc4", "price":"157.00", "currency":"EUR", "company":"Disney"},
+        {"name":"Exc5", "price":"158.00", "currency":"EUR", "company":"Isango"},
+        {"name":"Exc6", "price":"159.00", "currency":"EUR", "company":"Tab"}
+      ], "day": "3/7/15"},
+    ],
+    "vuelta": [{
+      "id": "123456789",
+      "startAirport": "NAP",
+      "endAirport": "MAD",
+      "departureDate": "5/7/15", "departureHour": "11:00",
+      "arrivalDate": "5/7/15", "arrivalHour": "12:00",
+      "flightNumber": "A123", "price": "123.27", "currency": "EUR"
+    },{
+      "id": "456789153",
+      "startAirport": "NAP",
+      "endAirport": "MAD",
+      "departureDate": "5/7/15", "departureHour": "17:00",
+      "arrivalDate": "5/7/15", "arrivalHour": "18:00",
+      "flightNumber": "A456", "price": "113.27" , "currency": "EUR"     
+    }]
+};
+
+    showItineraryWithRates(rates);
+
+/*
       $.ajax(
       {
           type: 'post',
@@ -59,29 +360,14 @@ $(document).ready(function() {
           },
           success: function(data) {
             $.unblockUI();
-            bootbox.dialog({
-              title: '<h4>Choose the rates</h4>',
-              message: '....',
-              buttons: {
-                        cancel: {
-                          label: "Back to the map",
-                          className: "btn-cancel"
-                        },
-                        success: {
-                            label: "Go pay!",
-                            className: "btn-success",
-                            callback: function () {
-                                bootbox.alert('...show paying form...');
-                            }
-                        }
-              }
-            });
+            showItineraryWithRates(data);
           },
           error: function() {              
               $.unblockUI();
               bootbox.alert({message: 'Cant get any rates! Try again later!'});
           }
       });
+*/
   });
 
 });

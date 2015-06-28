@@ -76,89 +76,105 @@ function showItineraryWithRates(rates) {
   var summary = '';
 
   var arrivalFlights = [];
-  for (var f = 0; f < rates.ida.length; f++) {
-    var flight = rates.ida[f];
-    var flightText = flight.startAirport+'-'+flight.endAirport;
-    flightText += ' ('+flight.departureDate+' '+flight.departureHour+'-'+flight.arrivalDate+' '+flight.arrivalHour+')';
-    var flightPrice = '  ' + flight.price + ' ' + flight.currency;
+  if (rates.ida != null) {
+    for (var f = 0; f < rates.ida.length; f++) {
+      var flight = rates.ida[f];
+      var flightText = flight.startAirport+'-'+flight.endAirport;
+      flightText += ' ('+flight.departureDate+' '+flight.departureHour+'-'+flight.arrivalDate+' '+flight.arrivalHour+')';
+      var flightPrice = '  ' + flight.price + ' ' + flight.currency;
 
-    arrivalFlights[f] = {
-      "id": flight.id,
-      "text": flightText,
-      "price": flightPrice,
-      "company": flight.company
+      arrivalFlights[f] = {
+        "id": flight.id,
+        "text": flightText,
+        "price": flightPrice,
+        "company": flight.company
+      }
     }
+    summary += buildResultsPanel('arrivalFlight', 'Arrival flight', arrivalFlights);
   }
-  summary += buildResultsPanel('arrivalFlight', 'Arrival flight', arrivalFlights);
 
   var carRented = [];
-  for (var f = 0; f < rates.listCar.length; f++) {
-    var car = rates.listCar[f];
-    var carText = car.carName;
-    var carPrice = '  ' + car.price + ' ' + car.currency;
+  if (rates.listCar != null) {
+    for (var f = 0; f < rates.listCar.length; f++) {
+      var car = rates.listCar[f];
+      var carText = car.carName;
+      var carPrice = '  ' + car.price + ' ' + car.currency;
 
-    carRented[f] = {
-      "id": car.id,
-      "text": carText,
-      "price": carPrice,
-      "company": car.company
-    }
-  }
-  summary += buildResultsPanel('carRented', 'Car rented', carRented);
-
-  for (var hotelOption = 0; hotelOption < rates.hotelOptionDays.length; hotelOption++) {
-    var hotels = [];
-    for (var f = 0; f < rates.hotelOptionDays[hotelOption].listHotel.length; f++) {
-      var hotel = rates.hotelOptionDays[hotelOption].listHotel[f];
-      var hotelText = hotel.name + ' ' + hotel.roomtype + ' ' + hotel.board;
-      var hotelPrice = '  ' + hotel.price + ' ' + hotel.currency;
-
-      hotels[f] = {
-        "id": hotel.id,
-        "text": hotelText,
-        "price": hotelPrice,
-        "company": hotel.company
+      carRented[f] = {
+        "id": car.id,
+        "text": carText,
+        "price": carPrice,
+        "company": car.company
       }
     }
-    summary += buildResultsPanel('hotelOption' + hotelOption, 'Hotels, day ' + rates.hotelOptionDays[hotelOption].day, hotels);
+    summary += buildResultsPanel('carRented', 'Car rented', carRented);
   }
 
-  for (var ticketOption = 0; ticketOption < rates.ticketOptionDays.length; ticketOption++) {
-    var tickets = [];
-    for (var f = 0; f < rates.ticketOptionDays[ticketOption].listTicket.length; f++) {
-      var ticket = rates.ticketOptionDays[ticketOption].listTicket[f];
-      var ticketText = ticket.name;
-      var ticketPrice = '  ' + ticket.price + ' ' + ticket.currency;
+  if (rates.hotelOptionDays != null) {
+    for (var hotelOption = 0; hotelOption < rates.hotelOptionDays.length; hotelOption++) {
+      var hotels = [];
+      for (var f = 0; f < rates.hotelOptionDays[hotelOption].listHotel.length; f++) {
+        var hotel = rates.hotelOptionDays[hotelOption].listHotel[f];
+        var hotelText = hotel.name;
+        if (typeof(hotel.roomtype) == "undefined") {
+          hotelText += ' ' + hotel.roomtype;
+        }
+        if (hotel.board != null) {
+          hotelText += ' ' + hotel.board;
+        }
+        var hotelPrice = '  ' + hotel.price + ' ' + hotel.currency;
 
-      tickets[f] = {
-        "id": ticket.id,
-        "text": ticketText,
-        "price": ticketPrice,
-        "company": ticket.company
+        hotels[f] = {
+          "id": hotel.id,
+          "text": hotelText,
+          "price": hotelPrice,
+          "company": hotel.company
+        }
       }
+      summary += buildResultsPanel('hotelOption' + hotelOption, 'Hotels, day ' + rates.hotelOptionDays[hotelOption].day, hotels);
     }
-    summary += buildResultsPanel('ticketOption' + ticketOption, 
-      'Tickets, day ' + rates.ticketOptionDays[ticketOption].day, 
-      tickets,
-      'useCheckbox'
-    );
+  }
+
+  if (rates.ticketOptionDays) {
+    for (var ticketOption = 0; ticketOption < rates.ticketOptionDays.length; ticketOption++) {
+      var tickets = [];
+      for (var f = 0; f < rates.ticketOptionDays[ticketOption].listTicket.length; f++) {
+        var ticket = rates.ticketOptionDays[ticketOption].listTicket[f];
+        var ticketText = ticket.name;
+        var ticketPrice = '  ' + ticket.price + ' ' + ticket.currency;
+
+        tickets[f] = {
+          "id": ticket.id,
+          "text": ticketText,
+          "price": ticketPrice,
+          "company": ticket.company
+        }
+      }
+      summary += buildResultsPanel('ticketOption' + ticketOption,
+        'Tickets, day ' + rates.ticketOptionDays[ticketOption].day,
+        tickets,
+        'useCheckbox'
+      );
+    }
   }
 
   var departureFlights = [];
-  for (var f = 0; f < rates.vuelta.length; f++) {
-    var flight = rates.vuelta[f];
-    var flightText = flight.startAirport+'-'+flight.endAirport;
-    flightText += ' ('+flight.departureDate+' '+flight.departureHour+'-'+flight.arrivalDate+' '+flight.arrivalHour+')';
-    var flightPrice = '  ' + flight.price + ' ' + flight.currency;
+  if (rates.vuelta != null) {
+    for (var f = 0; f < rates.vuelta.length; f++) {
+      var flight = rates.vuelta[f];
+      var flightText = flight.startAirport + '-' + flight.endAirport;
+      flightText += ' (' + flight.departureDate + ' ' + flight.departureHour + '-' + flight.arrivalDate + ' ' + flight.arrivalHour + ')';
+      var flightPrice = '  ' + flight.price + ' ' + flight.currency;
 
-    departureFlights[f] = {
-      "id": flight.id,
-      "text": flightText,
-      "price": flightPrice,
-      "company": flight.company
+      departureFlights[f] = {
+        "id": flight.id,
+        "text": flightText,
+        "price": flightPrice,
+        "company": flight.company
+      }
     }
+    summary += buildResultsPanel('departureFlight', 'Departure flight', departureFlights);
   }
-  summary += buildResultsPanel('departureFlight', 'Departure flight', departureFlights);
 
   bootbox.dialog({
     title: '<h4>Choose the rates</h4>',
@@ -201,7 +217,7 @@ function showItineraryWithRates(rates) {
     });
 
     $('.result-company').each(function(e) {
-      $(this).prepend('<img src="img/suppliers/logo-' + $(this).data('company-name') + '.png" />');
+      $(this).html('<img src="img/suppliers/logo-' + $(this).data('company-name') + '.png" />');
     })
   });
 }
@@ -482,8 +498,8 @@ $(document).ready(function() {
     }]
 };
 
-    showItineraryWithRates(rates);
-/*
+    //showItineraryWithRates(rates);
+
       $.ajax({
           type: 'post',
           url: 'http://localhost:9999/getItinerary',
@@ -494,14 +510,14 @@ $(document).ready(function() {
           },
           success: function(data) {
             $.unblockUI();
-            showItineraryWithRates(data);
+            showItineraryWithRates($.parseJSON(data));
           },
           error: function() {              
               $.unblockUI();
               bootbox.alert({message: 'Cant get any rates! Try again later!'});
           }
       });
-*/
+
 
 
   });

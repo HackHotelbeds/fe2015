@@ -46,7 +46,6 @@ public class AvailabilityManager {
         CompletionService<List<Ticket>> ticketCompService = new ExecutorCompletionService<>(executor);
         CompletionService<List<Ticket>> tabCompService = new ExecutorCompletionService<>(executor);
 
-        CarTask carTask = new CarTask("","","","",1,"");
         //TODO FIXME
         CarTask carTask = new CarTask("","","","",1,null);
         VueloIdaTask vueloIdaTask = new VueloIdaTask();

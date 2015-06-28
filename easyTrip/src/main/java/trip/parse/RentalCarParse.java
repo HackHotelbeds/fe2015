@@ -1,10 +1,14 @@
 package trip.parse;
 
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import trip.pojo.Car;
+import trip.pojo.Consecionario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,57 +29,21 @@ public class RentalCarParse extends DefaultHandler {
         this.listCar = listCar;
     }
 
-    public void startElement(String uri, String localName,
-                             String qName, Attributes attributes) throws SAXException {
+    public void parseo(Document doc)  {
 
+        NodeList nodes = doc.getElementsByTagName("VehVendorAvails");
 
-        if("VehVendorAvail".equals(qName)){
-            car = new Car();
-        }
-        if("RentalRate".equals(qName)){
-            if("S".equals(attributes.getValue("AvailabilityStatus"))){
-                add=true;
-            }
-            car.setRateCode(attributes.getValue("RateCode"));
-        }
-        if("VehicleCharge".equals(qName)){
-            car.setGaranty(attributes.getValue("GuaranteeInd"));
-        }
-        /*if("Day".equals(qName)){
-            car.setAddionalDate(attributes.getValue("Rate"));
-        }*/
-        if("TotalCharge".equals(qName)){
-            car.setPrice(attributes.getValue("Amount"));
-        }
-        if("Vendor".equals(qName)){
-            car.setParticipationLevel(attributes.getValue("ParticipationLevel"));
-        }
-
-
-
-
-    }
-
-    public void endElement(String uri, String localName,
-                           String qName) throws SAXException {
-
-
-
-        if("VehType".equals(qName)) {
-            car.setCarCode(tmpValue);
-        }
-        if("VehVendorAvail".equals(qName)){
+        Element element = (Element) nodes.item(0);
+        NodeList carlIST = element.getElementsByTagName("VehVendorAvail");
+        for (int i = 0; i < carlIST.getLength(); i++) {
+            Element carElement = (Element) carlIST.item(i);
+            car=new Car();
+            car.setPrice(carElement.getElementsByTagName("TotalCharge").item(0).getAttributes().getNamedItem("Amount").getNodeValue());
+            car.setCurrency(carElement.getElementsByTagName("VehicleCharge").item(0).getAttributes().getNamedItem("CurrencyCode").getNodeValue());
+            car.setCarCode(carElement.getElementsByTagName("VehType").item(0).getFirstChild().getTextContent());
             listCar.add(car);
         }
 
-
-
-    }
-
-    public void characters(char ch[], int start, int length)
-            throws SAXException {
-
-        tmpValue = new String(ch, start, length).trim();
 
 
     }

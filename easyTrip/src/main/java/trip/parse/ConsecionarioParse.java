@@ -1,8 +1,8 @@
 package trip.parse;
 
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import trip.pojo.Consecionario;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Ibram on 27/06/2015.
  */
-public class ConsecionarioParse extends DefaultHandler {
+public class ConsecionarioParse  {
 
     String tmpValue;
     List<Consecionario> listConsecionary= new ArrayList<Consecionario>();
@@ -26,66 +26,22 @@ public class ConsecionarioParse extends DefaultHandler {
     }
 
 
+    public void parseo(Document doc)  {
 
-    public void startElement(String uri, String localName,
-                             String qName, Attributes attributes) throws SAXException {
+        NodeList nodes = doc.getElementsByTagName("VehVendorAvails");
 
-
-        if("VehVendorAvail".equals(qName)){
-            consecionario = new Consecionario();
-        }
-        if("LocationDetails".equals(qName)){
-            if("MI".equals(attributes.getValue("UnitOfMeasure"))) {
-                consecionario.setDistanceMI(attributes.getValue("Distance"));
-            }
-            if("KM".equals(attributes.getValue("UnitOfMeasure"))) {
-                consecionario.setDistanceMI(attributes.getValue("Distance"));
-            }
-
-            consecionario.setLocaltionCode(attributes.getValue("LocationCode"));
-            consecionario.setLocationName(attributes.getValue("LocationName"));
-        }
-        if("Address".equals(qName)){
-            consecionario.setPositionX(attributes.getValue("Latitude"));
-            consecionario.setPositionY(attributes.getValue("Longitude"));
-        }
-        if("Vendor".equals(qName)){
-            consecionario.setVendorCode(attributes.getValue("Code"));
-            consecionario.setVendorShortName(attributes.getValue("CompanyShortName"));
-        }
-
-
-
-    }
-
-    public void endElement(String uri, String localName,
-                           String qName) throws SAXException {
-
-
-
-        if("CityName".equals(qName)) {
-            consecionario.setCityName(tmpValue);
-        }
-
-        if("VehVendorAvail".equals(qName)){
+        Element element = (Element) nodes.item(0);
+        NodeList concesionariosList = element.getElementsByTagName("VehVendorAvail");
+        for (int i = 0; i < concesionariosList.getLength(); i++) {
+            Element consecionarioElement = (Element) concesionariosList.item(i);
+            consecionario=new Consecionario();
+            consecionario.setCityName(consecionarioElement.getElementsByTagName("CityName").item(0).getFirstChild().getTextContent());
+            consecionario.setCountry(consecionarioElement.getElementsByTagName("CountryCode").item(0).getFirstChild().getTextContent());
+            consecionario.setLocaltionCode(consecionarioElement.getElementsByTagName("LocationDetails").item(0).getAttributes().getNamedItem("LocationCode").getNodeValue());
+            consecionario.setVendorCode(consecionarioElement.getElementsByTagName("Vendor").item(0).getAttributes().getNamedItem("Code").getNodeValue());
             listConsecionary.add(consecionario);
         }
 
-        if("CountryCode".equals(qName)){
-            consecionario.setCountry(tmpValue);
-        }
-
-        if("StreetNmbr".equals(qName)){
-            consecionario.setStreetInfo(consecionario.getStreetInfo() + " " + tmpValue);
-        }
-
-
-    }
-
-    public void characters(char ch[], int start, int length)
-            throws SAXException {
-
-        tmpValue = new String(ch, start, length).trim();
 
 
     }

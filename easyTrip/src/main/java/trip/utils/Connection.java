@@ -91,30 +91,43 @@ public class Connection {
     }
 
     public String callSoapConnection(final String request, final String urlSoap) throws IOException, URISyntaxException, org.apache.http.ProtocolException {
-        // Creating the HttpURLConnection object
-        URL oURL = new URL(urlSoap);
-        HttpURLConnection con
-                = (HttpURLConnection) oURL.openConnection();
-        con.setRequestMethod("POST");
-        con.setRequestProperty(
-                "Content-type", "text/xml");
-        con.setDoOutput(true);
-        con.setDoInput(true);
-        OutputStreamWriter infWebSvcReqWriter = new OutputStreamWriter(con.getOutputStream());
-        infWebSvcReqWriter.write(request);
-        infWebSvcReqWriter.flush();
-        BufferedReader infWebSvcReplyReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        String line;
-        String infWebSvcReplyString = "";
-        while ((line = infWebSvcReplyReader.readLine()) != null) {
-            infWebSvcReplyString = infWebSvcReplyString.concat(line);
-        }
-        infWebSvcReqWriter.close();
-        infWebSvcReplyReader.close();
-        con.disconnect();
-        System.out.println(infWebSvcReplyString);
+        // Create SOAP Connection
+        //Code to make a webservice HTTP request
+        String responseString = "";
+        String outputString = "";
 
-        return infWebSvcReplyString;
+        URL url = new URL(urlSoap);
+        URLConnection connection = url.openConnection();
+        HttpURLConnection httpConn = (HttpURLConnection)connection;
+        ByteArrayOutputStream bout = new ByteArrayOutputStream();
+        String xmlInput = request;
+        byte[] buffer = new byte[xmlInput.length()];
+        buffer = xmlInput.getBytes();
+        bout.write(buffer);
+        byte[] b = bout.toByteArray();
+
+// Set the appropriate HTTP parameters.
+        httpConn.setRequestProperty("Content-Length",
+                String.valueOf(b.length));
+        httpConn.setRequestProperty("Content-Type", "text/xml;charset=utf-8");
+        httpConn.setRequestMethod("POST");
+        httpConn.setDoOutput(true);
+        httpConn.setDoInput(true);
+        OutputStream out = httpConn.getOutputStream();
+//Write the content of the request to the outputstream of the HTTP Connection.
+        out.write(b);
+        out.close();
+//Ready with sending the request.
+        //Read the response.
+        InputStreamReader isr =
+                new InputStreamReader(httpConn.getInputStream());
+        BufferedReader in = new BufferedReader(isr);
+
+//Write the SOAP message response to a String.
+        while ((responseString = in.readLine()) != null) {
+            outputString = outputString + responseString;
+        }
+        return outputString;
     }
 
 

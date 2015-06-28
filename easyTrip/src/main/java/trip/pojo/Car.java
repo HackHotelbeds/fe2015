@@ -17,6 +17,15 @@ public class Car {
     private String carType;
     private String capacity;
     private String carName;
+    private String currency;
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
     public String getCarType() {
         return carType;

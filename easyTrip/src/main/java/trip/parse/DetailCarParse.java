@@ -1,7 +1,8 @@
 package trip.parse;
 
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.helpers.DefaultHandler;
 import trip.pojo.CarDetails;
 
@@ -26,37 +27,22 @@ public class DetailCarParse extends DefaultHandler {
 
 
 
-    public void startElement(String uri, String localName,
-                             String qName, Attributes attributes) throws SAXException {
+    public void parseo(Document doc)  {
 
+        NodeList nodes = doc.getElementsByTagName("Makes");
 
-        if("MakeModel".equals(qName)){
-            carDetails = new CarDetails();
-            carDetails.setCapacity(attributes.getValue("Capacity"));
-            carDetails.setCarName(attributes.getValue("Example"));
-            carDetails.setCarType(attributes.getValue("Type"));
+        Element element = (Element) nodes.item(0);
+        NodeList cardetailsList = element.getElementsByTagName("MakeModel");
+        for (int i = 0; i < cardetailsList.getLength(); i++) {
+            Element carDetailsElement = (Element) cardetailsList.item(i);
+            carDetails=new CarDetails();
+            carDetails.setCarName(carDetailsElement.getAttributes().getNamedItem("Example").getNodeValue());
+            carDetails.setCarType(carDetailsElement.getAttributes().getNamedItem("Type").getNodeValue());
+            carDetails.setCapacity(carDetailsElement.getAttributes().getNamedItem("Capacity").getNodeValue());
+
             listCarDetails.add(carDetails);
         }
 
-
-
-
-    }
-
-    public void endElement(String uri, String localName,
-                           String qName) throws SAXException {
-
-
-
-
-
-
-    }
-
-    public void characters(char ch[], int start, int length)
-            throws SAXException {
-
-        tmpValue = new String(ch, start, length).trim();
 
 
     }

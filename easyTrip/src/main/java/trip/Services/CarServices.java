@@ -37,7 +37,6 @@ public class CarServices {
             } catch (Exception ex){
 
             }
-
         }
         Itinerary itinerary= new Itinerary();
         itinerary.setListCar(getRentalCars("BCN", "MAD", "2015-07-01", "2015-07-05", 1, connection));
@@ -45,7 +44,17 @@ public class CarServices {
     }
 
     public List<Car> getRentalCars(final String startAirport, final String finishAirpot,
-                                   final String startDate, final String endDate, final int numberOfPassenger, final Connection connection){
+                                   final String startDate, final String endDate, final int numberOfPassenger, final Connection pconnection){
+
+        Connection connection=new Connection();
+        if((connection.getRestToken()==null || connection.getRestToken().equals("")) && (connection.getSoapToken()==null || connection.getSoapToken().equals(""))){
+            connection.connectSabreAPI();
+            try {
+                connection.callLoginSoap(connection.createSecurityRequest(), "https://sws3-crt.cert.sabre.com");
+            } catch (Exception ex){
+
+            }
+        }
 
         ClassLoader classLoader = getClass().getClassLoader();
 

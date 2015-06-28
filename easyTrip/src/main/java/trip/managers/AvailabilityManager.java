@@ -89,7 +89,65 @@ public class AvailabilityManager {
 
 
         //TODO
-        return null;
+        Itinerary itinerary = new Itinerary();
+
+
+        if (itinerary.getTicketOptionDays() == null) {
+            itinerary.setTicketOptionDays(new ArrayList<>());
+        }
+        for (Ticket ticket: ticketServices) {
+            int night = ticket.getNight();
+            boolean found = false;
+            for (int i = 0; i < itinerary.getTicketOptionDays().size() && !found; i++) {
+                TicketOptions ticketOptions = itinerary.getTicketOptionDays().get(i);
+                if (ticketOptions.getDay() == night) {
+                    if (ticketOptions.getListTicket() == null){
+                        ticketOptions.setListTicket(new ArrayList<>());
+                    }
+                    ticketOptions.getListTicket().add(ticket);
+                    itinerary.getTicketOptionDays().add(ticketOptions);
+                    found = true;
+                }
+            }
+            if (!found) {
+                TicketOptions ticketOptions = new TicketOptions();
+                ticketOptions.setDay(night);
+                ticketOptions.setListTicket(new ArrayList<>());
+                ticketOptions.getListTicket().add(ticket);
+                itinerary.getTicketOptionDays().add(ticketOptions);
+                found = true;
+            }
+        }
+
+        if (itinerary.getTicketOptionDays() == null) {
+            itinerary.setTicketOptionDays(new ArrayList<>());
+        }
+        for (Ticket ticket: ticketServices) {
+            int night = ticket.getNight();
+            boolean found = false;
+            for (int i = 0; i < itinerary.getTicketOptionDays().size() && !found; i++) {
+                TicketOptions ticketOptions = itinerary.getTicketOptionDays().get(i);
+                if (ticketOptions.getDay() == night) {
+                    if (ticketOptions.getListTicket() == null){
+                        ticketOptions.setListTicket(new ArrayList<>());
+                    }
+                    ticketOptions.getListTicket().add(ticket);
+                    itinerary.getTicketOptionDays().add(ticketOptions);
+                    found = true;
+                }
+            }
+            if (!found) {
+                TicketOptions ticketOptions = new TicketOptions();
+                ticketOptions.setDay(night);
+                ticketOptions.setListTicket(new ArrayList<>());
+                ticketOptions.getListTicket().add(ticket);
+                itinerary.getTicketOptionDays().add(ticketOptions);
+                found = true;
+            }
+        }
+
+
+        return itinerary;
     }
 
     private final class CarTask implements Callable<List<Car>> {

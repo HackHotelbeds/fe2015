@@ -155,7 +155,7 @@ function showItineraryWithRates(rates) {
 
   bootbox.dialog({
     title: '<h4>Choose the rates</h4>',
-    message: '<form id="rateSelection">'+summary+'</form>',
+    message: '<form id="rateSelection">' + summary + '</form>',
     buttons: {
       cancel: {
         label: "Back to the map",
@@ -184,7 +184,11 @@ function showItineraryWithRates(rates) {
     $('.modal-body .results-panel .rate-option input[type=radio]').click(function(e) {
       var thisHeading = $(this).parents('.panel-collapse').prev();
       $(thisHeading).find('a[data-toggle="collapse"]').click();
-      $(thisHeading).parent('.results-panel').next().find('.resultsPanel-heading a[data-toggle="collapse"]').click();
+
+      var nextHeading = $(thisHeading).parent('.results-panel').next().find('.resultsPanel-heading a[data-toggle="collapse"]');
+      if ($(nextHeading).hasClass('collapsed')) {
+        $(nextHeading).click();
+      }
     });
 
   });
@@ -193,7 +197,7 @@ function showItineraryWithRates(rates) {
 function showPaymentForm(ratesSelected) {
   bootbox.dialog({
     title: '<h4>Complete your personal information for paying</h4>',
-    message: '....',
+    message: '<form id="payment"></form>',
     buttons: {
         cancel: {
           label: "Back to the rates",

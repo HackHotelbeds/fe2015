@@ -16,6 +16,15 @@ public class Hotel {
     private String board;
     private int night;
     private String company;
+    private String rate;
+
+    public String getRate() {
+        return rate;
+    }
+
+    public void setRate(String rate) {
+        this.rate = rate;
+    }
 
     public int getNight() {
         return night;

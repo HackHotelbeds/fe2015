@@ -11,6 +11,7 @@ import trip.pojo.HotelOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Roger on 28/06/2015.
@@ -53,6 +54,10 @@ public class HotelParser {
             service.setCompany("SABRE");
             service.setName(element.getAttributes().getNamedItem("HotelName").getNodeValue());
             service.setCode(element.getAttributes().getNamedItem("HotelCode").getNodeValue());
+            service.setRate(doc.getElementsByTagName("HotelRateCode").item(0).getFirstChild().getNodeValue());
+            service.setRate("RAC");
+            service.setPrice("USD");
+            service.setPrice(new Double(Math.random()*5010).toString());
             listHotel.add(service);
 
         }

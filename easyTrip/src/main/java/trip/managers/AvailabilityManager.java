@@ -1,9 +1,6 @@
 package trip.managers;
 
-import trip.Services.CarServices;
-import trip.Services.HotelServices;
-import trip.Services.HotelbedsService;
-import trip.Services.TabService;
+import trip.Services.*;
 import trip.pojo.*;
 import trip.utils.Connection;
 import trip.utils.UtilsParse;
@@ -54,8 +51,10 @@ public class AvailabilityManager {
         CarTask carTask = new CarTask(entrada.getOriginAirport().getIata(),entrada.getDestinationAirport().getIata(),
                 entrada.getStartDate(),entrada.getEndDate(),Integer.valueOf(entrada.getPaxes()),connection);
 
-        VueloIdaTask vueloIdaTask = new VueloIdaTask();
-        VueloVueltaTask vueloVueltaTask = new VueloVueltaTask();
+        VueloIdaTask vueloIdaTask = new VueloIdaTask(entrada.getClosestAirport().getIata(), entrada.getOriginAirport().getIata(),
+        entrada.getStartDate(), entrada.getEndDate(), Integer.valueOf(entrada.getPaxes()), connection);
+        VueloVueltaTask vueloVueltaTask = new VueloVueltaTask(entrada.getDestinationAirport().getIata(), entrada.getClosestAirport().getIata(),
+        entrada.getStartDate(), entrada.getEndDate(), Integer.valueOf(entrada.getPaxes()), connection);
         carCompService.submit(carTask);
         vueloIdaCompService.submit(vueloIdaTask);
         vueloVueltaCompService.submit(vueloVueltaTask);
@@ -111,7 +110,6 @@ public class AvailabilityManager {
         executor.shutdown();
 
 
-        //TODO
         Itinerary itinerary = new Itinerary();
 
 
@@ -207,27 +205,55 @@ public class AvailabilityManager {
 
 
     private final class VueloIdaTask implements Callable<List<Vuelo>> {
-        //CarServices carServices;
+        FlightService flightService;
+        String nearAirport;
+        String startAirport;
+        String startDate;
+        String endDate;
+        int numberOfPassenger;
+        Connection connection;
 
-        VueloIdaTask(){
-            //carServices = new CarServices();
+        VueloIdaTask(final String pnearAirport, final String pstartAirport,
+                     final String pstartDate, final String pendDate, final int pnumberOfPassenger, final Connection pconnection){
+            flightService = new FlightService();
+            nearAirport = pnearAirport;
+            startAirport = pstartAirport;
+            startDate = pstartDate;
+            endDate = pendDate;
+            numberOfPassenger = pnumberOfPassenger;
+            connection = pconnection;
         }
 
         @Override public List<Vuelo> call() throws Exception {
-            return null;
+            FlightService flightService = new FlightService();
+            return flightService.getVueloIda(nearAirport, startAirport, startDate, endDate, numberOfPassenger, connection);
         }
     }
 
 
     private final class VueloVueltaTask implements Callable<List<Vuelo>> {
-        //CarServices carServices;
+        FlightService flightService;
+        String finishAirport;
+        String nearAirport;
+        String startDate;
+        String endDate;
+        int numberOfPassenger;
+        Connection connection;
 
-        VueloVueltaTask(){
-            //carServices = new CarServices();
+        VueloVueltaTask(final String pfinishAirport, final String pnearAirport,
+                        final String pstartDate, final String pendDate, final int pnumberOfPassenger, final Connection pconnection){
+            flightService = new FlightService();
+            finishAirport = pfinishAirport;
+            nearAirport = pnearAirport;
+            startDate=pstartDate;
+            endDate=pendDate;
+            numberOfPassenger=pnumberOfPassenger;
+            connection=pconnection;
         }
 
         @Override public List<Vuelo> call() throws Exception {
-            return null;
+            FlightService flightService = new FlightService();
+            return flightService.getVueloVuelta(finishAirport, nearAirport, startDate, endDate, numberOfPassenger, connection);
         }
     }
 

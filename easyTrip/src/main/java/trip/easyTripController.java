@@ -23,12 +23,6 @@ import java.net.URLDecoder;
 @RestController
 public class easyTripController {
 
-    protected String applicationOnlyBearerToken;
-    public static final ObjectMapper JSON_MAPPER = new ObjectMapper();
-    private Connection connection=new Connection();
-
-    CarServices carServices= new CarServices();
-
     @RequestMapping("/")
     public String isAlive(HttpServletRequest request, HttpServletResponse response) {
         addCorsHeaders(response);
@@ -47,9 +41,9 @@ public class easyTripController {
     @Consumes(MediaType.APPLICATION_JSON)
     @ResponseBody
     public String getItinerary(@RequestBody final String inputJsonObj, HttpServletRequest request, HttpServletResponse response) {
-
+        String decodedJson = URLDecoder.decode(inputJsonObj);
         Gson gs = new Gson();
-        Entrada obj = gs.fromJson(inputJsonObj, Entrada.class);
+        Entrada obj = gs.fromJson(decodedJson, Entrada.class);
         addCorsHeaders(response);
         AvailabilityManager availabilityManager = new AvailabilityManager();
         try {

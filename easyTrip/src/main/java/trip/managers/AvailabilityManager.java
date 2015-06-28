@@ -27,6 +27,10 @@ public class AvailabilityManager {
         StepoverElement[] waypoints = entrada.getStepovers();
         int numbOfThreads = waypoints.length;
 
+        if (entrada.getPaxes() == null) {
+            entrada.setPaxes("2");
+        }
+
 
         if((connection.getRestToken()==null || connection.getRestToken().equals("")) && (connection.getSoapToken()==null || connection.getSoapToken().equals(""))){
             connection.connectSabreAPI();
@@ -64,11 +68,6 @@ public class AvailabilityManager {
         HotelbedsTask hotelbedsStartTask = new HotelbedsTask(entrada.getStartDate(), entrada.getEndDate(), entrada.getPaxes(),
                 entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), 1, entrada.getOriginAirport().getIata());
         hotelbedsCompService.submit(hotelbedsStartTask);
-        //FIXME
-        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(entrada.getStartDate(), entrada.getEndDate(), entrada.getPaxes(),
-                entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), 1, entrada.getOriginAirport().getIata());
-        hotelbedsCompService.submit(hotelbedsStartTask);
-        hotelbedsCompService.submit(hotelbedsEndTask);
 
         int hotelId = 1;
         //FIXME
@@ -79,55 +78,50 @@ public class AvailabilityManager {
         hotelCompService.submit(hotelTask);
         hotelId++;
 
-        String dateTo=entrada.getStartDate();
-        String dateFrom= entrada.getEndDate();
+        String dateFrom=entrada.getStartDate();
+        String dateTo= entrada.getEndDate();
         for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             //FIXME HotelTask hotelTask2 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
             StepoverElement stepowerElement= stepower[executingThreads];
             Calendar c1 = GregorianCalendar.getInstance();
             Calendar c2 = GregorianCalendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            Date dateToNew= sdf.parse(dateTo);
-            c1.setTimeInMillis(dateToNew.getTime());
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            Date dateFromNew= sdf.parse(dateFrom);
+            c1.setTimeInMillis(dateFromNew.getTime());
+            c1.add(Calendar.DATE,1);
+            dateFromNew.setTime(c1.getTimeInMillis());
+            Date dateToNew= sdf.parse(dateFrom);
+            c1.setTimeInMillis(dateFromNew.getTime());
             c1.add(Calendar.DATE,1);
             dateToNew.setTime(c1.getTimeInMillis());
-            Date dateFromNew= sdf.parse(dateFrom);
-            c2.setTimeInMillis(dateFromNew.getTime());
-            c2.add(Calendar.DATE,1);
-            dateFromNew.setTime(c1.getTimeInMillis());
-            dateTo=sdf.format(dateToNew);
             dateFrom=sdf.format(dateFromNew);
 
-            HotelTask hotelTask2 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), stepowerElement.getLat().toString(), stepowerElement.getLng().toString(), connection, hotelId);
+            HotelTask hotelTask2 = new HotelTask(dateFrom, sdf.format(dateToNew), entrada.getPaxes(), stepowerElement.getLat().toString(), stepowerElement.getLng().toString(), connection, hotelId);
             hotelCompService.submit(hotelTask2);
             hotelId++;
 
         }
 
-        Calendar c1 = GregorianCalendar.getInstance();
-        Calendar c2 = GregorianCalendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateToNew= sdf.parse(dateTo);
-        c1.setTimeInMillis(dateToNew.getTime());
-        c1.add(Calendar.DATE,1);
-        dateToNew.setTime(c1.getTimeInMillis());
-        Date dateFromNew= sdf.parse(dateFrom);
-        c2.setTimeInMillis(dateFromNew.getTime());
-        c2.add(Calendar.DATE,1);
-        dateFromNew.setTime(c1.getTimeInMillis());
-        dateTo=sdf.format(dateToNew);
-        dateFrom=sdf.format(dateFromNew);
+
 
         //FIXME HotelTask hotelTask3 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
-        HotelTask hotelTask3 = new HotelTask(dateTo, dateFrom, entrada.getPaxes(), entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), connection, hotelId);
+        HotelTask hotelTask3 = new HotelTask(dateFrom,"", entrada.getPaxes(), entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), connection, hotelId);
         hotelCompService.submit(hotelTask3);
 
+        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(dateFrom,dateTo, entrada.getPaxes(),
+                entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), hotelId, entrada.getOriginAirport().getIata());
+        hotelbedsCompService.submit(hotelbedsEndTask);
+
         for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
-            TicketTask ticketTask = new TicketTask();
+            StepoverElement stepowerElement= stepower[executingThreads];
+            TicketTask ticketTask = new TicketTask(stepowerElement.getLat().toString(), stepowerElement.getLng().toString(),
+                    executingThreads);
             ticketCompService.submit(ticketTask);
         }
+        StepoverElement[] steps = entrada.getStepovers();
         for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
-            TabTask tabTask = new TabTask();
+            TabTask tabTask = new TabTask(dateFrom, dateTo, steps[executingThreads].getLat().toString(),
+                    steps[executingThreads].getLng().toString(), executingThreads + 1);
             tabCompService.submit(tabTask);
         }
 
@@ -147,6 +141,10 @@ public class AvailabilityManager {
             tabCompService.take();
         }
         executor.shutdown();
+
+
+
+
 
 
         Itinerary itinerary = new Itinerary();
@@ -213,6 +211,19 @@ public class AvailabilityManager {
         return new UtilsParse().convertObjectToJson(itinerary);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     private final class CarTask implements Callable<List<Car>> {
         CarServices carServices;
         String startAirport;
@@ -239,7 +250,6 @@ public class AvailabilityManager {
             return listCar;
         }
     }
-
 
 
 
@@ -324,14 +334,20 @@ public class AvailabilityManager {
     }
 
     private final class TicketTask implements Callable<List<Ticket>> {
-        //CarServices carServices;
+        TicketService ticketService;
+        String lat;
+        String lon;
+        int night;
 
-        TicketTask(){
-            //carServices = new CarServices();
+        TicketTask(String plat, String plon, int pnight){
+            ticketService = new TicketService();
+            lat = plat;
+            lon = plon;
+            night = pnight;
         }
 
         @Override public List<Ticket> call() throws Exception {
-            return null;
+            return ticketService.getTickets(lat, lon, night);
         }
     }
 
@@ -369,29 +385,30 @@ public class AvailabilityManager {
 
     private final class TabTask implements Callable<List<Ticket>> {
         TabService tabService;
+        String dateFrom;
+        String dateTo;
+        String lat;
+        String lon;
+        int night;
 
-        TabTask(){
+        TabTask(String pdateFrom, String pdateTo, String plat, String plon, int pnight){
             tabService = new TabService();
+            dateFrom=pdateFrom;
+            dateTo=pdateTo;
+            lat=plat;
+            lon=plon;
+            night=pnight;
         }
 
         @Override
         public List<Ticket> call() throws Exception {
             //FIXME DUMMY DATA
-            List<Ticket> services = tabService.getTabTickets("2015-09-19","2015-09-20","2.646633999999949","39.57119", 1);
+            List<Ticket> services = tabService.getTabTickets(dateFrom, dateTo, lat, lon, night);
             for (int i = 0; i < services.size(); i++) {
                 ticketServices.add(services.get(i));
             }
             return null;
         }
     }
-
-    private void addCorsHeaders(HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with, x-requested-by");
-    }
-
-
 
 }

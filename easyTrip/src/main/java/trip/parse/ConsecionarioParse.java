@@ -25,6 +25,8 @@ public class ConsecionarioParse extends DefaultHandler {
         this.listConsecionary = listCar;
     }
 
+
+
     public void startElement(String uri, String localName,
                              String qName, Attributes attributes) throws SAXException {
 
@@ -33,10 +35,10 @@ public class ConsecionarioParse extends DefaultHandler {
             consecionario = new Consecionario();
         }
         if("LocationDetails".equals(qName)){
-            if(attributes.getValue("UnitOfMeasure").equals("MI")) {
+            if("MI".equals(attributes.getValue("UnitOfMeasure"))) {
                 consecionario.setDistanceMI(attributes.getValue("Distance"));
             }
-            if(attributes.getValue("UnitOfMeasure").equals("KM")) {
+            if("KM".equals(attributes.getValue("UnitOfMeasure"))) {
                 consecionario.setDistanceMI(attributes.getValue("Distance"));
             }
 

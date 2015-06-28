@@ -1,6 +1,7 @@
 var hb = {};
 hb.directionsService = null;
 hb.directionsDisplay = null;
+hb.waypoints = [];
 
 var icons = {
     origin: "http://maps.gstatic.com/intl/en_ALL/mapfiles/dd-start.png",
@@ -17,7 +18,7 @@ $(function () {
         hb.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
         var directionsRendererOptions = {
-            draggable: false
+            draggable: true
         };
         hb.directionsService = new google.maps.DirectionsService();
         hb.directionsDisplay = new google.maps.DirectionsRenderer(directionsRendererOptions);
@@ -68,7 +69,7 @@ function getCloserAirportWithCityName(cityname, type) {
         } else if (type == "TO") {
             hb.to = response.results[0].geometry.location;
             console.log("TO COORDS: " + hb.to.lat + "," + hb.to.lng);
-            getCloserAirportsToLocation(3, hb.to.lng, hb.to.lat, "TO");
+            //getCloserAirportsToLocation(3, hb.to.lng, hb.to.lat, "TO");
 
         }
     });
@@ -112,6 +113,8 @@ function getCloserAirportsToLocation(maxResults, latitude, longitude, type) {
             coord = new google.maps.LatLng(hb.originAirports[0].lat, hb.originAirports[0].lng);
             //hb.addMarker(coord, icons.destination, hb.map, false, false);
 
+            getCloserAirportsToLocation(3, hb.to.lng, hb.to.lat, "TO");
+
         } else if (type == "TO") {
             hb.destinationAirports = response.airports;
             console.log("TO AIRPORTS: " + hb.destinationAirports[0].code + ", count" + hb.destinationAirports.length);
@@ -120,6 +123,8 @@ function getCloserAirportsToLocation(maxResults, latitude, longitude, type) {
             coord = new google.maps.LatLng(hb.destinationAirports[0].lat, hb.destinationAirports[0].lng);
             //hb.addMarker(coord, icons.origin, hb.map, false, false);
 
+            //setTimeout(function(){}, 500);
+            workOutMostPopulatedCities();
             calculateRoute(hb.originAirports[0], hb.destinationAirports[0]);
         }
     }, "jsonp");
@@ -146,17 +151,9 @@ function calculateRoute(origin, destination) {
         provideRouteAlternatives: false,
         travelMode: google.maps.TravelMode.DRIVING,
         unitSystem: google.maps.UnitSystem.IMPERIAL,
-        waypoints: []
+        waypoints: hb.waypoints,
+        optimizeWaypoints: true
     };
-    /*route = directionsService.route(directionsRequest, function(result, status) {
-     if (status == google.maps.DirectionsStatus.OK) {
-     directionsDisplay.setDirections(result);
-     origin.setMap(null);
-     destination.setMap(null);
-     savedRoute = true;
-     }
-     });*/
-
     sendRouteRequest(directionsRequest);
 }
 
@@ -165,90 +162,45 @@ function sendRouteRequest(request) {
         if (status == google.maps.DirectionsStatus.OK) {
             hb.directionsDisplay.setDirections(result);
             hb.route = result;
-            //origin.setMap(null);
-            //destination.setMap(null);
-            //savedRoute = true;
         }
     });
-    workOutMostPopulatedCities();
 }
 
 function workOutMostPopulatedCities() {
-
-
-    //var center = interestArea.getCenter();
-    //var radiusInMeters = interestArea.getRadius();
-    //var radiusR = google.maps.geometry.spherical.computeOffset(center, radiusInMeters, 90);
-    //var radiusL = google.maps.geometry.spherical.computeOffset(center, radiusInMeters, -90);
-    //var radiusT = google.maps.geometry.spherical.computeOffset(center, radiusInMeters, 0);
-    //var radiusB = google.maps.geometry.spherical.computeOffset(center, radiusInMeters, 180);
-    //var diffLat = Math.abs(radiusL.lng()-radiusR.lng())/2;
-    //var diffLng = Math.abs(radiusT.lat()-radiusB.lat())/2;
-
-    //var top = center.lat() - diffLng;
-    //var bottom = center.lat() + diffLng;
-    //var left = center.lng() - diffLat;
-    //var right = center.lng() + diffLat;
     var top, bottom, right, left;
+    top = hb.destinationAirports[0].lat;
+    bottom = hb.originAirports[0].lat;
+    left = hb.destinationAirports[0].lng;
+    right = hb.originAirports[0].lng;
 
-    if (hb.originAirports[0].lng > hb.destinationAirports[0].lng) {
-        top = hb.destinationAirports[0].lat;
-        bottom = hb.originAirports[0].lat;
-        left = hb.destinationAirports[0].lng;
-        right = hb.originAirports[0].lng;
-    } else {
-        top = hb.originAirports[0].lat;
-        bottom = hb.destinationAirports[0].lat;
-        left = hb.originAirports[0].lng;
-        right = hb.destinationAirports[0].lng;
-    }
-    if (top < bottom) {
-        var copy = bottom;
-        bottom = top;
-        top = copy;
-    }
+    var xIncrement = (right - left)/hb.tripLength;
+    var yIncrement = (bottom - top)/hb.tripLength;
+    var previousX = null, previousY = null;
+    var first = false;
+    var expectedCalls = hb.tripLength - 1;
+    for (i=0;i<hb.tripLength;i++) {
+        if (!first) {
+            first = true;
+        } else {
+            var calcX = left + xIncrement * i;
+            var calcY = top + yIncrement * i;
+            //hb.addMarker(new google.maps.LatLng(calcY, calcX), icons.destination, hb.map, true, false);
 
-    if (right < left) {
-        var copy = right;
-        right = left;
-        left = copy;
-    }
-
-    var margin = 0.4;
-    getNearbyCities(top + margin, bottom - margin, left - margin, right + margin);
-}
-
-function rotate(x, y, alpha) {
-    var point = null;
-    point.X = x*Math.cos(alpha) - y*Math.sin(alpha);
-    point.Y = x*Math.sin(alpha) + y*Math.cos(alpha);
-    return point;
-}
-
-function getNearbyCities(top, bottom, left, right, area) {
-    var requestUrl = 'http://api.geonames.org/citiesJSON?north=' + top + '&south=' + bottom + '&east=' + right + '&west=' + left + '&lang=en&username=pablogdt';
-    //if (typeof(area.markers) == "undefined") {
-    //    area.markers = [];
-    //}
-    //$.each(area.markers, function(i, area) {
-    //    area.setMap(null);
-    //});
-
-    /*var placeMarkerInsideArea = function(data, area) {
-        var index;
-        for (index = 0; index < data.geonames.length; index++) {
-            //v.toponymName;
-            var cityInfo = data.geonames[index];
-            var cityCoordinates = new google.maps.LatLng(cityInfo.lat, cityInfo.lng);
-            var distance = google.maps.geometry.spherical.computeDistanceBetween(area.getCenter(), cityCoordinates);
-            if (distance <= area.getRadius()) {
-                var marker = placeMarker(cityCoordinates, icons.origin, map);
-                makeInfoWindowEvent(map, infowindow, marker, cityInfo);
-                area.markers.push(marker);
+            if (previousX != null && previousY != null) {
+                getNearbyCities(calcY, previousY, calcX, previousX, expectedCalls);
             }
-        }
-    };*/
 
+            previousX = calcX;
+            previousY = calcY;
+        }
+    }
+
+    //calculateRoute(hb.originAirports[0], hb.destinationAirports[0]);
+}
+
+function getNearbyCities(top, bottom, left, right, expectedCalls) {
+    /*if (true) { return false; }*/
+    var requestUrl = 'http://api.geonames.org/citiesJSON?north=' + top + '&south=' + bottom + '&east=' + right + '&west=' + left + '&lang=en&username=pablogdt';
 
     //var coord = new google.maps.LatLng(top, left);
     //hb.addMarker(coord, icons.destination, hb.map, false, false);
@@ -263,17 +215,22 @@ function getNearbyCities(top, bottom, left, right, area) {
     //hb.addMarker(coord1, icons.destination, hb.map, false, false);
 
     $.get( requestUrl, function( data ) {
-        for (i=0;i<hb.tripLength && i<data.geonames.length;i++) {
+        /*for (i=0;i<hb.tripLength && i<data.geonames.length;i++) {
             var city = data.geonames[i];
             var location = new google.maps.LatLng(city.lat, city.lng);
             hb.addMarker(location, icons.origin, hb.map, true, false);
             var s="";
+        }*/
+        if (typeof(data.geonames) == "undefined") {
+            return false;
         }
-        data.geonames.forEach(function(entry) {
-            console.log(entry);
-        });
-        //placeMarkerInsideArea(data, area);
-        //var v = area.markers.length;
+        var city = data.geonames[0];
+        var point = new google.maps.LatLng(city.lat, city.lng);
+        //hb.addMarker(point, icons.origin, hb.map, true, false);
+        hb.waypoints.push({ location: point, stopover:true });
+        if (expectedCalls >= hb.waypoints.length - 3) {
+            calculateRoute(hb.originAirports[0], hb.destinationAirports[0]);
+        }
     });
 
 }

@@ -14,6 +14,33 @@ public class Car {
     private String garanty;
     private String addionalString;
     private String participationLevel;
+    private String carType;
+    private String capacity;
+    private String carName;
+
+    public String getCarType() {
+        return carType;
+    }
+
+    public void setCarType(String carType) {
+        this.carType = carType;
+    }
+
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(String capacity) {
+        this.capacity = capacity;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
 
     public String getStartString() {
         return StartString;

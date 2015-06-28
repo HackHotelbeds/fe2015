@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class TabService {
 
-    public List<Ticket> getTabTickets(String dateFrom, String dateTo, String lat, String lon) {
+    public List<Ticket> getTabTickets(String dateFrom, String dateTo, String lat, String lon, int night) {
 
         // Create a trust manager that does not validate certificate chains
         TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager(){
@@ -67,12 +67,11 @@ public class TabService {
 
         List<Ticket> services = new ArrayList<>();
         try {
-            services = TabParser.parse(response.toString());
+            services = TabParser.parse(response.toString(), night);
         } catch (ParseException e) {
         } catch (IOException e) {
         }
-        //TODO RETURN
-        return null;
+        return services;
     }
 
 

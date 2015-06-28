@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class TabParser {
 
-    public static List<Ticket> parse(String jsonRs) throws org.json.simple.parser.ParseException, IOException {
+    public static List<Ticket> parse(String jsonRs, int night) throws org.json.simple.parser.ParseException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String,Map> fullRs = mapper.readValue(jsonRs, Map.class);
         ArrayList<ArrayList<String>> activites = (ArrayList<ArrayList<String>>)fullRs.get("activities");
@@ -25,7 +25,8 @@ public class TabParser {
             Ticket ticket = new Ticket();
             ticket.setName(name);
             ticket.setPrice(preuTmp.toString());
-            System.out.println(i + " " + name  + " " + preuTmp.toString());
+            ticket.setCompany("HOTELBEDS");
+            ticket.setNight(night);
             services.add(ticket);
         }
         return services;

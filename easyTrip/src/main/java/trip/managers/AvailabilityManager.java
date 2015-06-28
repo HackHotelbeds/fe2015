@@ -5,6 +5,7 @@ import trip.Services.HotelbedsService;
 import trip.Services.TabService;
 import trip.pojo.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -12,6 +13,9 @@ import java.util.concurrent.*;
  * Created by Roger on 27/06/2015.
  */
 public class AvailabilityManager {
+
+    List<Ticket> ticketServices = new ArrayList<>();
+    List<Hotel> hotelServices = new ArrayList<>();
 
     public Itinerary manager() throws InterruptedException {
         //public Itinerary manager(String actualAirport,String startAirport,String endAirport,
@@ -31,6 +35,7 @@ public class AvailabilityManager {
 
 
 
+
         ExecutorService executor = Executors.newFixedThreadPool(numbOfThreads);
         CompletionService<List<Car>> carCompService = new ExecutorCompletionService<>(executor);
         CompletionService<List<Vuelo>> vueloIdaCompService = new ExecutorCompletionService<>(executor);
@@ -46,15 +51,16 @@ public class AvailabilityManager {
         carCompService.submit(carTask);
         vueloIdaCompService.submit(vueloIdaTask);
         vueloVueltaCompService.submit(vueloVueltaTask);
+        HotelbedsTask hotelbedsStartTask = new HotelbedsTask(startAirport);
+        hotelbedsCompService.submit(hotelbedsStartTask);
+        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(endAirport);
+        hotelbedsCompService.submit(hotelbedsEndTask);
 
         for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
             HotelTask hotelTask = new HotelTask();
             hotelCompService.submit(hotelTask);
         }
-        for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
-            HotelbedsTask hotelbedsTask = new HotelbedsTask();
-            hotelbedsCompService.submit(hotelbedsTask);
-        }
+
         for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
             TicketTask ticketTask = new TicketTask();
             ticketCompService.submit(ticketTask);
@@ -70,7 +76,7 @@ public class AvailabilityManager {
         for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
             hotelCompService.take();
         }
-        for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
+        for(int executingThreads = 0; executingThreads < 2; executingThreads++) {
             hotelbedsCompService.take();
         }
         for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
@@ -167,14 +173,20 @@ public class AvailabilityManager {
 
     private final class HotelbedsTask implements Callable<List<Hotel>> {
         HotelbedsService hotelbedsService;
+        String dest;
 
-        HotelbedsTask(){
+        HotelbedsTask(String pDest){
             hotelbedsService = new HotelbedsService();
+            dest = pDest;
         }
 
         @Override public List<Hotel> call() throws Exception {
             //FIXME DUMMY DATA
-            return hotelbedsService.getHotelbedsHotels("2015-09-19","2015-09-20","1","2.646633999999949","39.57119");
+            List<Hotel> services =  hotelbedsService.getHotelbedsHotels("2015-09-19","2015-09-20","1","2.646633999999949","39.57119", 1, dest);
+            for (int i = 0; i < services.size(); i++) {
+                hotelServices.add(services.get(i));
+            }
+            return null;
         }
     }
 
@@ -189,7 +201,11 @@ public class AvailabilityManager {
         @Override
         public List<Ticket> call() throws Exception {
             //FIXME DUMMY DATA
-            return tabService.getTabTickets("2015-09-19","2015-09-20","2.646633999999949","39.57119");
+            List<Ticket> services = tabService.getTabTickets("2015-09-19","2015-09-20","2.646633999999949","39.57119", 1);
+            for (int i = 0; i < services.size(); i++) {
+                ticketServices.add(services.get(i));
+            }
+            return null;
         }
     }
 

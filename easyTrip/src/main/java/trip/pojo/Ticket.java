@@ -7,7 +7,24 @@ public class Ticket {
 
     private String name;
     private String price;
+    private String company;
+    private int night;
 
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public int getNight() {
+        return night;
+    }
+
+    public void setNight(int night) {
+        this.night = night;
+    }
 
     public String getPrice() {
         return price;

@@ -201,7 +201,7 @@ function showItineraryWithRates(rates) {
     });
 
     $('.result-company').each(function(e) {
-      $(this).prepend('<img src="img/suppliers/logo-' + $(this).data('company-name') + '.png" />');
+      $(this).html('<img src="img/suppliers/logo-' + $(this).data('company-name') + '.png" />');
     })
   });
 }
@@ -482,8 +482,8 @@ $(document).ready(function() {
     }]
 };
 
-    showItineraryWithRates(rates);
-/*
+    //showItineraryWithRates(rates);
+
       $.ajax({
           type: 'post',
           url: 'http://localhost:9999/getItinerary',
@@ -494,6 +494,7 @@ $(document).ready(function() {
           },
           success: function(data) {
             $.unblockUI();
+            $.parseJSON(data),
             showItineraryWithRates(data);
           },
           error: function() {              
@@ -501,7 +502,6 @@ $(document).ready(function() {
               bootbox.alert({message: 'Cant get any rates! Try again later!'});
           }
       });
-*/
 
 
   });

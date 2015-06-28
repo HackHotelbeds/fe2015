@@ -25,7 +25,7 @@ public class FlightService {
         for (int i=0;i<3;i++){
             Vuelo vuelo= new Vuelo();
             vuelo.setFlightNumber("AB7"+ String.valueOf(Math.random() * 100));
-            vuelo.setPrice(String.valueOf(Math.random()*1000*134.2));
+            vuelo.setPrice(String.valueOf(Math.round(Math.random()*10*134.2)));
             vuelo.setArrivalHour("14:00") ;
             vuelo.setArrivalDate(startDate);
             vuelo.setDepartureHour("10:00");
@@ -51,7 +51,7 @@ public class FlightService {
         for (int i=0;i<3;i++){
             Vuelo vuelo= new Vuelo();
             vuelo.setFlightNumber("XZ5"+ String.valueOf(Math.random()*100));
-            vuelo.setPrice(String.valueOf(Math.random()*1000*134.2));
+            vuelo.setPrice(String.valueOf(Math.round(Math.random()*10*134.2)));
             vuelo.setArrivalHour("23:00") ;
             vuelo.setArrivalDate(startDate);
             vuelo.setDepartureHour("15:00");

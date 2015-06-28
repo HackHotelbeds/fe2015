@@ -57,7 +57,7 @@ public class HotelParser {
             service.setRate(doc.getElementsByTagName("HotelRateCode").item(0).getFirstChild().getNodeValue());
             service.setRate("RAC");
             service.setPrice("USD");
-            service.setPrice(new Double(Math.random()*5010).toString());
+            service.setPrice(String.valueOf(Math.round(new Double(Math.random()*5010))));
             service.setNight(nights);
             listHotel.add(service);
         }

@@ -459,14 +459,14 @@ $(document).ready(function() {
     }]
 };
 
-    showItineraryWithRates(rates);
+    //showItineraryWithRates(rates);
 
-/*
-      $.ajax(
-      {
+
+      $.ajax({
           type: 'post',
-          url: 'http://172.16.24.212/isAlive',
-          data:  getPoints(),
+          url: 'http://172.16.24.212/getItinerary',
+          data:  packJsonForSearchRequest(),
+          contentType: 'application/json',
           beforeSend: function() {
             $.blockUI({ message: 'Looking for the best rates...', overlayCSS: { backgroundColor: '#876146' } }); 
           },
@@ -479,7 +479,7 @@ $(document).ready(function() {
               bootbox.alert({message: 'Cant get any rates! Try again later!'});
           }
       });
-*/
+
   });
 
 });

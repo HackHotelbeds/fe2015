@@ -10,6 +10,8 @@ import trip.pojo.Hotel;
 import trip.pojo.HotelOptions;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Roger on 28/06/2015.
@@ -18,6 +20,7 @@ public class HotelParser {
 
     private Hotel service;
     private HotelOptions hotelOptions = new HotelOptions();
+    private ArrayList<Hotel> listHotel=new ArrayList<Hotel>();
 
 
 
@@ -43,7 +46,24 @@ public class HotelParser {
     public void parse(Document doc)  {
 
         NodeList nodes = doc.getElementsByTagName("BasicPropertyInfo");
-        Element element = (Element) nodes.item(0);
+        for (int i = 0; i < nodes.getLength(); i++) {
+            Element element = (Element) nodes.item(0);
+            service=new Hotel();
+            service.setLat(element.getAttributes().getNamedItem("Latitude").getNodeValue());
+            service.setLon(element.getAttributes().getNamedItem("Longitude").getNodeValue());
+            service.setCompany("SABRE");
+            service.setName(element.getAttributes().getNamedItem("HotelName").getNodeValue());
+            service.setCode(element.getAttributes().getNamedItem("HotelCode").getNodeValue());
+            service.setRate(doc.getElementsByTagName("HotelRateCode").item(0).getFirstChild().getNodeValue());
+            service.setRate("RAC");
+            service.setPrice("USD");
+            service.setPrice(new Double(Math.random()*5010).toString());
+            listHotel.add(service);
+
+        }
+        hotelOptions.setListHotel(listHotel);
+
+
 
     }
 

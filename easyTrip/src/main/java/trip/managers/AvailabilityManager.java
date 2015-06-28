@@ -26,11 +26,8 @@ public class AvailabilityManager {
 
     public String manager(Entrada entrada) throws InterruptedException {
 
-        //String waypoints = "1.123,9.987;2.369,7.741";
-        String waypoints = "1.123,9.987";
-
-        String[] waypointList = waypoints.split(";");
-        int numbOfThreads = waypointList.length;
+        StepoverElement[] waypoints = entrada.getStepovers();
+        int numbOfThreads = waypoints.length;
 
 
         if((connection.getRestToken()==null || connection.getRestToken().equals("")) && (connection.getSoapToken()==null || connection.getSoapToken().equals(""))){
@@ -78,7 +75,7 @@ public class AvailabilityManager {
                 entrada.getOriginAirport().getLng().toString(), connection, hotelId);
         hotelCompService.submit(hotelTask);
         hotelId++;
-        for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
+        for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             //FIXME HotelTask hotelTask2 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
             HotelTask hotelTask2 = new HotelTask("", "", entrada.getPaxes(), "", "", connection, hotelId);
             hotelCompService.submit(hotelTask2);
@@ -88,11 +85,11 @@ public class AvailabilityManager {
         HotelTask hotelTask3 = new HotelTask("", "", entrada.getPaxes(), "", "", connection, hotelId);
         hotelCompService.submit(hotelTask3);
 
-        for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
+        for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             TicketTask ticketTask = new TicketTask();
             ticketCompService.submit(ticketTask);
         }
-        for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
+        for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             TabTask tabTask = new TabTask();
             tabCompService.submit(tabTask);
         }
@@ -100,16 +97,16 @@ public class AvailabilityManager {
         carCompService.take();
         vueloIdaCompService.take();
         vueloVueltaCompService.take();
-        for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
+        for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             hotelCompService.take();
         }
         for(int executingThreads = 0; executingThreads < 2; executingThreads++) {
             hotelbedsCompService.take();
         }
-        for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
+        for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             ticketCompService.take();
         }
-        for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
+        for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             tabCompService.take();
         }
         executor.shutdown();

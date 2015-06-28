@@ -15,13 +15,13 @@ public class HotelOptions {
     }
 
     private ArrayList<Hotel> listHotel;
-    private String day;
+    private int day;
 
-    public String getDay() {
+    public int getDay() {
         return day;
     }
 
-    public void setDay(String day) {
+    public void setDay(int day) {
         this.day = day;
     }
 }

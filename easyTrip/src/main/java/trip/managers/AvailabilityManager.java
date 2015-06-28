@@ -104,6 +104,7 @@ public class AvailabilityManager {
                     if (ticketOptions.getListTicket() == null){
                         ticketOptions.setListTicket(new ArrayList<>());
                     }
+                    itinerary.getTicketOptionDays().remove(ticketOptions);
                     ticketOptions.getListTicket().add(ticket);
                     itinerary.getTicketOptionDays().add(ticketOptions);
                     found = true;
@@ -119,29 +120,30 @@ public class AvailabilityManager {
             }
         }
 
-        if (itinerary.getTicketOptionDays() == null) {
-            itinerary.setTicketOptionDays(new ArrayList<>());
+        if (itinerary.getHotelOptionDays() == null) {
+            itinerary.setHotelOptionDays(new ArrayList<>());
         }
-        for (Ticket ticket: ticketServices) {
-            int night = ticket.getNight();
+        for (Hotel hotel: hotelServices) {
+            int night = hotel.getNight();
             boolean found = false;
-            for (int i = 0; i < itinerary.getTicketOptionDays().size() && !found; i++) {
-                TicketOptions ticketOptions = itinerary.getTicketOptionDays().get(i);
-                if (ticketOptions.getDay() == night) {
-                    if (ticketOptions.getListTicket() == null){
-                        ticketOptions.setListTicket(new ArrayList<>());
+            for (int i = 0; i < itinerary.getHotelOptionDays().size() && !found; i++) {
+                HotelOptions hotelOptions = itinerary.getHotelOptionDays().get(i);
+                if (hotelOptions.getDay() == night) {
+                    if (hotelOptions.getListHotel() == null){
+                        hotelOptions.setListHotel(new ArrayList<>());
                     }
-                    ticketOptions.getListTicket().add(ticket);
-                    itinerary.getTicketOptionDays().add(ticketOptions);
+                    itinerary.getHotelOptionDays().remove(hotelOptions);
+                    hotelOptions.getListHotel().add(hotel);
+                    itinerary.getHotelOptionDays().add(hotelOptions);
                     found = true;
                 }
             }
             if (!found) {
-                TicketOptions ticketOptions = new TicketOptions();
-                ticketOptions.setDay(night);
-                ticketOptions.setListTicket(new ArrayList<>());
-                ticketOptions.getListTicket().add(ticket);
-                itinerary.getTicketOptionDays().add(ticketOptions);
+                HotelOptions hotelOptions = new HotelOptions();
+                hotelOptions.setDay(night);
+                hotelOptions.setListHotel(new ArrayList<>());
+                hotelOptions.getListHotel().add(hotel);
+                itinerary.getHotelOptionDays().add(hotelOptions);
                 found = true;
             }
         }

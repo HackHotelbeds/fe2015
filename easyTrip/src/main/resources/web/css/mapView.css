@@ -197,3 +197,7 @@ body {
   font-weight: bold;
   text-align: right;
 }
+
+#payment-form input , #payment-form select {
+  padding: 4px;
+}

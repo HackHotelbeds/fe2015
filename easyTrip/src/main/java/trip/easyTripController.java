@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.*;
 import trip.Services.CarServices;
-import trip.Services.FlightServices;
 import trip.pojo.Entrada;
 import trip.pojo.Itinerary;
 import trip.utils.Connection;
@@ -27,7 +26,6 @@ public class easyTripController {
     private Connection connection=new Connection();
 
     CarServices carServices= new CarServices();
-    FlightServices flightServices= new FlightServices();
 
     @RequestMapping("/")
     public String isAlive(HttpServletRequest request, HttpServletResponse response) {
@@ -44,9 +42,6 @@ public class easyTripController {
         Gson gs = new Gson();
         Entrada obj = gs.fromJson(inputJsonObj, Entrada.class);
 
-        obj.setStartDate(obj.getStartDate().replaceAll("/", ""));
-        obj.setEndDate(obj.getEndDate().replaceAll("/",""));
-
 
         if((connection.getRestToken()==null || connection.getRestToken().equals("")) && (connection.getSoapToken()==null || connection.getSoapToken().equals(""))){
             connection.connectSabreAPI();
@@ -58,8 +53,8 @@ public class easyTripController {
 
         }
         Itinerary itinerary= new Itinerary();
-        //itinerary.setListCar(carServices.getRentalCars(obj.getOriginAirport().getIata(),obj.getDestinationAirport().getIata(),obj.getStartDate(),obj.getEndDate(),Integer.valueOf(obj.getPaxes()),connection));
-        itinerary.setIda(flightServices.getVueloIda(obj.getClosestAirport().getIata(),obj.getOriginAirport().getIata(), obj.getStartDate(),obj.getEndDate(),Integer.valueOf(obj.getPaxes()),connection));
+        itinerary.setListCar(carServices.getRentalCars(obj.getOriginAirport().getIata(),obj.getDestinationAirport().getIata(),obj.getStartDate(),obj.getEndDate(),Integer.valueOf(obj.getPaxes()),connection));
+
         response.addHeader("Access-Control-Allow-Origin", "*");
         return new UtilsParse().convertObjectToJson(itinerary);
     }

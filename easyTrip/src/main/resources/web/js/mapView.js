@@ -166,7 +166,6 @@ function showItineraryWithRates(rates) {
           className: "btn-success",
           callback: function () {
               // guardar formulario con seleccion
-
               showPaymentForm(rates);
           }
       }

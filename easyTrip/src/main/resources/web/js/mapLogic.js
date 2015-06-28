@@ -114,6 +114,8 @@ function getCloserAirports() {
         var location = response.loc.split(",");
         var longitude = location[0];
         var latitude = location[1];
+        longitude = 51.156785;
+        latitude = -0.169987;
         getCloserAirportsToLocation(5, latitude, longitude, "CURRENT");
     }, "jsonp");
 }
@@ -196,8 +198,10 @@ function sendRouteRequest(request) {
             hb.directionsDisplay.setDirections(result);
             hb.route = result;
             window.dispatchEvent(routeLoadedEvent);
+            $.unblockUI();
         }
     });
+    $.blockUI({ message: 'Building your planning...', overlayCSS: { backgroundColor: '#876146' } });
 }
 
 function workOutMostPopulatedCities() {

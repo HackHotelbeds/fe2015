@@ -54,7 +54,7 @@ public class easyTripController {
         AvailabilityManager availabilityManager = new AvailabilityManager();
         try {
             return availabilityManager.manager(obj);
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             return "connection problem";
         }
     }

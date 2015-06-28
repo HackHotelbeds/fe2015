@@ -461,12 +461,11 @@ $(document).ready(function() {
 
     //showItineraryWithRates(rates);
 
-
       $.ajax({
           type: 'post',
-          url: 'http://172.16.24.212/getItinerary',
-          data:  packJsonForSearchRequest(),
-          contentType: 'application/json',
+          url: 'http://localhost:9999/getItinerary',
+          data:  JSON.stringify(packJsonForSearchRequest()),
+          contentType: 'text/plain',
           beforeSend: function() {
             $.blockUI({ message: 'Looking for the best rates...', overlayCSS: { backgroundColor: '#876146' } }); 
           },

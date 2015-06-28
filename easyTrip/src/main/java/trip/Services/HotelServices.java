@@ -32,8 +32,8 @@ public class HotelServices {
             }
 
             try {
-                //TODO cordenadas con fload 2 decimales
-                List<Hotel> services = getHotels("2015-09-19","2015-09-20","2","32.38","-96.80",connection);
+                List<Hotel> services = getHotels("2015-09-19","2015-09-20","2","32.3899","-96.8880",connection,1);
+                System.out.println(services.size());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -43,22 +43,34 @@ public class HotelServices {
     }
 
 
-    private List<Hotel> getHotels(String dateFrom, String dateTo, String paxes, String lat, String lon, Connection connection) throws ProtocolException, IOException, URISyntaxException, ParserConfigurationException, SAXException, InterruptedException {
+    public List<Hotel> getHotels(String dateFrom, String dateTo, String paxes, String lat, String lon, Connection connection, int night) throws ProtocolException, IOException, URISyntaxException, ParserConfigurationException, SAXException, InterruptedException {
         String request = getRequest(dateFrom, dateTo, paxes, lat, lon, connection.getSoapToken());
         String xmlInput = connection.callSoapConnection(request, "https://sws3-crt.cert.sabre.com");
-
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document doc = db.parse(new InputSource(new ByteArrayInputStream(xmlInput.getBytes("utf-8"))));
 
         HotelParser hotelParser = new HotelParser();
-        hotelParser.parse(doc);
+        hotelParser.parse(doc, night);
 
 
-        return null;
+        return hotelParser.getListHotel();
     }
 
-    private String getRequest(String dateFrom, String dateTo, String paxes, String lat, String lon, String token) {
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
+    }
+
+
+    private String getRequest(String dateFrom, String dateTo, String paxes, String pLat, String pLon, String token) {
+
+        Double lon = round (Double.valueOf(pLon),2);
+        Double lat = round (Double.valueOf(pLat),2);
 
         String request= new String();
 

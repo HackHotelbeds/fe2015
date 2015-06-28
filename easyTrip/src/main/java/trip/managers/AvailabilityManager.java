@@ -1,6 +1,7 @@
 package trip.managers;
 
 import trip.Services.CarServices;
+import trip.Services.HotelServices;
 import trip.Services.HotelbedsService;
 import trip.Services.TabService;
 import trip.pojo.*;
@@ -209,14 +210,29 @@ public class AvailabilityManager {
     }
 
     private final class HotelTask implements Callable<List<Hotel>> {
-        //CarServices carServices;
+        HotelServices hotelServices;
+        String dateFrom;
+        String dateTo;
+        String paxes;
+        String lat;
+        String lon;
+        Connection connection;
+        int night;
 
-        HotelTask(){
-            //carServices = new CarServices();
+        HotelTask(String pdateFrom, String pdateTo, String ppaxes, String plat, String plon, Connection pconnection, int pnight){
+            hotelServices = new HotelServices();
+            dateFrom = pdateFrom;
+            dateTo = pdateTo;
+            paxes = ppaxes;
+            lat = plat;
+            lon = plon;
+            connection = pconnection;
+            night = pnight;
         }
 
-        @Override public List<Hotel> call() throws Exception {
-            return null;
+        @Override
+        public List<Hotel> call() throws Exception {
+            return hotelServices.getHotels(dateFrom, dateTo, paxes, lat, lon, connection, night);
         }
     }
 

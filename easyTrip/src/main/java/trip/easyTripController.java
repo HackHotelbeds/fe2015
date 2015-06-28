@@ -23,12 +23,6 @@ import java.net.URLDecoder;
 @RestController
 public class easyTripController {
 
-    protected String applicationOnlyBearerToken;
-    public static final ObjectMapper JSON_MAPPER = new ObjectMapper();
-    private Connection connection=new Connection();
-
-    CarServices carServices= new CarServices();
-
     @RequestMapping("/")
     public String isAlive(HttpServletRequest request, HttpServletResponse response) {
         addCorsHeaders(response);

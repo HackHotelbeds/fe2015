@@ -40,7 +40,7 @@ public class CarServices {
 
         }
         Itinerary itinerary= new Itinerary();
-        itinerary.setListCar(getRentalCars("PMI", "", "", "", 1, connection));
+        itinerary.setListCar(getRentalCars("BCN", "2015-07-01", "2015-07-05", "", 1, connection));
         getRentalCars("","","","",1,null);
     }
 

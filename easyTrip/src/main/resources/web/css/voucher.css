@@ -1,0 +1,36 @@
+
+body {
+	overflow: scroll;
+}
+
+.voucher {
+	border: 1px solid #000;
+	margin: 0px;
+	padding: 0px;
+	background-image: url('../img/bg/old-notebook-paper-texture.jpg');
+	background-size: cover;
+	background-repeat: repeat-y;
+
+	width: 210mm;
+	height: 297mm;
+}
+
+.voucher * {
+	color: black;
+	font-family: Helvetica, sans serif;
+	text-shadow: none;
+}
+
+.voucher .supplier-result {
+	border-radius: 10px;
+	border: 3px solid #000;
+	box-shadow: 3px;
+	margin-left: 10%;
+	margin-bottom: 15px;
+	width: 85%;
+
+	background-color: rgba(255,255,255,0.25);
+	-webkit-box-shadow: 5px 5px 2px 0px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 5px 2px 0px rgba(0,0,0,1);
+	box-shadow: 5px 5px 2px 0px rgba(0,0,0,1);	
+}

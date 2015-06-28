@@ -155,7 +155,7 @@ function showItineraryWithRates(rates) {
 
   bootbox.dialog({
     title: '<h4>Choose the rates</h4>',
-    message: '<form id="rateSelection">'+summary+'</form>',
+    message: '<form id="rateSelection">' + summary + '</form>',
     buttons: {
       cancel: {
         label: "Back to the map",
@@ -184,28 +184,141 @@ function showItineraryWithRates(rates) {
     $('.modal-body .results-panel .rate-option input[type=radio]').click(function(e) {
       var thisHeading = $(this).parents('.panel-collapse').prev();
       $(thisHeading).find('a[data-toggle="collapse"]').click();
-      $(thisHeading).parent('.results-panel').next().find('.resultsPanel-heading a[data-toggle="collapse"]').click();
+
+      var nextHeading = $(thisHeading).parent('.results-panel').next().find('.resultsPanel-heading a[data-toggle="collapse"]');
+      if ($(nextHeading).hasClass('collapsed')) {
+        $(nextHeading).click();
+      }
     });
 
   });
 }
 
-function showPaymentForm(ratesSelected) {
+function showPaymentForm() {
+
+  var formBody = '';
+
+  formBody += '<fieldset>';  
+
+  formBody += '<div class="form-group">';
+  formBody += '  <label class="col-sm-4 control-label" for="holder-title">Title</label>';
+  formBody += '  <div class="col-sm-8">';
+  formBody += '    <select class="form-control" name="holder-title" id="holder-title">';
+  formBody += '    <option value=""></option>';
+  formBody += '    <option value="1">Mr.</option>';
+  formBody += '    <option value="2">Mrs.</option>';
+  formBody += '    <option value="3">Ms.</option>';
+  formBody += '    </select>';
+  formBody += '  </div>';
+  formBody += '</div>';
+
+  formBody += '<div class="form-group">';
+  formBody += '  <label class="col-sm-4 control-label" for="holder-first-name">Holder\' first name</label>';
+  formBody += '  <div class="col-sm-8">';
+  formBody += '    <input type="text" class="form-control" name="holder-first-name" id="holder-first-name" placeholder="Holder\'s first name">';
+  formBody += '  </div>';
+  formBody += '</div>';
+
+  formBody += '<div class="form-group">';
+  formBody += '  <label class="col-sm-4 control-label" for="card-holder-name">Holder\' last name</label>';
+  formBody += '  <div class="col-sm-8">';
+  formBody += '    <input type="text" class="form-control" name="holder-last-name" id="holder-last-name" placeholder="Holder\'s last name">';
+  formBody += '  </div>';
+  formBody += '</div>';
+
+  formBody += '<div class="form-group">';
+  formBody += '  <label class="col-sm-4 control-label" for="passport-or-id">Passport / ID</label>';
+  formBody += '  <div class="col-sm-8">';
+  formBody += '    <input type="text" class="form-control" name="passport-or-id" id="passport-or-id" placeholder="Passport code or ID">';
+  formBody += '  </div>';
+  formBody += '</div>';
+
+  formBody += '<div class="form-group">';
+  formBody += '  <label class="col-sm-4 control-label" for="address">Address</label>';
+  formBody += '  <div class="col-sm-8">';
+  formBody += '    <input type="text" class="form-control" name="address" id="address" placeholder="Address">';
+  formBody += '  </div>';
+  formBody += '</div>';
+
+  formBody += '<div class="form-group">';
+  formBody += '  <label class="col-sm-4 control-label" for="email">Email</label>';
+  formBody += '  <div class="col-sm-8">';
+  formBody += '    <input type="email" class="form-control" name="email" id="email" placeholder="Email">';
+  formBody += '  </div>';
+  formBody += '</div>';
+
+  formBody += '<div class="form-group">';
+  formBody += '  <label class="col-sm-4 control-label" for="card-holder-name">Name on Card</label>';
+  formBody += '  <div class="col-sm-8">';
+  formBody += '    <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder\'s Name">';
+  formBody += '  </div>';
+  formBody += '</div>';
+  formBody += '<div class="form-group">';
+  formBody += '  <label class="col-sm-4 control-label" for="card-number">Card Number</label>';
+  formBody += '  <div class="col-sm-8">';
+  formBody += '    <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">';
+  formBody += '  </div>';
+  formBody += '</div>';
+  formBody += '<div class="form-group">';
+  formBody += '  <label class="col-sm-4 control-label" for="expiry-month">Expiration Date</label>';
+  formBody += '  <div class="col-sm-8">';
+  formBody += '    <div class="row">';
+  formBody += '      <div class="col-xs-3">';
+  formBody += '        <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">';
+  formBody += '          <option>Month</option>';
+  formBody += '          <option value="01">Jan (01)</option>';
+  formBody += '          <option value="02">Feb (02)</option>';
+  formBody += '          <option value="03">Mar (03)</option>';
+  formBody += '          <option value="04">Apr (04)</option>';
+  formBody += '          <option value="05">May (05)</option>';
+  formBody += '          <option value="06">June (06)</option>';
+  formBody += '          <option value="07">July (07)</option>';
+  formBody += '          <option value="08">Aug (08)</option>';
+  formBody += '          <option value="09">Sep (09)</option>';
+  formBody += '          <option value="10">Oct (10)</option>';
+  formBody += '          <option value="11">Nov (11)</option>';
+  formBody += '          <option value="12">Dec (12)</option>';
+  formBody += '        </select>';
+  formBody += '      </div>';
+  formBody += '      <div class="col-xs-3">';
+  formBody += '        <select class="form-control" name="expiry-year">';
+  formBody += '          <option value="13">2013</option>';
+  formBody += '          <option value="14">2014</option>';
+  formBody += '          <option value="15">2015</option>';
+  formBody += '          <option value="16">2016</option>';
+  formBody += '          <option value="17">2017</option>';
+  formBody += '          <option value="18">2018</option>';
+  formBody += '          <option value="19">2019</option>';
+  formBody += '          <option value="20">2020</option>';
+  formBody += '          <option value="21">2021</option>';
+  formBody += '          <option value="22">2022</option>';
+  formBody += '          <option value="23">2023</option>';
+  formBody += '        </select>';
+  formBody += '      </div>';
+  formBody += '    </div>';
+  formBody += '  </div>';
+  formBody += '</div>';
+  formBody += '<div class="form-group">';
+  formBody += '  <label class="col-sm-4 control-label" for="cvv">Card CVV</label>';
+  formBody += '  <div class="col-sm-4">';
+  formBody += '    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Security Code">';
+  formBody += '  </div>';
+  formBody += '</div>';
+
+  formBody += '</fieldset>';
+
   bootbox.dialog({
     title: '<h4>Complete your personal information for paying</h4>',
-    message: '....',
+    message: '<form id="payment-form" class="form-horizontal" role="form">' + formBody + '</form>',
     buttons: {
         cancel: {
-          label: "Back to the rates",
-          className: "btn-cancel",
-          callback: function(ratesSelected) {
-            showItineraryWithRates(ratesSelected);
-          }
+          label: "Back to the map",
+          className: "btn-cancel"
         },
         success: {
-            label: "Go pay!",
+            label: "Pay now!",
             className: "btn-success",
-            callback: function (ratesSelected) {
+            callback: function () {
               bootbox.alert('...confirmando...');
             }
         }

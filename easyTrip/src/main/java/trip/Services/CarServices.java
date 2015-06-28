@@ -1,38 +1,25 @@
 package trip.Services;
 
 
-
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
+import trip.parse.ConsecionarioParse;
 import trip.parse.DetailCarParse;
+import trip.parse.RentalCarParse;
 import trip.pojo.Car;
 import trip.pojo.CarDetails;
 import trip.pojo.Consecionario;
-import trip.parse.ConsecionarioParse;
-import trip.parse.RentalCarParse;
 import trip.pojo.Itinerary;
 import trip.utils.Connection;
-import trip.utils.UtilsParse;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.InputStream;
-
-
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 /**
@@ -65,52 +52,38 @@ public class CarServices {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         try {
             String xmlInput=connection.callSoapConnection(createRequestConsecionario(startAirport, connection.getSoapToken()), "https://sws3-crt.cert.sabre.com");
-            //FileUtils.writeStringToFile(new File("CarsByAirportLocation.xml"),xmlInput );
 
-            //String xmlInputFile =FileUtils.readFileToString(new File("CarsByAirportLocation.xml"));
-            //InputStream xmlInput =classLoader.getResourceAsStream("CarsByAirportLocation.xml");
-
-
-
-            /*SAXParser saxParser = factory.newSAXParser();
-            ConsecionarioParse parse = new ConsecionarioParse();
-            saxParser.parse(xmlInput, parse);*/
 
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(new InputSource(new ByteArrayInputStream(xmlInput.getBytes("utf-8"))));
 
-            Element element = doc.getDocumentElement();
+            ConsecionarioParse parse = new ConsecionarioParse();
+            parse.parseo(doc);
 
-            // get all child nodes
-            NodeList nodes = element.getChildNodes();
-
-            // print the text content of each child
-            for (int i = 0; i < nodes.getLength(); i++) {
-                System.out.println("" + nodes.item(i).getTextContent());
-            }
-
-            //Lista de consecionarios del aeropuerto de salida
-            //List<Consecionario> listConsecionary=parse.getListConsecionary(); roger
-
-            List<Consecionario> listConsecionary = null; //roger
-
+            List<Consecionario> listConsecionary=parse.getListConsecionary();
             Consecionario consecionario=listConsecionary.get(0);
             //TODO Lista de consecinarios de la llegada y ver cuales se encuentran en los puntos de salida y llegada
             //para poder dejar el coche. Con ese listado de marcas en los dos aeropuertos se miran que coches ofrecen
             //para devolverlos
-            //String xmlInputRentalCar=connection.callSoap(createRequestCar(consecionario.getLocaltionCode(), consecionario.getVendorCode(), startDate, endDate, connection.getSoapToken()),"https://sws3-crt.cert.sabre.com");
+            String xmlInputRentalCar=connection.callSoap(createRequestCar(consecionario.getLocaltionCode(), consecionario.getVendorCode(), startDate, endDate, connection.getSoapToken()),"https://sws3-crt.cert.sabre.com");
 
-            InputStream xmlInputRentalCarFile =classLoader.getResourceAsStream("carAvailability.xml");
+
+            Document doc2 = db.parse(new InputSource(new ByteArrayInputStream(xmlInputRentalCar.getBytes("utf-8"))));
+
+
             RentalCarParse parseRentalCar= new RentalCarParse();
-            //saxParser.parse(xmlInputRentalCarFile,parseRentalCar);
+            parseRentalCar.parseo(doc2);
+
             List<Car> listCar=parseRentalCar.getListCar();
 
-            //String xmlInputRentalDetailCar=connection.callSoap(createRequestCarDetails(consecionario.getLocaltionCode(), consecionario.getVendorCode(), startDate, endDate, connection.getSoapToken()),"https://sws3-crt.cert.sabre.com");
+            String xmlInputRentalDetailCar=connection.callSoap(createRequestCarDetails(consecionario.getLocaltionCode(), consecionario.getVendorCode(), startDate, endDate, connection.getSoapToken()),"https://sws3-crt.cert.sabre.com");
 
-            InputStream xmlInputRentalDetailCarFile =classLoader.getResourceAsStream("CarLocationDetails.xml");
+            Document doc3 = db.parse(new InputSource(new ByteArrayInputStream(xmlInputRentalDetailCar.getBytes("utf-8"))));
+
             DetailCarParse detailCarParse= new DetailCarParse();
-            //saxParser.parse(xmlInputRentalDetailCarFile,detailCarParse);
+            detailCarParse.parseo(doc3);
+
             List<CarDetails> carDetailsList = detailCarParse.getListCarDetails();
 
             for (CarDetails carDetails: carDetailsList){

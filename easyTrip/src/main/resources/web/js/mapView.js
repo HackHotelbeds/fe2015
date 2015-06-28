@@ -75,7 +75,7 @@ function buildResultsPanel(name, title, values, useCheckbox) {
 function showItineraryWithRates(rates) {
   var summary = '';
 
-  localStorage.setItem('route99-rates', rates);
+  localStorage.setItem('route99-rates', JSON.stringify(rates));
 
   var arrivalFlights = [];
   if (rates.ida != null) {

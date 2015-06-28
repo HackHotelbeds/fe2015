@@ -140,7 +140,6 @@ function showItineraryWithRates(rates) {
     $('#returning-flight-selected').html(buildResultsPanel('departureFlight', 'Departure flight', departureFlights));
   }
 
-
 }
 
 
@@ -148,7 +147,7 @@ $(document).ready(function() {
 	
 	var ratesSelected = parseQueryString(ratesSelectedString);
 	var paymentForm = parseQueryString(paymentFormString);
-	var rates = $.parseJSON(ratesFull);
+	var rates = JSON.parse(ratesFull);
 
 	showItineraryWithRates(rates);
 

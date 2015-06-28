@@ -22,7 +22,7 @@ function loadStopovers() {
         var leg = legs[i];
         var formattedStartAddress = formatStopover(leg.start_address);
         var formattedEndAddress = formatStopover(leg.end_address);
-        $("#stopover-list").append('<label class="list-group-item">Day '+(i+1)+':<br/>'+formattedStartAddress+' - '+formattedEndAddress+'</label>');
+        $("#stopover-list").append('<a class="list-group-item" href="#">Day '+(i+1)+':<br/>'+formattedStartAddress+' - '+formattedEndAddress+'</a>');
     }
 
 }

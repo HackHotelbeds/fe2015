@@ -165,13 +165,6 @@
   border-bottom: 1px solid #aaa;
 }
 
-.results-panel .price-selected,
-.results-panel .input-group,
-#stopover-list {
-  font-family: Helvetica, sans-serif;
-  font-size: 20px;
-}
-
 .price-selected {
   text-shadow: none;
 }

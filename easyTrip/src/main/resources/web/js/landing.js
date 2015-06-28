@@ -37,7 +37,7 @@ $(document).ready(function() {
         defaultDate: "+2d",
         minDate: new Date(),
         numberOfMonths: 2,
-        dateFormat: 'dd/mm/yy'
+        dateFormat: 'dd-mm-yy'
     });
 
     $("a#submit-form").on("click", function(ev){

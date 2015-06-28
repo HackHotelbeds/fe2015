@@ -74,47 +74,34 @@ public class AvailabilityManager {
         hotelCompService.submit(hotelTask);
         hotelId++;
 
-        String dateTo=entrada.getStartDate();
-        String dateFrom= entrada.getEndDate();
+        String dateFrom=entrada.getStartDate();
+        String dateTo= entrada.getEndDate();
         for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             //FIXME HotelTask hotelTask2 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
             StepoverElement stepowerElement= stepower[executingThreads];
             Calendar c1 = GregorianCalendar.getInstance();
             Calendar c2 = GregorianCalendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            Date dateToNew= sdf.parse(dateTo);
-            c1.setTimeInMillis(dateToNew.getTime());
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            Date dateFromNew= sdf.parse(dateFrom);
+            c1.setTimeInMillis(dateFromNew.getTime());
+            c1.add(Calendar.DATE,1);
+            dateFromNew.setTime(c1.getTimeInMillis());
+            Date dateToNew= sdf.parse(dateFrom);
+            c1.setTimeInMillis(dateFromNew.getTime());
             c1.add(Calendar.DATE,1);
             dateToNew.setTime(c1.getTimeInMillis());
-            Date dateFromNew= sdf.parse(dateFrom);
-            c2.setTimeInMillis(dateFromNew.getTime());
-            c2.add(Calendar.DATE,1);
-            dateFromNew.setTime(c1.getTimeInMillis());
-            dateTo=sdf.format(dateToNew);
             dateFrom=sdf.format(dateFromNew);
 
-            HotelTask hotelTask2 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), stepowerElement.getLat().toString(), stepowerElement.getLng().toString(), connection, hotelId);
+            HotelTask hotelTask2 = new HotelTask(dateFrom, sdf.format(dateToNew), entrada.getPaxes(), stepowerElement.getLat().toString(), stepowerElement.getLng().toString(), connection, hotelId);
             hotelCompService.submit(hotelTask2);
             hotelId++;
 
         }
 
-        Calendar c1 = GregorianCalendar.getInstance();
-        Calendar c2 = GregorianCalendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateToNew= sdf.parse(dateTo);
-        c1.setTimeInMillis(dateToNew.getTime());
-        c1.add(Calendar.DATE,1);
-        dateToNew.setTime(c1.getTimeInMillis());
-        Date dateFromNew= sdf.parse(dateFrom);
-        c2.setTimeInMillis(dateFromNew.getTime());
-        c2.add(Calendar.DATE,1);
-        dateFromNew.setTime(c1.getTimeInMillis());
-        dateTo=sdf.format(dateToNew);
-        dateFrom=sdf.format(dateFromNew);
+
 
         //FIXME HotelTask hotelTask3 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
-        HotelTask hotelTask3 = new HotelTask(dateFrom,dateTo, entrada.getPaxes(), entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), connection, hotelId);
+        HotelTask hotelTask3 = new HotelTask(dateFrom,"", entrada.getPaxes(), entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), connection, hotelId);
         hotelCompService.submit(hotelTask3);
 
         HotelbedsTask hotelbedsEndTask = new HotelbedsTask(dateFrom,dateTo, entrada.getPaxes(),

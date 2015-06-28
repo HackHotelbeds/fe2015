@@ -35,6 +35,7 @@ public class HotelServices {
                 //TODO cordenadas con fload 2 decimales
                 List<Hotel> services = getHotels("2015-09-19","2015-09-20","2","32.38","-96.80",connection);
             } catch (Exception e) {
+                e.printStackTrace();
             }
 
         }
@@ -100,5 +101,7 @@ public class HotelServices {
         return request;
 
     }
+
+
 
 }

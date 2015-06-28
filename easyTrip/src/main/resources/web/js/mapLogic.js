@@ -97,12 +97,12 @@ function getCloserAirportWithCityName(cityname, type) {
         if (type == "FROM") {
             hb.from = response.results[0].geometry.location;
             console.log("FROM COORDS: " + hb.from.lat + "," + hb.from.lng);
-            getCloserAirportsToLocation(3, hb.from.lng, hb.from.lat, "FROM");
+            getCloserAirportsToLocation(5, hb.from.lng, hb.from.lat, "FROM");
 
         } else if (type == "TO") {
             hb.to = response.results[0].geometry.location;
             console.log("TO COORDS: " + hb.to.lat + "," + hb.to.lng);
-            //getCloserAirportsToLocation(3, hb.to.lng, hb.to.lat, "TO");
+            //getCloserAirportsToLocation(5, hb.to.lng, hb.to.lat, "TO");
 
         }
     });
@@ -114,7 +114,7 @@ function getCloserAirports() {
         var location = response.loc.split(",");
         var longitude = location[0];
         var latitude = location[1];
-        getCloserAirportsToLocation(3, latitude, longitude, "CURRENT");
+        getCloserAirportsToLocation(5, latitude, longitude, "CURRENT");
     }, "jsonp");
 }
 
@@ -146,7 +146,7 @@ function getCloserAirportsToLocation(maxResults, latitude, longitude, type) {
             coord = new google.maps.LatLng(hb.originAirports[0].lat, hb.originAirports[0].lng);
             //hb.addMarker(coord, icons.destination, hb.map, false, false);
 
-            getCloserAirportsToLocation(3, hb.to.lng, hb.to.lat, "TO");
+            getCloserAirportsToLocation(5, hb.to.lng, hb.to.lat, "TO");
 
         } else if (type == "TO") {
             hb.destinationAirports = response.airports;
@@ -264,4 +264,36 @@ function getNearbyCities(top, bottom, left, right, expectedCalls) {
         }
     });
 
+}
+
+function packJsonForSearchRequest() {
+    var jsonData = {};
+    jsonData.closestAirport = {};
+    jsonData.closestAirport.iata = hb.currentLocationAirports[0].code;
+    jsonData.closestAirport.lat = hb.currentLocationAirports[0].lat;
+    jsonData.closestAirport.lng = hb.currentLocationAirports[0].lng;
+
+    jsonData.originAirport = {};
+    jsonData.originAirport.iata = hb.originAirports[0].code;
+    jsonData.originAirport.lat = hb.originAirports[0].lat;
+    jsonData.originAirport.lng = hb.originAirports[0].lng;
+
+    jsonData.destinationAirport = {};
+    jsonData.destinationAirport.iata = hb.destinationAirports[0].code;
+    jsonData.destinationAirport.lat = hb.destinationAirports[0].lat;
+    jsonData.destinationAirport.lng = hb.destinationAirports[0].lng;
+
+    jsonData.paxes = hb.paxes;
+    jsonData.startDate = hb.startDate;
+    jsonData.endDate = hb.endDate;
+
+    jsonData.stepovers = [];
+
+
+    for (i=0;i<hb.route.routes[0].legs.length;i++) {
+        var leg = hb.route.routes[0].legs[i];
+        jsonData.stepovers.push({ address : leg.end_address, lat: leg.end_location.A, lng: leg.end_location.F });
+    }
+
+    return jsonData;
 }

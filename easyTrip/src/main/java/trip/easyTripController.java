@@ -35,7 +35,7 @@ public class easyTripController {
         if((connection.getRestToken()==null || connection.getRestToken().equals("")) && (connection.getSoapToken()==null || connection.getSoapToken().equals(""))){
             connection.connectSabreAPI();
             try {
-                connection.callloginSoap(connection.createSecurityRequest(),"https://sws3-crt.cert.sabre.com");
+                connection.callLoginSoap(connection.createSecurityRequest(),"https://sws3-crt.cert.sabre.com");
                 connection.callLoginSoap(connection.createSecurityRequest(), "https://sws3-crt.cert.sabre.com");
             } catch (Exception ex){
                 return "connection problem";

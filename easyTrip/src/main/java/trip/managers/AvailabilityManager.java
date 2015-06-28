@@ -27,6 +27,10 @@ public class AvailabilityManager {
         StepoverElement[] waypoints = entrada.getStepovers();
         int numbOfThreads = waypoints.length;
 
+        if (entrada.getPaxes() == null) {
+            entrada.setPaxes("2");
+        }
+
 
         if((connection.getRestToken()==null || connection.getRestToken().equals("")) && (connection.getSoapToken()==null || connection.getSoapToken().equals(""))){
             connection.connectSabreAPI();

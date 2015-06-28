@@ -40,8 +40,7 @@ public class CarServices {
 
         }
         Itinerary itinerary= new Itinerary();
-        itinerary.setListCar(getRentalCars("BCN", "2015-07-01", "2015-07-05", "", 1, connection));
-        getRentalCars("","","","",1,null);
+        itinerary.setListCar(getRentalCars("BCN", "MAD", "2015-07-01", "2015-07-05", 1, connection));
     }
 
     public List<Car> getRentalCars(final String startAirport, final String finishAirpot,
@@ -158,7 +157,7 @@ public class CarServices {
                 "   <SOAP-ENV:Body>\n";
         request= request+ "<OTA_VehAvailRateRQ xmlns=\"http://webservices.sabre.com/sabreXML/2011/10\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"2.4.0\">\n" +
                 "    <VehAvailRQCore QueryType=\"Quote\">";
-        request= request+"<VehRentalCore PickUpDateTime=\""+dateStart.substring(2,4)+"-"+dateStart.substring(0,2)+"T09:00\" ReturnDateTime=\""+dateEnd.substring(2,4)+"-"+dateEnd.substring(0,2)+"T11:00\">\n" +
+        request= request+"<VehRentalCore PickUpDateTime=\""+dateStart.substring(5)+"T09:00\" ReturnDateTime=\""+dateEnd.substring(5)+"T11:00\">\n" +
                 "            <PickUpLocation LocationCode=\""+location+"\" />\n" +
                 "        </VehRentalCore>\n" +
                 "        <VendorPrefs>\n" +
@@ -194,7 +193,7 @@ public class CarServices {
                 "   <SOAP-ENV:Body>\n";
         request=request+" <OTA_VehLocDetailRQ Version=\"2.1.0\" xmlns=\"http://webservices.sabre.com/sabreXML/2011/10\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"> \n" +
                 "  <VehAvailRQCore> ";
-        request=request+" <VehRentalCore PickUpDateTime=\""+dateStart.substring(2,4)+"-"+dateStart.substring(0,2)+"\" ReturnDateTime=\""+dateStart.substring(2,4)+"-"+dateStart.substring(0,2)+"\"> \n" +
+        request=request+" <VehRentalCore PickUpDateTime=\""+dateStart.substring(5)+"\" ReturnDateTime=\""+dateEnd.substring(5)+"\"> \n" +
                 "     <PickUpLocation LocationCode=\""+location+"\"/>\n" +
                 "   </VehRentalCore>\n" +
                 "   <VendorPrefs> \n" +

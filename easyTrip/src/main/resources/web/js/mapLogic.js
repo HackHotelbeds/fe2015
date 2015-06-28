@@ -22,7 +22,7 @@ function loadStopovers() {
         var leg = legs[i];
         var formattedStartAddress = formatStopover(leg.start_address);
         var formattedEndAddress = formatStopover(leg.end_address);
-        $("#stopover-list").append('<label class="list-group-item">Day '+(i+1)+':<br/>'+formattedStartAddress+' - '+formattedEndAddress+'</label>');
+        $("#stopover-list").append('<a class="list-group-item" href="#">Day '+(i+1)+':<br/>'+formattedStartAddress+' - '+formattedEndAddress+'</a>');
     }
 
 }
@@ -84,8 +84,8 @@ function calculateDaysBetweenDates(dateFrom, dateTo) {
     var splittedDateTo = dateTo.split("-");
 
     var oneDay = 24*60*60*1000;
-    var firstDate = new Date(splittedDateFrom[2],splittedDateFrom[1],splittedDateFrom[0]);
-    var secondDate = new Date(splittedDateTo[2],splittedDateTo[1],splittedDateTo[0]);
+    var firstDate = new Date(splittedDateFrom[0],splittedDateFrom[1],splittedDateFrom[2]);
+    var secondDate = new Date(splittedDateTo[0],splittedDateTo[1],splittedDateTo[2]);
 
     var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
     return diffDays;

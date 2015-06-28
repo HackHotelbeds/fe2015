@@ -18,11 +18,13 @@ public class AvailabilityManager {
 
     List<Ticket> ticketServices = new ArrayList<>();
     List<Hotel> hotelServices = new ArrayList<>();
-    List<Car> listCar = null;
+    List<Car> listCar = new ArrayList<>();
 
-    private Connection connection=new Connection();
+    private Connection connection;
 
     public String manager(Entrada entrada) throws InterruptedException, ParseException {
+
+        connection=new Connection();
 
         StepoverElement[] waypoints = entrada.getStepovers();
         int numbOfThreads = waypoints.length;

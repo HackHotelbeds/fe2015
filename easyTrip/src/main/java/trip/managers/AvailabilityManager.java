@@ -122,7 +122,9 @@ public class AvailabilityManager {
         hotelbedsCompService.submit(hotelbedsEndTask);
 
         for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
-            TicketTask ticketTask = new TicketTask();
+            StepoverElement stepowerElement= stepower[executingThreads];
+            TicketTask ticketTask = new TicketTask(stepowerElement.getLat().toString(), stepowerElement.getLng().toString(),
+                    executingThreads);
             ticketCompService.submit(ticketTask);
         }
         StepoverElement[] steps = entrada.getStepovers();
@@ -148,6 +150,10 @@ public class AvailabilityManager {
             tabCompService.take();
         }
         executor.shutdown();
+
+
+
+
 
 
         Itinerary itinerary = new Itinerary();
@@ -214,6 +220,19 @@ public class AvailabilityManager {
         return new UtilsParse().convertObjectToJson(itinerary);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     private final class CarTask implements Callable<List<Car>> {
         CarServices carServices;
         String startAirport;
@@ -240,7 +259,6 @@ public class AvailabilityManager {
             return listCar;
         }
     }
-
 
 
 
@@ -325,14 +343,20 @@ public class AvailabilityManager {
     }
 
     private final class TicketTask implements Callable<List<Ticket>> {
-        //CarServices carServices;
+        TicketService ticketService;
+        String lat;
+        String lon;
+        int night;
 
-        TicketTask(){
-            //carServices = new CarServices();
+        TicketTask(String plat, String plon, int pnight){
+            ticketService = new TicketService();
+            lat = plat;
+            lon = plon;
+            night = pnight;
         }
 
         @Override public List<Ticket> call() throws Exception {
-            return null;
+            return ticketService.getTickets(lat, lon, night);
         }
     }
 

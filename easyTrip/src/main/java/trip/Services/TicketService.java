@@ -27,10 +27,10 @@ public class TicketService {
 
     @Test
     public void test() {
-        List<Ticket> services = getTickets("32.3875577", "-96.808878777");
+        List<Ticket> services = getTickets("32.3875577", "-96.808878777", 1);
     }
 
-    public List<Ticket> getTickets(String lat, String lon) {
+    public List<Ticket> getTickets(String lat, String lon, int night) {
 
         // Create a trust manager that does not validate certificate chains
         TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager(){
@@ -74,7 +74,7 @@ public class TicketService {
         List<Ticket> services = null;
 
         try {
-            services = TicketParser.parse(result, 1);
+            services = TicketParser.parse(result, night);
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {

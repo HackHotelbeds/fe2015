@@ -1,16 +1,14 @@
 package trip.managers;
 
-import trip.Services.CarServices;
-import trip.Services.HotelServices;
-import trip.Services.HotelbedsService;
-import trip.Services.TabService;
+import trip.Services.*;
 import trip.pojo.*;
 import trip.utils.Connection;
 import trip.utils.UtilsParse;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.*;
 
 /**
@@ -20,12 +18,11 @@ public class AvailabilityManager {
 
     List<Ticket> ticketServices = new ArrayList<>();
     List<Hotel> hotelServices = new ArrayList<>();
-    CarServices carServices= new CarServices();
     List<Car> listCar = null;
 
     private Connection connection=new Connection();
 
-    public String manager(Entrada entrada) throws InterruptedException {
+    public String manager(Entrada entrada) throws InterruptedException, ParseException {
 
         StepoverElement[] waypoints = entrada.getStepovers();
         int numbOfThreads = waypoints.length;
@@ -41,7 +38,7 @@ public class AvailabilityManager {
 
         }
 
-
+        StepoverElement[] stepower= entrada.getStepovers();
 
         ExecutorService executor = Executors.newFixedThreadPool(numbOfThreads);
         CompletionService<List<Car>> carCompService = new ExecutorCompletionService<>(executor);
@@ -52,16 +49,25 @@ public class AvailabilityManager {
         CompletionService<List<Ticket>> ticketCompService = new ExecutorCompletionService<>(executor);
         CompletionService<List<Ticket>> tabCompService = new ExecutorCompletionService<>(executor);
 
-        //TODO FIXME
-        CarTask carTask = new CarTask("","","","",1,null);
-        VueloIdaTask vueloIdaTask = new VueloIdaTask();
-        VueloVueltaTask vueloVueltaTask = new VueloVueltaTask();
+        CarTask carTask = new CarTask(entrada.getOriginAirport().getIata(),entrada.getDestinationAirport().getIata(),
+                entrada.getStartDate(),entrada.getEndDate(),Integer.valueOf(entrada.getPaxes()),connection);
+
+        VueloIdaTask vueloIdaTask = new VueloIdaTask(entrada.getClosestAirport().getIata(), entrada.getOriginAirport().getIata(),
+        entrada.getStartDate(), entrada.getEndDate(), Integer.valueOf(entrada.getPaxes()), connection);
+        VueloVueltaTask vueloVueltaTask = new VueloVueltaTask(entrada.getDestinationAirport().getIata(), entrada.getClosestAirport().getIata(),
+        entrada.getStartDate(), entrada.getEndDate(), Integer.valueOf(entrada.getPaxes()), connection);
         carCompService.submit(carTask);
         vueloIdaCompService.submit(vueloIdaTask);
         vueloVueltaCompService.submit(vueloVueltaTask);
-        HotelbedsTask hotelbedsStartTask = new HotelbedsTask(entrada.getOriginAirport().getIata());
+
+
+        HotelbedsTask hotelbedsStartTask = new HotelbedsTask(entrada.getStartDate(), entrada.getEndDate(), entrada.getPaxes(),
+                entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), 1, entrada.getOriginAirport().getIata());
         hotelbedsCompService.submit(hotelbedsStartTask);
-        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(entrada.getDestinationAirport().getIata());
+        //FIXME
+        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(entrada.getStartDate(), entrada.getEndDate(), entrada.getPaxes(),
+                entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), 1, entrada.getOriginAirport().getIata());
+        hotelbedsCompService.submit(hotelbedsStartTask);
         hotelbedsCompService.submit(hotelbedsEndTask);
 
         int hotelId = 1;
@@ -72,14 +78,48 @@ public class AvailabilityManager {
                 entrada.getOriginAirport().getLng().toString(), connection, hotelId);
         hotelCompService.submit(hotelTask);
         hotelId++;
+
+        String dateTo=entrada.getStartDate();
+        String dateFrom= entrada.getEndDate();
         for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             //FIXME HotelTask hotelTask2 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
-            HotelTask hotelTask2 = new HotelTask("", "", entrada.getPaxes(), "", "", connection, hotelId);
+            StepoverElement stepowerElement= stepower[executingThreads];
+            Calendar c1 = GregorianCalendar.getInstance();
+            Calendar c2 = GregorianCalendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date dateToNew= sdf.parse(dateTo);
+            c1.setTimeInMillis(dateToNew.getTime());
+            c1.add(Calendar.DATE,1);
+            dateToNew.setTime(c1.getTimeInMillis());
+            Date dateFromNew= sdf.parse(dateFrom);
+            c2.setTimeInMillis(dateFromNew.getTime());
+            c2.add(Calendar.DATE,1);
+            dateFromNew.setTime(c1.getTimeInMillis());
+            dateTo=sdf.format(dateToNew);
+            dateFrom=sdf.format(dateFromNew);
+
+            HotelTask hotelTask2 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), stepowerElement.getLat().toString(), stepowerElement.getLng().toString(), connection, hotelId);
             hotelCompService.submit(hotelTask2);
             hotelId++;
+
         }
+
+        Calendar c1 = GregorianCalendar.getInstance();
+        Calendar c2 = GregorianCalendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateToNew= sdf.parse(dateTo);
+        c1.setTimeInMillis(dateToNew.getTime());
+        c1.add(Calendar.DATE,1);
+        dateToNew.setTime(c1.getTimeInMillis());
+        Date dateFromNew= sdf.parse(dateFrom);
+        c2.setTimeInMillis(dateFromNew.getTime());
+        c2.add(Calendar.DATE,1);
+        dateFromNew.setTime(c1.getTimeInMillis());
+        dateTo=sdf.format(dateToNew);
+        dateFrom=sdf.format(dateFromNew);
+
         //FIXME HotelTask hotelTask3 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
-        HotelTask hotelTask3 = new HotelTask("", "", entrada.getPaxes(), "", "", connection, hotelId);
+        HotelTask hotelTask3 = new HotelTask(dateTo, dateFrom, entrada.getPaxes(), entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), connection, hotelId);
         hotelCompService.submit(hotelTask3);
 
         for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
@@ -109,7 +149,6 @@ public class AvailabilityManager {
         executor.shutdown();
 
 
-        //TODO
         Itinerary itinerary = new Itinerary();
 
 
@@ -168,7 +207,7 @@ public class AvailabilityManager {
                 found = true;
             }
         }
-        
+
         itinerary.setListCar(listCar);
 
         return new UtilsParse().convertObjectToJson(itinerary);
@@ -205,27 +244,55 @@ public class AvailabilityManager {
 
 
     private final class VueloIdaTask implements Callable<List<Vuelo>> {
-        //CarServices carServices;
+        FlightService flightService;
+        String nearAirport;
+        String startAirport;
+        String startDate;
+        String endDate;
+        int numberOfPassenger;
+        Connection connection;
 
-        VueloIdaTask(){
-            //carServices = new CarServices();
+        VueloIdaTask(final String pnearAirport, final String pstartAirport,
+                     final String pstartDate, final String pendDate, final int pnumberOfPassenger, final Connection pconnection){
+            flightService = new FlightService();
+            nearAirport = pnearAirport;
+            startAirport = pstartAirport;
+            startDate = pstartDate;
+            endDate = pendDate;
+            numberOfPassenger = pnumberOfPassenger;
+            connection = pconnection;
         }
 
         @Override public List<Vuelo> call() throws Exception {
-            return null;
+            FlightService flightService = new FlightService();
+            return flightService.getVueloIda(nearAirport, startAirport, startDate, endDate, numberOfPassenger, connection);
         }
     }
 
 
     private final class VueloVueltaTask implements Callable<List<Vuelo>> {
-        //CarServices carServices;
+        FlightService flightService;
+        String finishAirport;
+        String nearAirport;
+        String startDate;
+        String endDate;
+        int numberOfPassenger;
+        Connection connection;
 
-        VueloVueltaTask(){
-            //carServices = new CarServices();
+        VueloVueltaTask(final String pfinishAirport, final String pnearAirport,
+                        final String pstartDate, final String pendDate, final int pnumberOfPassenger, final Connection pconnection){
+            flightService = new FlightService();
+            finishAirport = pfinishAirport;
+            nearAirport = pnearAirport;
+            startDate=pstartDate;
+            endDate=pendDate;
+            numberOfPassenger=pnumberOfPassenger;
+            connection=pconnection;
         }
 
         @Override public List<Vuelo> call() throws Exception {
-            return null;
+            FlightService flightService = new FlightService();
+            return flightService.getVueloVuelta(finishAirport, nearAirport, startDate, endDate, numberOfPassenger, connection);
         }
     }
 
@@ -272,15 +339,26 @@ public class AvailabilityManager {
     private final class HotelbedsTask implements Callable<List<Hotel>> {
         HotelbedsService hotelbedsService;
         String dest;
+        String dateFrom;
+        String dateTo;
+        String paxes;
+        String lat;
+        String lon;
+        int night;
 
-        HotelbedsTask(String pDest){
+        HotelbedsTask(String pdateFrom, String pdateTo, String ppaxes, String plat, String plon, int pnight, String pdest){
             hotelbedsService = new HotelbedsService();
-            dest = pDest;
+            dest = pdest;
+            dateFrom=pdateFrom;
+            dateTo=pdateTo;
+            paxes=ppaxes;
+            lat=plat;
+            lon=plon;
+            night=pnight;
         }
 
         @Override public List<Hotel> call() throws Exception {
-            //FIXME DUMMY DATA
-            List<Hotel> services =  hotelbedsService.getHotelbedsHotels("2015-09-19","2015-09-20","1","2.646633999999949","39.57119", 1, dest);
+            List<Hotel> services =  hotelbedsService.getHotelbedsHotels(dateFrom, dateTo, paxes, lat, lon, night, dest);
             for (int i = 0; i < services.size(); i++) {
                 hotelServices.add(services.get(i));
             }

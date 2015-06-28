@@ -141,6 +141,9 @@ function showItineraryWithRates(rates) {
       for (var f = 0; f < rates.ticketOptionDays[ticketOption].listTicket.length; f++) {
         var ticket = rates.ticketOptionDays[ticketOption].listTicket[f];
         var ticketText = ticket.name;
+        if (typeof(ticket.currency) == "undefined") {
+          ticket.currency = "EUR";
+        }
         var ticketPrice = '  ' + ticket.price + ' ' + ticket.currency;
 
         tickets[f] = {

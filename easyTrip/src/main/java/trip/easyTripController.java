@@ -10,6 +10,8 @@ import trip.pojo.Itinerary;
 import trip.utils.Connection;
 import trip.utils.UtilsParse;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
@@ -26,7 +28,8 @@ public class easyTripController {
     CarServices carServices= new CarServices();
 
     @RequestMapping("/")
-    public String isAlive() {
+    public String isAlive(HttpServletRequest request, HttpServletResponse response) {
+        response.addHeader("Access-Control-Allow-Origin", "*");
         return "Server UP";
     }
 
@@ -34,7 +37,7 @@ public class easyTripController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @ResponseBody
-    public String getItinerary(@RequestBody final String inputJsonObj) {
+    public String getItinerary(@RequestBody final String inputJsonObj, HttpServletRequest request, HttpServletResponse response) {
 
         Gson gs = new Gson();
         Entrada obj = gs.fromJson(inputJsonObj, Entrada.class);
@@ -52,6 +55,7 @@ public class easyTripController {
         Itinerary itinerary= new Itinerary();
         itinerary.setListCar(carServices.getRentalCars(obj.getOriginAirport().getIata(),obj.getDestinationAirport().getIata(),obj.getStartDate(),obj.getEndDate(),Integer.valueOf(obj.getPaxes()),connection));
 
+        response.addHeader("Access-Control-Allow-Origin", "*");
         return new UtilsParse().convertObjectToJson(itinerary);
     }
 

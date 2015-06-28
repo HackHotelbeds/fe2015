@@ -21,6 +21,7 @@ public class AvailabilityManager {
     List<Ticket> ticketServices = new ArrayList<>();
     List<Hotel> hotelServices = new ArrayList<>();
     CarServices carServices= new CarServices();
+    List<Car> listCar = null;
 
     private Connection connection=new Connection();
 
@@ -39,10 +40,6 @@ public class AvailabilityManager {
             }
 
         }
-
-
-        //FIXME
-        // itinerary.setListCar(carServices.getRentalCars(obj.getOriginAirport().getIata(), obj.getDestinationAirport().getIata(), obj.getStartDate(), obj.getEndDate(), Integer.valueOf(obj.getPaxes()), connection));
 
 
 
@@ -171,7 +168,8 @@ public class AvailabilityManager {
                 found = true;
             }
         }
-
+        
+        itinerary.setListCar(listCar);
 
         return new UtilsParse().convertObjectToJson(itinerary);
     }
@@ -198,7 +196,8 @@ public class AvailabilityManager {
         }
 
         @Override public List<Car> call() throws Exception {
-            return carServices.getRentalCars(startAirport, finishAirpot, startDate, endDate, numberOfPassenger, connection);
+            listCar = carServices.getRentalCars(startAirport, finishAirpot, startDate, endDate, numberOfPassenger, connection);
+            return listCar;
         }
     }
 

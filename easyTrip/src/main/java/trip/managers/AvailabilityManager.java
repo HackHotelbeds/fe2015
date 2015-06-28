@@ -20,7 +20,6 @@ public class AvailabilityManager {
 
     List<Ticket> ticketServices = new ArrayList<>();
     List<Hotel> hotelServices = new ArrayList<>();
-    CarServices carServices= new CarServices();
     List<Car> listCar = null;
 
     private Connection connection=new Connection();
@@ -52,8 +51,9 @@ public class AvailabilityManager {
         CompletionService<List<Ticket>> ticketCompService = new ExecutorCompletionService<>(executor);
         CompletionService<List<Ticket>> tabCompService = new ExecutorCompletionService<>(executor);
 
-        //TODO FIXME
-        CarTask carTask = new CarTask("","","","",1,null);
+        CarTask carTask = new CarTask(entrada.getOriginAirport().getIata(),entrada.getDestinationAirport().getIata(),
+                entrada.getStartDate(),entrada.getEndDate(),Integer.valueOf(entrada.getPaxes()),connection);
+
         VueloIdaTask vueloIdaTask = new VueloIdaTask();
         VueloVueltaTask vueloVueltaTask = new VueloVueltaTask();
         carCompService.submit(carTask);
@@ -72,12 +72,14 @@ public class AvailabilityManager {
                 entrada.getOriginAirport().getLng().toString(), connection, hotelId);
         hotelCompService.submit(hotelTask);
         hotelId++;
+
         for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             //FIXME HotelTask hotelTask2 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
             HotelTask hotelTask2 = new HotelTask("", "", entrada.getPaxes(), "", "", connection, hotelId);
             hotelCompService.submit(hotelTask2);
             hotelId++;
         }
+
         //FIXME HotelTask hotelTask3 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
         HotelTask hotelTask3 = new HotelTask("", "", entrada.getPaxes(), "", "", connection, hotelId);
         hotelCompService.submit(hotelTask3);
@@ -168,7 +170,7 @@ public class AvailabilityManager {
                 found = true;
             }
         }
-        
+
         itinerary.setListCar(listCar);
 
         return new UtilsParse().convertObjectToJson(itinerary);
@@ -272,6 +274,12 @@ public class AvailabilityManager {
     private final class HotelbedsTask implements Callable<List<Hotel>> {
         HotelbedsService hotelbedsService;
         String dest;
+        String dateFrom;
+        String dateTo;
+        String paxes;
+        String lat;
+        String lon;
+        int night;
 
         HotelbedsTask(String pDest){
             hotelbedsService = new HotelbedsService();

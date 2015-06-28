@@ -58,9 +58,15 @@ public class AvailabilityManager {
         carCompService.submit(carTask);
         vueloIdaCompService.submit(vueloIdaTask);
         vueloVueltaCompService.submit(vueloVueltaTask);
-        HotelbedsTask hotelbedsStartTask = new HotelbedsTask(entrada.getOriginAirport().getIata());
+
+
+        HotelbedsTask hotelbedsStartTask = new HotelbedsTask(entrada.getStartDate(), entrada.getEndDate(), entrada.getPaxes(),
+                entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), 1, entrada.getOriginAirport().getIata());
         hotelbedsCompService.submit(hotelbedsStartTask);
-        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(entrada.getDestinationAirport().getIata());
+        //FIXME
+        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(entrada.getStartDate(), entrada.getEndDate(), entrada.getPaxes(),
+                entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), 1, entrada.getOriginAirport().getIata());
+        hotelbedsCompService.submit(hotelbedsStartTask);
         hotelbedsCompService.submit(hotelbedsEndTask);
 
         int hotelId = 1;
@@ -307,14 +313,19 @@ public class AvailabilityManager {
         String lon;
         int night;
 
-        HotelbedsTask(String pDest){
+        HotelbedsTask(String pdateFrom, String pdateTo, String ppaxes, String plat, String plon, int pnight, String pdest){
             hotelbedsService = new HotelbedsService();
-            dest = pDest;
+            dest = pdest;
+            dateFrom=pdateFrom;
+            dateTo=pdateTo;
+            paxes=ppaxes;
+            lat=plat;
+            lon=plon;
+            night=pnight;
         }
 
         @Override public List<Hotel> call() throws Exception {
-            //FIXME DUMMY DATA
-            List<Hotel> services =  hotelbedsService.getHotelbedsHotels("2015-09-19","2015-09-20","1","2.646633999999949","39.57119", 1, dest);
+            List<Hotel> services =  hotelbedsService.getHotelbedsHotels(dateFrom, dateTo, paxes, lat, lon, night, dest);
             for (int i = 0; i < services.size(); i++) {
                 hotelServices.add(services.get(i));
             }

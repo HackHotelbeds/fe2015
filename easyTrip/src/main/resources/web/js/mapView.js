@@ -34,7 +34,8 @@ function buildResultsPanel(name, title, values, useCheckbox) {
   resultsPanel += '<div class="panel panel-default results-panel ">';
   resultsPanel += '<div class="panel-heading resultsPanel-heading">';
   resultsPanel += '<h4 class="panel-title">';
-  resultsPanel += '<a data-toggle="collapse" href="#' + name + '"><i class="fa fa-list-alt"></i> ' + title + '</a>';
+  resultsPanel += '<div class="col-md-7"><a data-toggle="collapse" href="#' + name + '"><i class="fa fa-list-alt"></i> ' + title + '</a></div>';
+  resultsPanel += '<div class="text-right price-selected"> ? </div>'
   resultsPanel += '</h4>';
   resultsPanel += '</div>';
 
@@ -59,8 +60,9 @@ function buildResultsPanel(name, title, values, useCheckbox) {
       resultsPanel += '    <input type="radio" name="' + name + 'Rate" value="'+ values[v].id + '">';
     }
     resultsPanel += '  </span>';
-    resultsPanel += '  <div class="col-md-8 result-item no-shadow">' + values[v].text + '</div>';
-    resultsPanel += '  <div class="col-md-4 result-price no-shadow">' + values[v].price + '</div>';
+    resultsPanel += '  <div class="col-md-7 result-item no-shadow">' + values[v].text + '</div>';
+    resultsPanel += '  <div class="col-md-3 result-price no-shadow">' + values[v].price + '</div>';
+    resultsPanel += '  <div class="col-md-2 result-company no-shadow" data-company-name="' + values[v].company + '"></div>';
     resultsPanel += '</div>';
   }
   resultsPanel += '</div>';
@@ -83,7 +85,8 @@ function showItineraryWithRates(rates) {
     arrivalFlights[f] = {
       "id": flight.id,
       "text": flightText,
-      "price": flightPrice
+      "price": flightPrice,
+      "company": flight.company
     }
   }
   summary += buildResultsPanel('arrivalFlight', 'Arrival flight', arrivalFlights);
@@ -97,7 +100,8 @@ function showItineraryWithRates(rates) {
     carRented[f] = {
       "id": car.id,
       "text": carText,
-      "price": carPrice
+      "price": carPrice,
+      "company": car.company
     }
   }
   summary += buildResultsPanel('carRented', 'Car rented', carRented);
@@ -112,7 +116,8 @@ function showItineraryWithRates(rates) {
       hotels[f] = {
         "id": hotel.id,
         "text": hotelText,
-        "price": hotelPrice
+        "price": hotelPrice,
+        "company": hotel.company
       }
     }
     summary += buildResultsPanel('hotelOption' + hotelOption, 'Hotels, day ' + rates.hotelOptionDays[hotelOption].day, hotels);
@@ -128,7 +133,8 @@ function showItineraryWithRates(rates) {
       tickets[f] = {
         "id": ticket.id,
         "text": ticketText,
-        "price": ticketPrice
+        "price": ticketPrice,
+        "company": ticket.company
       }
     }
     summary += buildResultsPanel('ticketOption' + ticketOption, 
@@ -148,7 +154,8 @@ function showItineraryWithRates(rates) {
     departureFlights[f] = {
       "id": flight.id,
       "text": flightText,
-      "price": flightPrice
+      "price": flightPrice,
+      "company": flight.company
     }
   }
   summary += buildResultsPanel('departureFlight', 'Departure flight', departureFlights);
@@ -188,8 +195,14 @@ function showItineraryWithRates(rates) {
       if ($(nextHeading).hasClass('collapsed')) {
         $(nextHeading).click();
       }
+
+      var optionPrice = $(this).parents('.input-group').find('.result-price').html();
+      $(thisHeading).find('.price-selected').html(optionPrice);
     });
 
+    $('.result-company').each(function(e) {
+      $(this).prepend('<img src="img/suppliers/logo-' + $(this).data('company-name') + '.png" />');
+    })
   });
 }
 
@@ -349,26 +362,26 @@ $(document).ready(function() {
     "hotelOptionDays": [
       {
         "listHotel": [
-          {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"Trivago"},
-          {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"Expedia"},
-          {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"Bedsonline"}
+          {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+          {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+          {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
         ], 
         "day": "1/7/15"
       },
       {"listHotel": [
-        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"Booking"},
-        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"Bedsonline"},
-        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"Sabre"}
+        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
       ], "day": "2/7/15"},
       {"listHotel": [
-        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"Bedsonline"},
-        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"Trivago"},
-        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"Sabre"}
+        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
       ], "day": "3/7/15"},
       {"listHotel": [
-        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"Bedsonline"},
-        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"Expedia"},
-        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"Sabre"}
+        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
       ], "day": "4/7/15"},
     ],
     "ida": [{
@@ -377,14 +390,16 @@ $(document).ready(function() {
       "endAirport": "MIL",
       "departureDate": "1/7/15", "departureHour": "11:00",
       "arrivalDate": "1/7/15", "arrivalHour": "12:00",
-      "flightNumber": "A123", "price": "123.27", "currency": "EUR"
+      "flightNumber": "A123", "price": "123.27", "currency": "EUR",
+            "company": "SABRE"      
     },{
       "id": "452349153",
       "startAirport": "MAD",
       "endAirport": "MIL",
       "departureDate": "1/7/15", "departureHour": "13:00",
       "arrivalDate": "1/7/15", "arrivalHour": "14:00",
-      "flightNumber": "A321", "price": "113.27", "currency": "EUR"
+      "flightNumber": "A321", "price": "113.27", "currency": "EUR",
+            "company": "SABRE"      
     }],
     "listCar": [
         {
@@ -399,7 +414,9 @@ $(document).ready(function() {
             "participationLevel": "B",
             "price": "1496.57",
             "rateCode": "WEB",
-            "startString": null
+            "startString": null,
+            "company": "SABRE",
+            "currency": "EUR"
         },
         {
             "addionalString": null,
@@ -413,7 +430,9 @@ $(document).ready(function() {
             "participationLevel": "B",
             "price": "1620.83",
             "rateCode": "WEB",
-            "startString": null
+            "startString": null,
+            "company": "SABRE",
+            "currency": "EUR"
         },
         {
             "addionalString": null,
@@ -427,19 +446,21 @@ $(document).ready(function() {
             "participationLevel": "B",
             "price": "1752.72",
             "rateCode": "WEB",
-            "startString": null
+            "startString": null,
+            "company": "SABRE",
+            "currency": "EUR"
         }
     ],
     "ticketOptionDays": [
       {"listTicket": [
-        {"name":"Exc1", "price":"57.00", "currency":"EUR", "company":"Disney"},
-        {"name":"Exc2", "price":"58.00", "currency":"EUR", "company":"Isango"},
-        {"name":"Exc3", "price":"59.00", "currency":"EUR", "company":"Tab"}
+        {"name":"Exc1", "price":"57.00", "currency":"EUR", "company":"HOTELBEDS"},
+        {"name":"Exc2", "price":"58.00", "currency":"EUR", "company":"GETYOURGUIDE"},
+        {"name":"Exc3", "price":"59.00", "currency":"EUR", "company":"HOTELBEDS"}
       ], "day": "1/7/15"},
       {"listTicket": [
-        {"name":"Exc4", "price":"157.00", "currency":"EUR", "company":"Disney"},
-        {"name":"Exc5", "price":"158.00", "currency":"EUR", "company":"Isango"},
-        {"name":"Exc6", "price":"159.00", "currency":"EUR", "company":"Tab"}
+        {"name":"Exc4", "price":"157.00", "currency":"EUR", "company":"HOTELBEDS"},
+        {"name":"Exc5", "price":"158.00", "currency":"EUR", "company":"HOTELBEDS"},
+        {"name":"Exc6", "price":"159.00", "currency":"EUR", "company":"GETYOURGUIDE"}
       ], "day": "3/7/15"},
     ],
     "vuelta": [{
@@ -448,19 +469,21 @@ $(document).ready(function() {
       "endAirport": "MAD",
       "departureDate": "5/7/15", "departureHour": "11:00",
       "arrivalDate": "5/7/15", "arrivalHour": "12:00",
-      "flightNumber": "A123", "price": "123.27", "currency": "EUR"
+      "flightNumber": "A123", "price": "123.27", "currency": "EUR",
+      "company": "SABRE"          
     },{
       "id": "456789153",
       "startAirport": "NAP",
       "endAirport": "MAD",
       "departureDate": "5/7/15", "departureHour": "17:00",
       "arrivalDate": "5/7/15", "arrivalHour": "18:00",
-      "flightNumber": "A456", "price": "113.27" , "currency": "EUR"     
+      "flightNumber": "A456", "price": "113.27" , "currency": "EUR",
+      "company": "SABRE"    
     }]
 };
 
-    //showItineraryWithRates(rates);
-
+    showItineraryWithRates(rates);
+/*
       $.ajax({
           type: 'post',
           url: 'http://localhost:9999/getItinerary',
@@ -478,6 +501,8 @@ $(document).ready(function() {
               bootbox.alert({message: 'Cant get any rates! Try again later!'});
           }
       });
+*/
+
 
   });
 

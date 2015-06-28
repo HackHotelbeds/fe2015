@@ -155,7 +155,8 @@
 }
 
 .results-panel .result-item,
-.results-panel .result-price {
+.results-panel .result-price,
+.results-panel .result-company {
   color: #555;
   background-color: white;
   white-space: nowrap;
@@ -164,6 +165,9 @@
   border-bottom: 1px solid #aaa;
 }
 
+.price-selected {
+  text-shadow: none;
+}
 .results-panel .result-price {
   font-weight: bold;
   text-align: right;
@@ -171,4 +175,8 @@
 
 #payment-form input , #payment-form select {
   padding: 4px;
+}
+
+.result-company img {
+  height: 18px;
 }

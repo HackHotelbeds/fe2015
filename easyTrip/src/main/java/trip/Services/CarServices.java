@@ -41,6 +41,7 @@ public class CarServices {
         }
         Itinerary itinerary= new Itinerary();
         itinerary.setListCar(getRentalCars("BCN", "MAD", "2015-07-01", "2015-07-05", 1, connection));
+    System.out.println(itinerary.getListCar().size());
     }
 
     public List<Car> getRentalCars(final String startAirport, final String finishAirpot,

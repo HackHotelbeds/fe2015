@@ -381,43 +381,43 @@ $(document).ready(function() {
     "hotelOptionDays": [
       {
         "listHotel": [
-          {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
-          {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
-          {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
+          {"name":"Grand Hotel Milano","price":"75.40","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+          {"name":"Gran Melia Milano","price":"102.75","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+          {"name":"Hilton Milano","price":"213.30","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
         ], 
         "day": "1/7/15"
       },
       {"listHotel": [
-        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
-        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
-        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
+        {"name":"Hilton","price":"107.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+        {"name":"Grande Italia Hotel","price":"192.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+        {"name":"Gran Hotel","price":"73.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
       ], "day": "2/7/15"},
       {"listHotel": [
-        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
-        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
-        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
+        {"name":"Hilton","price":"59.40","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+        {"name":"Hotel La Toscana","price":"82.30","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+        {"name":"Cesare Hotel","price":"63.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
       ], "day": "3/7/15"},
       {"listHotel": [
-        {"name":"Hot1","price":"111.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
-        {"name":"Hot2","price":"112.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
-        {"name":"Hot3","price":"113.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
+        {"name":"Il Napolitano","price":"91.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+        {"name":"Windham Napoli","price":"62.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+        {"name":"Iberostar Napoli","price":"83.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
       ], "day": "4/7/15"},
     ],
     "ida": [{
       "id": "125676789",
-      "startAirport": "MAD",
+      "startAirport": "LGW",
       "endAirport": "MIL",
-      "departureDate": "1/7/15", "departureHour": "11:00",
-      "arrivalDate": "1/7/15", "arrivalHour": "12:00",
+      "departureDate": "1/7/15", "departureHour": "11:20",
+      "arrivalDate": "1/7/15", "arrivalHour": "13:00",
       "flightNumber": "A123", "price": "123.27", "currency": "EUR",
             "company": "SABRE"      
     },{
       "id": "452349153",
-      "startAirport": "MAD",
-      "endAirport": "MIL",
-      "departureDate": "1/7/15", "departureHour": "13:00",
-      "arrivalDate": "1/7/15", "arrivalHour": "14:00",
-      "flightNumber": "A321", "price": "113.27", "currency": "EUR",
+      "startAirport": "LGW",
+      "endAirport": "NAP",
+      "departureDate": "4/7/15", "departureHour": "16:50",
+      "arrivalDate": "4/7/15", "arrivalHour": "18:30",
+      "flightNumber": "A321", "price": "98.27", "currency": "EUR",
             "company": "SABRE"      
     }],
     "listCar": [
@@ -472,32 +472,24 @@ $(document).ready(function() {
     ],
     "ticketOptionDays": [
       {"listTicket": [
-        {"name":"Exc1", "price":"57.00", "currency":"EUR", "company":"HOTELBEDS"},
-        {"name":"Exc2", "price":"58.00", "currency":"EUR", "company":"GETYOURGUIDE"},
-        {"name":"Exc3", "price":"59.00", "currency":"EUR", "company":"HOTELBEDS"}
+        {"name":"City Sightseeing Milano", "price":"7.00", "currency":"EUR", "company":"HOTELBEDS"},
+        {"name":"Milan Zoo", "price":"18.00", "currency":"EUR", "company":"GETYOURGUIDE"},
+        {"name":"San Siro Tour", "price":"15.00", "currency":"EUR", "company":"HOTELBEDS"}
       ], "day": "1/7/15"},
       {"listTicket": [
-        {"name":"Exc4", "price":"157.00", "currency":"EUR", "company":"HOTELBEDS"},
-        {"name":"Exc5", "price":"158.00", "currency":"EUR", "company":"HOTELBEDS"},
-        {"name":"Exc6", "price":"159.00", "currency":"EUR", "company":"GETYOURGUIDE"}
+        {"name":"City sightseeing", "price":"7.00", "currency":"EUR", "company":"HOTELBEDS"},
+        {"name":"National Museum", "price":"8.00", "currency":"EUR", "company":"HOTELBEDS"},
+        {"name":"Modern Art Gallery", "price":"9.00", "currency":"EUR", "company":"GETYOURGUIDE"}
       ], "day": "3/7/15"},
     ],
     "vuelta": [{
       "id": "123456789",
       "startAirport": "NAP",
-      "endAirport": "MAD",
-      "departureDate": "5/7/15", "departureHour": "11:00",
-      "arrivalDate": "5/7/15", "arrivalHour": "12:00",
-      "flightNumber": "A123", "price": "123.27", "currency": "EUR",
+      "endAirport": "LGW",
+      "departureDate": "4/7/15", "departureHour": "12:20",
+      "arrivalDate": "4/7/15", "arrivalHour": "15:00",
+      "flightNumber": "A321", "price": "98.27", "currency": "EUR",
       "company": "SABRE"          
-    },{
-      "id": "456789153",
-      "startAirport": "NAP",
-      "endAirport": "MAD",
-      "departureDate": "5/7/15", "departureHour": "17:00",
-      "arrivalDate": "5/7/15", "arrivalHour": "18:00",
-      "flightNumber": "A456", "price": "113.27" , "currency": "EUR",
-      "company": "SABRE"    
     }]
 };
 

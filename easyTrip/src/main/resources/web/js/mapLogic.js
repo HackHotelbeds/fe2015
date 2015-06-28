@@ -80,8 +80,8 @@ $(function () {
 
 function calculateDaysBetweenDates(dateFrom, dateTo) {
 
-    var splittedDateFrom = dateFrom.split("%2F");
-    var splittedDateTo = dateTo.split("%2F");
+    var splittedDateFrom = dateFrom.split("-");
+    var splittedDateTo = dateTo.split("-");
 
     var oneDay = 24*60*60*1000;
     var firstDate = new Date(splittedDateFrom[2],splittedDateFrom[1],splittedDateFrom[0]);

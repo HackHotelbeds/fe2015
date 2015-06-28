@@ -47,9 +47,9 @@ public class easyTripController {
     @Consumes(MediaType.APPLICATION_JSON)
     @ResponseBody
     public String getItinerary(@RequestBody final String inputJsonObj, HttpServletRequest request, HttpServletResponse response) {
-
+        String decodedJson = URLDecoder.decode(inputJsonObj);
         Gson gs = new Gson();
-        Entrada obj = gs.fromJson(inputJsonObj, Entrada.class);
+        Entrada obj = gs.fromJson(decodedJson, Entrada.class);
         addCorsHeaders(response);
         AvailabilityManager availabilityManager = new AvailabilityManager();
         try {

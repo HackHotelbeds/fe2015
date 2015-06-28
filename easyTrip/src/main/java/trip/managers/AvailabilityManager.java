@@ -46,7 +46,6 @@ public class AvailabilityManager {
         CompletionService<List<Ticket>> ticketCompService = new ExecutorCompletionService<>(executor);
         CompletionService<List<Ticket>> tabCompService = new ExecutorCompletionService<>(executor);
 
-        CarTask carTask = new CarTask("","","","",1,"");
         //TODO FIXME
         CarTask carTask = new CarTask("","","","",1,null);
         VueloIdaTask vueloIdaTask = new VueloIdaTask();
@@ -92,7 +91,67 @@ public class AvailabilityManager {
 
 
         //TODO
-        return null;
+        Itinerary itinerary = new Itinerary();
+
+
+        if (itinerary.getTicketOptionDays() == null) {
+            itinerary.setTicketOptionDays(new ArrayList<>());
+        }
+        for (Ticket ticket: ticketServices) {
+            int night = ticket.getNight();
+            boolean found = false;
+            for (int i = 0; i < itinerary.getTicketOptionDays().size() && !found; i++) {
+                TicketOptions ticketOptions = itinerary.getTicketOptionDays().get(i);
+                if (ticketOptions.getDay() == night) {
+                    if (ticketOptions.getListTicket() == null){
+                        ticketOptions.setListTicket(new ArrayList<>());
+                    }
+                    itinerary.getTicketOptionDays().remove(ticketOptions);
+                    ticketOptions.getListTicket().add(ticket);
+                    itinerary.getTicketOptionDays().add(ticketOptions);
+                    found = true;
+                }
+            }
+            if (!found) {
+                TicketOptions ticketOptions = new TicketOptions();
+                ticketOptions.setDay(night);
+                ticketOptions.setListTicket(new ArrayList<>());
+                ticketOptions.getListTicket().add(ticket);
+                itinerary.getTicketOptionDays().add(ticketOptions);
+                found = true;
+            }
+        }
+
+        if (itinerary.getHotelOptionDays() == null) {
+            itinerary.setHotelOptionDays(new ArrayList<>());
+        }
+        for (Hotel hotel: hotelServices) {
+            int night = hotel.getNight();
+            boolean found = false;
+            for (int i = 0; i < itinerary.getHotelOptionDays().size() && !found; i++) {
+                HotelOptions hotelOptions = itinerary.getHotelOptionDays().get(i);
+                if (hotelOptions.getDay() == night) {
+                    if (hotelOptions.getListHotel() == null){
+                        hotelOptions.setListHotel(new ArrayList<>());
+                    }
+                    itinerary.getHotelOptionDays().remove(hotelOptions);
+                    hotelOptions.getListHotel().add(hotel);
+                    itinerary.getHotelOptionDays().add(hotelOptions);
+                    found = true;
+                }
+            }
+            if (!found) {
+                HotelOptions hotelOptions = new HotelOptions();
+                hotelOptions.setDay(night);
+                hotelOptions.setListHotel(new ArrayList<>());
+                hotelOptions.getListHotel().add(hotel);
+                itinerary.getHotelOptionDays().add(hotelOptions);
+                found = true;
+            }
+        }
+
+
+        return itinerary;
     }
 
     private final class CarTask implements Callable<List<Car>> {

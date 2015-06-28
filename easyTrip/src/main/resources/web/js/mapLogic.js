@@ -3,14 +3,41 @@ hb.directionsService = null;
 hb.directionsDisplay = null;
 hb.waypoints = [];
 
+var routeLoadedEvent = new Event('routeLoaded');
+
+
+
 var icons = {
     origin: "http://maps.gstatic.com/intl/en_ALL/mapfiles/dd-start.png",
     destination: "http://maps.gstatic.com/intl/en_ALL/mapfiles/dd-end.png"
 };
 
+function loadStopovers() {
+    if (typeof(hb.route) == "undefined") {
+        return false;
+    }
+    $("#stopover-list").empty();
+    var legs = hb.route.routes[0].legs;
+    for (i=0;i<legs.length;i++) {
+        var leg = legs[i];
+        var formattedStartAddress = formatStopover(leg.start_address);
+        var formattedEndAddress = formatStopover(leg.end_address);
+        $("#stopover-list").append('<a class="list-group-item" href="#">Day '+(i+1)+':<br/>'+formattedStartAddress+' - '+formattedEndAddress+'</a>');
+    }
+
+}
+
+function formatStopover(address) {
+    var addressParts = address.split(", ");
+    var formattedAddress = addressParts[addressParts.length-2]+","+addressParts[addressParts.length-1];
+    formattedAddress = formattedAddress.substr(formattedAddress.indexOf(" ")+1);
+    return formattedAddress;
+}
+
 $(function () {
 
     function initialize() {
+        window.addEventListener('routeLoaded', loadStopovers, false);
         var mapOptions = {
             center: { lat: 45.4167754, "lng" : 3.7037902 },
             zoom: 5
@@ -23,6 +50,12 @@ $(function () {
         hb.directionsService = new google.maps.DirectionsService();
         hb.directionsDisplay = new google.maps.DirectionsRenderer(directionsRendererOptions);
         hb.directionsDisplay.setMap(hb.map);
+
+        google.maps.event.addListener(hb.directionsDisplay, 'directions_changed', function() {
+            hb.route = hb.directionsDisplay.getDirections();
+            loadStopovers();
+        });
+
 
         var fromCityName = getUrlParameter("origin");
         var toCityName = getUrlParameter("destination");
@@ -125,7 +158,7 @@ function getCloserAirportsToLocation(maxResults, latitude, longitude, type) {
 
             //setTimeout(function(){}, 500);
             workOutMostPopulatedCities();
-            calculateRoute(hb.originAirports[0], hb.destinationAirports[0]);
+            //calculateRoute(hb.originAirports[0], hb.destinationAirports[0]);
         }
     }, "jsonp");
 }
@@ -162,6 +195,7 @@ function sendRouteRequest(request) {
         if (status == google.maps.DirectionsStatus.OK) {
             hb.directionsDisplay.setDirections(result);
             hb.route = result;
+            window.dispatchEvent(routeLoadedEvent);
         }
     });
 }
@@ -215,20 +249,17 @@ function getNearbyCities(top, bottom, left, right, expectedCalls) {
     //hb.addMarker(coord1, icons.destination, hb.map, false, false);
 
     $.get( requestUrl, function( data ) {
-        /*for (i=0;i<hb.tripLength && i<data.geonames.length;i++) {
-            var city = data.geonames[i];
-            var location = new google.maps.LatLng(city.lat, city.lng);
-            hb.addMarker(location, icons.origin, hb.map, true, false);
-            var s="";
-        }*/
         if (typeof(data.geonames) == "undefined") {
             return false;
         }
         var city = data.geonames[0];
         var point = new google.maps.LatLng(city.lat, city.lng);
         //hb.addMarker(point, icons.origin, hb.map, true, false);
-        hb.waypoints.push({ location: point, stopover:true });
-        if (expectedCalls >= hb.waypoints.length - 3) {
+        var waypoint = { location: point };
+        hb.waypoints.push(waypoint);
+        console.log("Adding waypoint: "+waypoint.location+ ". Exp:"+expectedCalls+",Got:"+hb.waypoints.length);
+        if (expectedCalls-1 == hb.waypoints.length) {
+            console.log("Calculating route...");
             calculateRoute(hb.originAirports[0], hb.destinationAirports[0]);
         }
     });

@@ -1,0 +1,88 @@
+
+/* Global Styles */
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body { 
+  overflow: hidden; 
+
+  font-family: 'Rock salt';
+  color: orange;
+  text-shadow: -1px 0 black, 0 2px black, 1px 0 black, 0 -1px black; 
+}
+
+.container-fluid {
+  padding: 0px;
+}
+
+#map * , .no-shadow {
+  text-shadow: none; 
+}
+
+#top-bar h3 {
+  display: table;
+  width: 100%;
+  text-align: center;
+}
+
+#top-bar a {
+  text-decoration: none;
+  color: orange;
+}
+#top-bar a:hover {
+  font-weight: bolder;
+}
+
+#top-bar {
+  background-image: url('../img/sidebar-wood.jpg');
+}
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-vertical-center h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4.5em;
+    font-weight: 700;
+}
+
+/* Custom Button Styles */
+
+.btn-dark {
+    border-radius: 0;
+    color: #fff;
+    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(75,15,0,0.9);
+    border-radius: 15px;
+}
+
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active {
+    color: #fff;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.btn-light {
+    border-radius: 15px;
+    color: #333;
+    background-color: rgba(191,159,115,0.9);
+}
+
+.btn-light:hover,
+.btn-light:focus,
+.btn-light:active {
+    color: #333;
+    background-color: rgba(255,255,255,0.8);
+}
+
+a {
+	text-decoration: none;
+}

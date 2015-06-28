@@ -1,4 +1,7 @@
 var hb = {};
+hb.directionsService = null;
+hb.directionsDisplay = null;
+hb.waypoints = [];
 
 var icons = {
     origin: "http://maps.gstatic.com/intl/en_ALL/mapfiles/dd-start.png",
@@ -14,14 +17,23 @@ $(function () {
         };
         hb.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+        var directionsRendererOptions = {
+            draggable: true
+        };
+        hb.directionsService = new google.maps.DirectionsService();
+        hb.directionsDisplay = new google.maps.DirectionsRenderer(directionsRendererOptions);
+        hb.directionsDisplay.setMap(hb.map);
 
-        var fromCityName = getUrlParameter("from");
-        var toCityName = getUrlParameter("to");
+        var fromCityName = getUrlParameter("origin");
+        var toCityName = getUrlParameter("destination");
 
         console.log("FROM: " + fromCityName + " TO: " + toCityName);
 
-        hb.startDate = getUrlParameter("startdate");
-        hb.endDate = getUrlParameter("enddate");
+        hb.paxes = getUrlParameter("paxes");
+        hb.startDate = getUrlParameter("start-date");
+        hb.endDate = getUrlParameter("end-date");
+
+        hb.tripLength = calculateDaysBetweenDates(hb.startDate, hb.endDate);
 
         getCloserAirportWithCityName(fromCityName, "FROM");
         getCloserAirportWithCityName(toCityName, "TO");
@@ -32,6 +44,19 @@ $(function () {
 
 
 });
+
+function calculateDaysBetweenDates(dateFrom, dateTo) {
+
+    var splittedDateFrom = dateFrom.split("%2F");
+    var splittedDateTo = dateTo.split("%2F");
+
+    var oneDay = 24*60*60*1000;
+    var firstDate = new Date(splittedDateFrom[2],splittedDateFrom[1],splittedDateFrom[0]);
+    var secondDate = new Date(splittedDateTo[2],splittedDateTo[1],splittedDateTo[0]);
+
+    var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+    return diffDays;
+}
 
 function getCloserAirportWithCityName(cityname, type) {
     var url = "http://maps.googleapis.com/maps/api/geocode/json?address="+cityname+"&sensor=true";
@@ -44,10 +69,8 @@ function getCloserAirportWithCityName(cityname, type) {
         } else if (type == "TO") {
             hb.to = response.results[0].geometry.location;
             console.log("TO COORDS: " + hb.to.lat + "," + hb.to.lng);
-            getCloserAirportsToLocation(3, hb.to.lng, hb.to.lat, "TO");
+            //getCloserAirportsToLocation(3, hb.to.lng, hb.to.lat, "TO");
 
-            //var coord = new google.maps.LatLng(hb.to.lat, hb.to.lng);
-            //hb.addMarker(coord, icons.destination, hb.map, false, false);
         }
     });
 }
@@ -82,20 +105,27 @@ function getCloserAirportsToLocation(maxResults, latitude, longitude, type) {
         if (type == "CURRENT") {
             hb.currentLocationAirports = response.airports;
             console.log("CURRENT LOCATION AIRPORTS: " + hb.currentLocationAirports[0].code + ", count" + hb.currentLocationAirports.length);
-        } else if (type == "TO") {
+        } else if (type == "FROM") {
             hb.originAirports = response.airports;
-            console.log("TO AIRPORTS: " + hb.originAirports[0].code + ", count" + hb.originAirports.length);
+            console.log("FROM AIRPORTS: " + hb.originAirports[0].code + ", count" + hb.originAirports.length);
 
             var coord = new google.maps.LatLng(hb.to.lat, hb.to.lng);
             coord = new google.maps.LatLng(hb.originAirports[0].lat, hb.originAirports[0].lng);
-            hb.addMarker(coord, icons.destination, hb.map, false, false);
-        } else if (type == "FROM") {
+            //hb.addMarker(coord, icons.destination, hb.map, false, false);
+
+            getCloserAirportsToLocation(3, hb.to.lng, hb.to.lat, "TO");
+
+        } else if (type == "TO") {
             hb.destinationAirports = response.airports;
-            console.log("FROM AIRPORTS: " + hb.destinationAirports[0].code + ", count" + hb.destinationAirports.length);
+            console.log("TO AIRPORTS: " + hb.destinationAirports[0].code + ", count" + hb.destinationAirports.length);
 
             var coord = new google.maps.LatLng(hb.from.lat, hb.from.lng);
             coord = new google.maps.LatLng(hb.destinationAirports[0].lat, hb.destinationAirports[0].lng);
-            hb.addMarker(coord, icons.origin, hb.map, false, false);
+            //hb.addMarker(coord, icons.origin, hb.map, false, false);
+
+            //setTimeout(function(){}, 500);
+            workOutMostPopulatedCities();
+            calculateRoute(hb.originAirports[0], hb.destinationAirports[0]);
         }
     }, "jsonp");
 }
@@ -112,4 +142,95 @@ function getUrlParameter(sParam)
             return sParameterName[1];
         }
     }
+}
+
+function calculateRoute(origin, destination) {
+    directionsRequest = {
+        origin: new google.maps.LatLng(origin.lat, origin.lng),
+        destination: new google.maps.LatLng(destination.lat, destination.lng),
+        provideRouteAlternatives: false,
+        travelMode: google.maps.TravelMode.DRIVING,
+        unitSystem: google.maps.UnitSystem.IMPERIAL,
+        waypoints: hb.waypoints,
+        optimizeWaypoints: true
+    };
+    sendRouteRequest(directionsRequest);
+}
+
+function sendRouteRequest(request) {
+    hb.directionsService.route(request, function(result, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            hb.directionsDisplay.setDirections(result);
+            hb.route = result;
+        }
+    });
+}
+
+function workOutMostPopulatedCities() {
+    var top, bottom, right, left;
+    top = hb.destinationAirports[0].lat;
+    bottom = hb.originAirports[0].lat;
+    left = hb.destinationAirports[0].lng;
+    right = hb.originAirports[0].lng;
+
+    var xIncrement = (right - left)/hb.tripLength;
+    var yIncrement = (bottom - top)/hb.tripLength;
+    var previousX = null, previousY = null;
+    var first = false;
+    var expectedCalls = hb.tripLength - 1;
+    for (i=0;i<hb.tripLength;i++) {
+        if (!first) {
+            first = true;
+        } else {
+            var calcX = left + xIncrement * i;
+            var calcY = top + yIncrement * i;
+            //hb.addMarker(new google.maps.LatLng(calcY, calcX), icons.destination, hb.map, true, false);
+
+            if (previousX != null && previousY != null) {
+                getNearbyCities(calcY, previousY, calcX, previousX, expectedCalls);
+            }
+
+            previousX = calcX;
+            previousY = calcY;
+        }
+    }
+
+    //calculateRoute(hb.originAirports[0], hb.destinationAirports[0]);
+}
+
+function getNearbyCities(top, bottom, left, right, expectedCalls) {
+    /*if (true) { return false; }*/
+    var requestUrl = 'http://api.geonames.org/citiesJSON?north=' + top + '&south=' + bottom + '&east=' + right + '&west=' + left + '&lang=en&username=pablogdt';
+
+    //var coord = new google.maps.LatLng(top, left);
+    //hb.addMarker(coord, icons.destination, hb.map, false, false);
+
+    //var coord1 = new google.maps.LatLng(bottom, right);
+    //hb.addMarker(coord1, icons.destination, hb.map, false, false);
+
+    //var coord = new google.maps.LatLng(top, right);
+    //hb.addMarker(coord, icons.destination, hb.map, false, false);
+
+    //var coord1 = new google.maps.LatLng(bottom, left);
+    //hb.addMarker(coord1, icons.destination, hb.map, false, false);
+
+    $.get( requestUrl, function( data ) {
+        /*for (i=0;i<hb.tripLength && i<data.geonames.length;i++) {
+            var city = data.geonames[i];
+            var location = new google.maps.LatLng(city.lat, city.lng);
+            hb.addMarker(location, icons.origin, hb.map, true, false);
+            var s="";
+        }*/
+        if (typeof(data.geonames) == "undefined") {
+            return false;
+        }
+        var city = data.geonames[0];
+        var point = new google.maps.LatLng(city.lat, city.lng);
+        //hb.addMarker(point, icons.origin, hb.map, true, false);
+        hb.waypoints.push({ location: point, stopover:true });
+        if (expectedCalls >= hb.waypoints.length - 3) {
+            calculateRoute(hb.originAirports[0], hb.destinationAirports[0]);
+        }
+    });
+
 }

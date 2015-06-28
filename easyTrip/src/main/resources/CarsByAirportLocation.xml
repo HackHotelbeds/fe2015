@@ -1,507 +1,815 @@
-<VehLocationListRS Version="2.0.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
-    <stl:ApplicationResults status="Complete">
-        <stl:Success timeStamp="2014-03-11T13:42:10-05:00"/>
-    </stl:ApplicationResults>
-    <VehAvailRSCore>
-        <VehVendorAvails>
-            <VehVendorAvail RPH="1">
-                <LocationDetails Direction="E" Distance="0.9" ExtendedLocationCode="C039" LocationCode="HNL" LocationName="HNLC39  BRADLEY PACIFIC AVI" UnitOfMeasure="MI">
-                    <Address Latitude="21.320642" Longitude="-157.910972">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>98 KAPALULU PLACE</StreetNmbr>
-                        <StreetNmbr>FOR PRIVATE FLIGHTS ONLY</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="2">
-                <LocationDetails Direction="NE" Distance="1.0" LocationCode="HNL" LocationName="HONOLULU INTERNATIONAL AIRP" UnitOfMeasure="MI">
-                    <Address Latitude="21.335565" Longitude="-157.918657">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>300 RODGERS BLVD</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZI" CompanyShortName="AVIS"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="3">
-                <LocationDetails Direction="NE" Distance="1.0" LocationCode="HNL" LocationName="HONOLULU" UnitOfMeasure="MI">
-                    <Address Latitude="21.335565" Longitude="-157.918657">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>300 RODGERS BLVD</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="AD" CompanyShortName="ADVANTAGE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="4">
-                <LocationDetails Direction="NE" Distance="1.0" LocationCode="HNL" LocationName="HONOLULU INTERNATIONAL AIRP" UnitOfMeasure="MI">
-                    <Address Latitude="21.335565" Longitude="-157.918657">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>300 RODGERS BULVARD</StreetNmbr>
-                        <StreetNmbr>PLEASE GO TO ADVANTAGE COUNTER</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="EP" CompanyShortName="EUROPCAR"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="5">
-                <LocationDetails Direction="NE" Distance="1.0" LocationCode="HNL" LocationName="HONOLULU INTL AIRPORT" UnitOfMeasure="MI">
-                    <Address Latitude="21.335565" Longitude="-157.918657">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>300 RODGERS BLVD</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZD" CompanyShortName="BUDGET"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="6">
-                <LocationDetails Direction="N" Distance="1.0" LocationCode="HNL" LocationName="HONOLULU INTERNATIONAL AIRP" UnitOfMeasure="MI">
-                    <Address Latitude="21.335900" Longitude="-157.918700">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>300 RODGERS BLVD</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="7">
-                <LocationDetails Direction="NE" Distance="1.0" LocationCode="HNL" LocationName="HNLHNL HONOLULU AIR ON SITE" UnitOfMeasure="MI">
-                    <Address Latitude="21.333268" Longitude="-157.913984">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>3255 AOLELE ST</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="8">
-                <LocationDetails Direction="NE" Distance="1.2" LocationCode="HNL" LocationName="HONOLULU AIRPORT FIREFLY" UnitOfMeasure="MI">
-                    <Address Latitude="21.337093" Longitude="-157.916508">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>3365 NORTH NIMITZ HIGHWAY</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="FF" CompanyShortName="FIREFLY"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="9">
-                <LocationDetails Direction="NE" Distance="1.2" ExtendedLocationCode="C019" LocationCode="HNL" LocationName="HNLC19  NIMITZ OAP" UnitOfMeasure="MI">
-                    <Address Latitude="21.337093" Longitude="-157.916508">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>3365 NORTH NIMITZ HIGHWAY</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="10">
-                <LocationDetails Direction="NE" Distance="1.2" LocationCode="HNL" LocationName="ECONOMY RENT A CAR" UnitOfMeasure="MI">
-                    <Address Latitude="21.336800" Longitude="-157.913330">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>3251 N NIMITZ HWY</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="EY" CompanyShortName="ECONOMY"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="11">
-                <LocationDetails Direction="NE" Distance="1.3" LocationCode="HNL" LocationName="HNL  HONOLULU INTL AIRPORT" UnitOfMeasure="MI">
-                    <Address Latitude="21.336218" Longitude="-157.911145">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>3179 NORTH NIMITZ HIGHWAY</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZR" CompanyShortName="DOLLAR"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="12">
-                <LocationDetails Direction="NE" Distance="1.3" LocationCode="HNL" LocationName="HNL    HONOLULU" UnitOfMeasure="MI">
-                    <Address Latitude="21.336200" Longitude="-157.910500">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>3147 N NIMITZ HWY</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZT" CompanyShortName="THRIFTY"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="13">
-                <LocationDetails Direction="NE" Distance="1.4" LocationCode="HNL" LocationName="HNLHNL HONOLULU INTL" UnitOfMeasure="MI">
-                    <Address Latitude="21.335852" Longitude="-157.908058">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>3055 N NIMITZ HWY</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="AL" CompanyShortName="ALAMO"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="14">
-                <LocationDetails Direction="NE" Distance="1.6" LocationCode="HNL" LocationName="HONOLULU INTERNATIONAL AIRP" UnitOfMeasure="MI">
-                    <Address Latitude="21.331952" Longitude="-157.902321">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2912 AOLELE STREET</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZL" CompanyShortName="NATIONAL"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="15">
-                <LocationDetails Direction="NE" Distance="1.9" ExtendedLocationCode="C003" LocationCode="HNL" LocationName="HNLC03 AHUA MAPUNAPUNA NO A" UnitOfMeasure="MI">
-                    <Address Latitude="21.335080" Longitude="-157.898800">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>609 AHUA STREET</StreetNmbr>
-                        <StreetNmbr>NO AIRPRT SVC</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="16">
-                <LocationDetails Direction="NW" Distance="3.0" ExtendedLocationCode="N009" LocationCode="HNL" LocationName="HNLN09 PEARLHBR MILITARY ON" UnitOfMeasure="MI">
-                    <Address Latitude="21.360869" Longitude="-157.947135">
-                        <CityName>PEARL HARBOR</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>BLDG 1237 AVE A</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZL" CompanyShortName="NATIONAL"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="17">
-                <LocationDetails Direction="E" Distance="4.1" ExtendedLocationCode="C018" LocationCode="HNL" LocationName="HNLC18 NIMITZ CENTER" UnitOfMeasure="MI">
-                    <Address Latitude="21.326464" Longitude="-157.861430">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>1130 N NIMITZ HWY</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="18">
-                <LocationDetails Direction="E" Distance="4.3" ExtendedLocationCode="C011" LocationCode="HNL" LocationName="HNLC11 KAKAAKO ALAMOANA" UnitOfMeasure="MI">
-                    <Address Latitude="21.297717" Longitude="-157.862124">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>677 ALA MOANA BLVD</StreetNmbr>
-                        <StreetNmbr>STE 100</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="19">
-                <LocationDetails Direction="W" Distance="4.7" ExtendedLocationCode="N009" LocationCode="HNL" LocationName="HNLN09 PEARL HARBOR MILITAR" UnitOfMeasure="MI">
-                    <Address Latitude="21.337580" Longitude="-157.996063">
-                        <CityName>PEARL HARBOR</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>PEARL HARBOR MILITARY ONLY</StreetNmbr>
-                        <StreetNmbr>BLDG 1786 AVE A</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="20">
-                <LocationDetails Direction="N" Distance="5.1" ExtendedLocationCode="N005" LocationCode="HNL" LocationName="HNLN05 AIEA PEARL CITY" UnitOfMeasure="MI">
-                    <Address Latitude="21.391787" Longitude="-157.952715">
-                        <CityName>AIEA</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>98 761 OIHANA PL</StreetNmbr>
-                        <StreetNmbr>STE D4</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="21">
-                <LocationDetails Direction="E" Distance="5.3" ExtendedLocationCode="C004" LocationCode="HNL" LocationName="HNLC04 KAPIOLANI" UnitOfMeasure="MI">
-                    <Address Latitude="21.295187" Longitude="-157.847335">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>1221 KAPIOLANI BLVD</StreetNmbr>
-                        <StreetNmbr>SUITE 114</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="22">
-                <LocationDetails Direction="E" Distance="5.7" ExtendedLocationCode="C022" LocationCode="HNL" LocationName="HNLC22  PAGODA HOTEL HLE" UnitOfMeasure="MI">
-                    <Address Latitude="21.295947" Longitude="-157.840625">
-                        <CityName>HONOLULU AP OAHU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>1525 RYCROFT STREET</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="23">
-                <LocationDetails Direction="SE" Distance="6.1" ExtendedLocationCode="R071" LocationCode="HNL" LocationName="HNLR71 WAIKIKI DISCOVERY BA" UnitOfMeasure="MI">
-                    <Address Latitude="21.285090" Longitude="-157.838115">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>1778 ALA MOANA BLVD</StreetNmbr>
-                        <StreetNmbr>STE 206</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="AL" CompanyShortName="ALAMO"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="24">
-                <LocationDetails Direction="SE" Distance="6.1" ExtendedLocationCode="C001" LocationCode="HNL" LocationName="HNLC01 WAIKIKI ALA MOANA BL" UnitOfMeasure="MI">
-                    <Address Latitude="21.284981" Longitude="-157.838061">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>1778 ALA MOANA BLVD</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZL" CompanyShortName="NATIONAL"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="25">
-                <LocationDetails Direction="SE" Distance="6.1" ExtendedLocationCode="C003" LocationCode="HNL" LocationName="HNLC03  ADV HONOLULU ILIKAI" UnitOfMeasure="MI">
-                    <Address Latitude="21.284782" Longitude="-157.838149">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>1777 ALA MOANA BLVD</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="AD" CompanyShortName="ADVANTAGE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="26">
-                <LocationDetails Direction="SE" Distance="6.1" ExtendedLocationCode="C003" LocationCode="HNL" LocationName="HNLC003 HONOLULU ALA MOANA" UnitOfMeasure="MI">
-                    <Address Latitude="21.284782" Longitude="-157.838149">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>1777 ALA MOANA BOULEVARD II LOBBY LEVEL</StreetNmbr>
-                        <StreetNmbr>PLEASE GO TO ADVANTAGE COUNTER</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="EP" CompanyShortName="EUROPCAR"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="27">
-                <LocationDetails Direction="SE" Distance="6.1" ExtendedLocationCode="C062" LocationCode="HNL" LocationName="HNLC62 WAIKIKI DISCOVERY BA" UnitOfMeasure="MI">
-                    <Address Latitude="21.284952" Longitude="-157.838059">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>1778 ALA MOANA BLVD</StreetNmbr>
-                        <StreetNmbr>STE 202</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="28">
-                <LocationDetails Direction="SE" Distance="6.3" ExtendedLocationCode="R004" LocationCode="HNL" LocationName="HNLR04 HILTON HAWAIIAN VILL" UnitOfMeasure="MI">
-                    <Address Latitude="21.284273" Longitude="-157.835764">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2005 KALIA RD</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZL" CompanyShortName="NATIONAL"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="29">
-                <LocationDetails Direction="SE" Distance="6.4" ExtendedLocationCode="C002" LocationCode="HNL" LocationName="HNLC02         HALE KOA HOT" UnitOfMeasure="MI">
-                    <Address Latitude="21.282700" Longitude="-157.834600">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2055 KALIA DRIVE</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZR" CompanyShortName="DOLLAR"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="30">
-                <LocationDetails Direction="SE" Distance="6.5" ExtendedLocationCode="C004" LocationCode="HNL" LocationName="HNLC04           KALAKAUA A" UnitOfMeasure="MI">
-                    <Address Latitude="21.284787" Longitude="-157.832114">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2002 KALAKAUA AVE</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZR" CompanyShortName="DOLLAR"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="31">
-                <LocationDetails Direction="SE" Distance="6.5" ExtendedLocationCode="C059" LocationCode="HNL" LocationName="HNLC59  HN9 KALAKAUA" UnitOfMeasure="MI">
-                    <Address Latitude="21.284787" Longitude="-157.832114">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2002 KALAKAUA AVENUE</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZT" CompanyShortName="THRIFTY"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="32">
-                <LocationDetails Direction="SE" Distance="6.6" ExtendedLocationCode="R061" LocationCode="HNL" LocationName="HNLR61 OUTRIGGER REEF" UnitOfMeasure="MI">
-                    <Address Latitude="21.278826" Longitude="-157.832415">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2169 KALIA RD</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="33">
-                <LocationDetails Direction="SE" Distance="6.7" ExtendedLocationCode="C014" LocationCode="HNL" LocationName="HNLC14  IMPERIAL HOTEL" UnitOfMeasure="MI">
-                    <Address Latitude="21.278509" Longitude="-157.831518">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>205 LEWERS STREET</StreetNmbr>
-                        <StreetNmbr>2ND FLOOR</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="34">
-                <LocationDetails Direction="SE" Distance="6.8" ExtendedLocationCode="C002" LocationCode="HNL" LocationName="HNLC02 SHERATON WAIKIKI" UnitOfMeasure="MI">
-                    <Address Latitude="21.278868" Longitude="-157.828702">
-                        <CityName>HONOLULU OAHU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2255 KALAKAUA AVE</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZI" CompanyShortName="AVIS"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="35">
-                <LocationDetails Direction="SE" Distance="6.9" ExtendedLocationCode="C061" LocationCode="HNL" LocationName="HNLC61 WAIKIKI" UnitOfMeasure="MI">
-                    <Address Latitude="21.280961" Longitude="-157.826228">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>445 SEASIDE AVE</StreetNmbr>
-                        <StreetNmbr>SUITE 3C</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="36">
-                <LocationDetails Direction="SE" Distance="7.1" ExtendedLocationCode="C063" LocationCode="HNL" LocationName="HNLC63 ERAC WAIKIKI KAIULAN" UnitOfMeasure="MI">
-                    <Address Latitude="21.277228" Longitude="-157.824813">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>151 KAIULANI AVE</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="37">
-                <LocationDetails Direction="SE" Distance="7.1" ExtendedLocationCode="R073" LocationCode="HNL" LocationName="HNLR73 WAIKIKI KAIULANI" UnitOfMeasure="MI">
-                    <Address Latitude="21.277228" Longitude="-157.824813">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>151 KAIULANI AVE</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="AL" CompanyShortName="ALAMO"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="38">
-                <LocationDetails Direction="SE" Distance="7.1" ExtendedLocationCode="C010" LocationCode="HNL" LocationName="HNLC10  WAIKIKI BEACH HYATT" UnitOfMeasure="MI">
-                    <Address Latitude="21.276000" Longitude="-157.825400">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2424 KALAKAUA AVENUE</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="39">
-                <LocationDetails Direction="SE" Distance="7.1" ExtendedLocationCode="C001" LocationCode="HNL" LocationName="HNLC01 HONOLULU HI" UnitOfMeasure="MI">
-                    <Address Latitude="21.275800" Longitude="-157.825000">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2424 KALAKAUA AVE</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZD" CompanyShortName="BUDGET"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="40">
-                <LocationDetails Direction="E" Distance="7.2" ExtendedLocationCode="C052" LocationCode="HNL" LocationName="HNLC52 UNIVERSITY OF HAWAII" UnitOfMeasure="MI">
-                    <Address Latitude="21.302176" Longitude="-157.814420">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>1951 E WEST RD</StreetNmbr>
-                        <StreetNmbr>RM 118</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="41">
-                <LocationDetails Direction="SE" Distance="7.2" ExtendedLocationCode="C003" LocationCode="HNL" LocationName="HNLC03   PACIFIC BEACH HOTE" UnitOfMeasure="MI">
-                    <Address Latitude="21.274200" Longitude="-157.824000">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2490 KALAKAUA AVENUE</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZR" CompanyShortName="DOLLAR"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="42">
-                <LocationDetails Direction="SE" Distance="7.3" ExtendedLocationCode="R011" LocationCode="HNL" LocationName="HNLR11  WAIKIKI BEACH MARRI" UnitOfMeasure="MI">
-                    <Address Latitude="21.272700" Longitude="-157.823200">
-                        <CityName>HONOLULU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>2552 KALAKAUA AVENUE</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ZE" CompanyShortName="HERTZ"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="43">
-                <LocationDetails Direction="NW" Distance="7.4" ExtendedLocationCode="N001" LocationCode="HNL" LocationName="HNLN01 WAIPAHU" UnitOfMeasure="MI">
-                    <Address Latitude="21.377395" Longitude="-158.024443">
-                        <CityName>WAIPAHU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>94 050 FARRINGTON HWY</StreetNmbr>
-                        <StreetNmbr>STE E3 2</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-            <VehVendorAvail RPH="44">
-                <LocationDetails Direction="NW" Distance="8.7" ExtendedLocationCode="N016" LocationCode="HNL" LocationName="HNLN16 WAIPIO GENTRY" UnitOfMeasure="MI">
-                    <Address Latitude="21.428517" Longitude="-157.997856">
-                        <CityName>WAIPAHU</CityName>
-                        <CountryCode>US</CountryCode>
-                        <StateProv StateCode="HI"/>
-                        <StreetNmbr>94 1299 KA UKA BLVD</StreetNmbr>
-                    </Address>
-                </LocationDetails>
-                <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
-            </VehVendorAvail>
-        </VehVendorAvails>
-    </VehAvailRSCore>
-</VehLocationListRS>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap-env:Header>
+        <eb:MessageHeader eb:version="1.0" soap-env:mustUnderstand="1" xmlns:eb="http://www.ebxml.org/namespaces/messageHeader">
+            <eb:From>
+                <eb:PartyId eb:type="URI">123123</eb:PartyId>
+            </eb:From>
+            <eb:To>
+                <eb:PartyId eb:type="URI">99999</eb:PartyId>
+            </eb:To>
+            <eb:CPAId>ABC</eb:CPAId>
+            <eb:ConversationId>abc123</eb:ConversationId>
+            <eb:Service eb:type="OTA">VehLocationListRQ</eb:Service>
+            <eb:Action>VehLocationListLLSRS</eb:Action>
+            <eb:MessageData>
+                <eb:MessageId>3b55a8d0-e8a9-4df2-adf8-f4f5308118d0@61</eb:MessageId>
+                <eb:Timestamp>2015-06-28T01:34:19</eb:Timestamp>
+                <eb:RefToMessageId>mid:20001209-133003-2333@clientofsabre.com</eb:RefToMessageId>
+            </eb:MessageData>
+        </eb:MessageHeader>
+        <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
+            <wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3519101429287537792!1704826!0</wsse:BinarySecurityToken>
+        </wsse:Security>
+    </soap-env:Header>
+    <soap-env:Body>
+        <VehLocationListRS Version="2.0.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
+            <stl:ApplicationResults status="Complete">
+                <stl:Success timeStamp="2015-06-27T20:34:19-05:00"/>
+            </stl:ApplicationResults>
+            <VehAvailRSCore>
+                <VehVendorAvails>
+                    <VehVendorAvail RPH="1">
+                        <LocationDetails Direction="E" Distance="0.7" LocationCode="LAX" LocationName="MIDWAY CAR RENTAL" UnitOfMeasure="MI">
+                            <Address Latitude="33.945580" Longitude="-118.394920">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>6151 WEST CENTURY BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="MW" CompanyShortName="MIDWAY"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="2">
+                        <LocationDetails Direction="NE" Distance="0.8" LocationCode="LAX" LocationName="EZ RENT A CAR" UnitOfMeasure="MI">
+                            <Address Latitude="33.947300" Longitude="-118.394000">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>6101 WEST 98TH STREET</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="EZ" CompanyShortName="EZRENT"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="3">
+                        <LocationDetails Direction="SE" Distance="1.0" ExtendedLocationCode="C034" LocationCode="LAX" LocationName="LAXC34  LANDMARK AVIATION" UnitOfMeasure="MI">
+                            <Address Latitude="33.931900" Longitude="-118.395100">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>6201 WEST IMPERIAL HIGHWAY</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="4">
+                        <LocationDetails Direction="SE" Distance="1.0" ExtendedLocationCode="C029" LocationCode="LAX" LocationName="LAXC29 LANDMARK AVIATION" UnitOfMeasure="MI">
+                            <Address Latitude="33.931200" Longitude="-118.395000">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>6201 W IMPERIAL HWY</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="5">
+                        <LocationDetails Direction="E" Distance="1.2" LocationCode="LAX" LocationName="LOS ANGELES INTL AIRPORT" UnitOfMeasure="MI">
+                            <Address Latitude="33.947500" Longitude="-118.386100">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>9775 AIRPORT BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZD" CompanyShortName="BUDGET"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="6">
+                        <LocationDetails Direction="E" Distance="1.2" ExtendedLocationCode="C018" LocationCode="LAX" LocationName="LAXC18 SIMONSON HLE" UnitOfMeasure="MI">
+                            <Address Latitude="33.945600" Longitude="-118.384900">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>5032 WILSHIRE BOULEVARD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="7">
+                        <LocationDetails Direction="NE" Distance="1.3" LocationCode="LAX" LocationName="LOS ANGELES INTL AIRPORT" UnitOfMeasure="MI">
+                            <Address Latitude="33.952400" Longitude="-118.385900">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>9217 AIRPORT BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZI" CompanyShortName="AVIS"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="8">
+                        <LocationDetails Direction="E" Distance="1.4" ExtendedLocationCode="C016" LocationCode="LAX" LocationName="LAXC16  RICKS AUTO BODY HLE" UnitOfMeasure="MI">
+                            <Address Latitude="33.945600" Longitude="-118.381800">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1804 HYPERION AVENUE</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="9">
+                        <LocationDetails Direction="NE" Distance="1.5" LocationCode="LAX" LocationName="LOS ANGELES AIRPORT" UnitOfMeasure="MI">
+                            <Address Latitude="33.955200" Longitude="-118.385600">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>9000 AIRPORT BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="10">
+                        <LocationDetails Direction="NE" Distance="1.7" LocationCode="LAX" LocationName="LAX  LOS ANGELES INTL AIRPO" UnitOfMeasure="MI">
+                            <Address Latitude="33.952600" Longitude="-118.379900">
+                                <CityName>INGLEWOOD</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>9150 AVIATION BOULEVARD</StreetNmbr>
+                                <StreetNmbr>IN TERMINAL</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZR" CompanyShortName="DOLLAR"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="11">
+                        <LocationDetails Direction="E" Distance="1.7" LocationCode="LAX" LocationName="LAX PAYLESS CAR RENTAL IN T" UnitOfMeasure="MI">
+                            <Address Latitude="33.945200" Longitude="-118.376636">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>5500 W CENTURY BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZA" CompanyShortName="PAYLESS"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="12">
+                        <LocationDetails Direction="E" Distance="1.7" LocationCode="LAX" LocationName="FOX RENT A CAR" UnitOfMeasure="MI">
+                            <Address Latitude="33.945000" Longitude="-118.376500">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>5500 W CENTURY BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="FX" CompanyShortName="FOX RAC"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="13">
+                        <LocationDetails Direction="E" Distance="1.8" LocationCode="LAX" LocationName="LAX    LOS ANGELES" UnitOfMeasure="MI">
+                            <Address Latitude="33.945100" Longitude="-118.375400">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>5440 WEST CENTURY BOULEVARD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZT" CompanyShortName="THRIFTY"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="14">
+                        <LocationDetails Direction="NE" Distance="1.8" LocationCode="LAX" LocationName="LAXLAX LOS ANGELES AIRPORT" UnitOfMeasure="MI">
+                            <Address Latitude="33.958200" Longitude="-118.380400">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>8734 BELLANCA AVE</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="15">
+                        <LocationDetails Direction="NE" Distance="1.9" LocationCode="LAX" LocationName="LAXLAX LOS ANGELES INTL ARP" UnitOfMeasure="MI">
+                            <Address Latitude="33.954800" Longitude="-118.377000">
+                                <CityName>INGLEWOOD</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>9020 AVIATION BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZL" CompanyShortName="NATIONAL"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="16">
+                        <LocationDetails Direction="NE" Distance="1.9" LocationCode="LAX" LocationName="LAXLAX LOS ANGELES INTL ARP" UnitOfMeasure="MI">
+                            <Address Latitude="33.954800" Longitude="-118.377000">
+                                <CityName>INGLEWOOD</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>9020 AVIATION BOULEVARD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="AL" CompanyShortName="ALAMO"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="17">
+                        <LocationDetails Direction="E" Distance="2.1" LocationCode="FSG" LocationName="FOX RENT A CAR" UnitOfMeasure="MI">
+                            <Address Latitude="33.943310" Longitude="-118.370049">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>10254 LA CIENEGA AVENUE</StreetNmbr>
+                                <StreetNmbr>TEST LOCATION ONLY NO RESERVATIONS</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="FX" CompanyShortName="FOX RAC"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="18">
+                        <LocationDetails Direction="NE" Distance="2.2" LocationCode="LAX" LocationName="LOS ANGELES AP" UnitOfMeasure="MI">
+                            <Address Latitude="33.959910" Longitude="-118.374536">
+                                <CityName>INGLEWOOD</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1030 MANCHESTER BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="AD" CompanyShortName="ADVANTAGE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="19">
+                        <LocationDetails Direction="E" Distance="3.2" ExtendedLocationCode="S003" LocationCode="LAX" LocationName="LAXS03 INGLEWOOD SOUTH" UnitOfMeasure="MI">
+                            <Address Latitude="33.954070" Longitude="-118.352449">
+                                <CityName>INGLEWOOD</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>800 SOUTH LA BREA</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="20">
+                        <LocationDetails Direction="S" Distance="3.4" ExtendedLocationCode="S024" LocationCode="LAX" LocationName="LAXS24 MANHATTAN BEACH" UnitOfMeasure="MI">
+                            <Address Latitude="33.893500" Longitude="-118.396000">
+                                <CityName>MANHATTAN BEACH</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>2301 N SEPULVEDA BOULEVARD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="21">
+                        <LocationDetails Direction="N" Distance="4.0" ExtendedLocationCode="W015" LocationCode="LAX" LocationName="LAXW15 CULVER CITY WEST FOX" UnitOfMeasure="MI">
+                            <Address Latitude="34.000103" Longitude="-118.401839">
+                                <CityName>CULVER CITY</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>4940 SOUTH SEPULVEDA BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="22">
+                        <LocationDetails Direction="SE" Distance="4.0" ExtendedLocationCode="C001" LocationCode="HHR" LocationName="HHRC01 HAWTHORNE LAWNDALE" UnitOfMeasure="MI">
+                            <Address Latitude="33.905239" Longitude="-118.352739">
+                                <CityName>LAWNDALE</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>15312 HAWTHORNE BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="23">
+                        <LocationDetails Direction="NW" Distance="4.0" ExtendedLocationCode="R001" LocationCode="LAX" LocationName="LAXR01  MARINA BEACH MARRIO" UnitOfMeasure="MI">
+                            <Address Latitude="33.981500" Longitude="-118.460000">
+                                <CityName>MARINA DEL REY</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>4100 ADMIRALTY WAY</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="24">
+                        <LocationDetails Direction="NW" Distance="4.1" ExtendedLocationCode="N010" LocationCode="LAX" LocationName="LAXN10  VENICE CA HLE" UnitOfMeasure="MI">
+                            <Address Latitude="33.991900" Longitude="-118.449100">
+                                <CityName>VENICE</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>2519 LINCOLN BOULEVARD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="25">
+                        <LocationDetails Direction="NW" Distance="4.2" ExtendedLocationCode="S016" LocationCode="SMO" LocationName="SMOS16 MARINA DEL REY" UnitOfMeasure="MI">
+                            <Address Latitude="33.992627" Longitude="-118.449860">
+                                <CityName>MARINA DEL REY</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>3240 WASHINGTON BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="26">
+                        <LocationDetails Direction="N" Distance="4.3" ExtendedLocationCode="N001" LocationCode="LAX" LocationName="LAXN01 CULVER CITY" UnitOfMeasure="MI">
+                            <Address Latitude="34.005100" Longitude="-118.410000">
+                                <CityName>CULVER CITY</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>4246 SEPULVEDA BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZI" CompanyShortName="AVIS"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="27">
+                        <LocationDetails Direction="N" Distance="4.4" ExtendedLocationCode="W012" LocationCode="LAX" LocationName="LAXW12  WESTSIDE VOLVO HLE" UnitOfMeasure="MI">
+                            <Address Latitude="34.007000" Longitude="-118.413200">
+                                <CityName>CULVER CITY</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>11201 WASHINGTON BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="28">
+                        <LocationDetails Direction="S" Distance="5.1" ExtendedLocationCode="S005" LocationCode="LAX" LocationName="LAXS05  REDONDO BEACH HLE" UnitOfMeasure="MI">
+                            <Address Latitude="33.871500" Longitude="-118.382100">
+                                <CityName>REDONDO BEACH</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1740 AVIATION BOULEVARD</StreetNmbr>
+                                <StreetNmbr>SUITE B</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="29">
+                        <LocationDetails Direction="N" Distance="5.2" ExtendedLocationCode="C080" LocationCode="LAX" LocationName="LAXC80 CULVER CITY VENICE B" UnitOfMeasure="MI">
+                            <Address Latitude="34.018028" Longitude="-118.408345">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>10757 61 VENICE BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="30">
+                        <LocationDetails Direction="NW" Distance="5.8" ExtendedLocationCode="C001" LocationCode="SMO" LocationName="SMOC01 SOUTH SANTA MONICA" UnitOfMeasure="MI">
+                            <Address Latitude="34.006166" Longitude="-118.475260">
+                                <CityName>SANTA MONICA</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>2700 LINCOLN BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="31">
+                        <LocationDetails Direction="N" Distance="6.2" ExtendedLocationCode="C004" LocationCode="LAX" LocationName="LAXC04 LA CIENEGA JEFFERSON" UnitOfMeasure="MI">
+                            <Address Latitude="34.027913" Longitude="-118.372021">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>3318 S LA CIENEGA BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="32">
+                        <LocationDetails Direction="SE" Distance="6.2" ExtendedLocationCode="E006" LocationCode="LAX" LocationName="LAXE06  TORRANCE HLE" UnitOfMeasure="MI">
+                            <Address Latitude="33.863600" Longitude="-118.352800">
+                                <CityName>TORRANCE</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>18409 HAWTHORNE BOULEVARD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="33">
+                        <LocationDetails Direction="S" Distance="6.5" ExtendedLocationCode="S034" LocationCode="LAX" LocationName="LAXS34 HERMOSA BCH REDONDO" UnitOfMeasure="MI">
+                            <Address Latitude="33.849148" Longitude="-118.391883">
+                                <CityName>HERMOSA BEACH</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>640 PACIFIC COAST HWY</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="34">
+                        <LocationDetails Direction="N" Distance="6.5" ExtendedLocationCode="C020" LocationCode="LAX" LocationName="LAXC20 WEST LA PICO BUNDY" UnitOfMeasure="MI">
+                            <Address Latitude="34.030877" Longitude="-118.447192">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>11779 WEST PICO BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="35">
+                        <LocationDetails Direction="NW" Distance="6.7" ExtendedLocationCode="N002" LocationCode="LAX" LocationName="LAXN02  LOEWS HOTEL" UnitOfMeasure="MI">
+                            <Address Latitude="34.009600" Longitude="-118.492900">
+                                <CityName>SANTA MONICA</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1700 OCEAN AVENUE</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="36">
+                        <LocationDetails Direction="N" Distance="6.9" ExtendedLocationCode="C099" LocationCode="LAX" LocationName="LAXC99 EXOTIC CAR COLLECTIO" UnitOfMeasure="MI">
+                            <Address Latitude="34.039300" Longitude="-118.439000">
+                                <CityName>SANTA MONICA</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1723 WILSHIRE BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="37">
+                        <LocationDetails Direction="N" Distance="6.9" ExtendedLocationCode="C023" LocationCode="LAX" LocationName="LAXC23 W LA OLYMPIC SEPULVE" UnitOfMeasure="MI">
+                            <Address Latitude="34.039330" Longitude="-118.439379">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>11151 W OLYMPIC BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="38">
+                        <LocationDetails Direction="NW" Distance="7.0" ExtendedLocationCode="C002" LocationCode="SMO" LocationName="SMOC02 SANTA MONICA" UnitOfMeasure="MI">
+                            <Address Latitude="34.020100" Longitude="-118.487000">
+                                <CityName>SANTA MONICA</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1027 BROADWAY</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZI" CompanyShortName="AVIS"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="39">
+                        <LocationDetails Direction="SE" Distance="7.1" ExtendedLocationCode="N018" LocationCode="TOA" LocationName="TOAN18 GARDENA" UnitOfMeasure="MI">
+                            <Address Latitude="33.891887" Longitude="-118.298725">
+                                <CityName>GARDENA</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1475 W REDONDO BEACH BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="40">
+                        <LocationDetails Direction="NW" Distance="7.2" ExtendedLocationCode="N001" LocationCode="LAX" LocationName="LAXN01  SANTA MONICA HLE" UnitOfMeasure="MI">
+                            <Address Latitude="34.024300" Longitude="-118.485400">
+                                <CityName>SANTA MONICA</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1426 SANTA MONICA BOULEVARD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="41">
+                        <LocationDetails Direction="NW" Distance="7.2" ExtendedLocationCode="C077" LocationCode="SMO" LocationName="SMOC77 SANTA MONICA CENTRAL" UnitOfMeasure="MI">
+                            <Address Latitude="34.026386" Longitude="-118.482850">
+                                <CityName>SANTA MONICA</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1702 SANTA MONICA BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="42">
+                        <LocationDetails Direction="N" Distance="7.3" ExtendedLocationCode="C007" LocationCode="LAX" LocationName="LAXC07  WESTWOOD HLE" UnitOfMeasure="MI">
+                            <Address Latitude="34.046300" Longitude="-118.434000">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>2021 WESTWOOD BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="43">
+                        <LocationDetails Direction="SE" Distance="7.3" ExtendedLocationCode="N004" LocationCode="TOA" LocationName="TOAN04 GARDENA SOUTH" UnitOfMeasure="MI">
+                            <Address Latitude="33.873779" Longitude="-118.309152">
+                                <CityName>GARDENA</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>17303 S WESTERN AVE</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="44">
+                        <LocationDetails Direction="SE" Distance="7.4" ExtendedLocationCode="C001" LocationCode="TOA" LocationName="TOAC01 HAWTHORNE AND SPENCE" UnitOfMeasure="MI">
+                            <Address Latitude="33.844500" Longitude="-118.354000">
+                                <CityName>TORRANCE</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>20522 HAWTHORNE BLVD</StreetNmbr>
+                                <StreetNmbr>SOUTH OF SPENCER ST</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZD" CompanyShortName="BUDGET"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="45">
+                        <LocationDetails Direction="NW" Distance="7.4" ExtendedLocationCode="C014" LocationCode="SMO" LocationName="SMOC14 SANTA MONICA COASTAL" UnitOfMeasure="MI">
+                            <Address Latitude="34.021547" Longitude="-118.495315">
+                                <CityName>SANTA MONICA</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1719 WILSHIRE BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="46">
+                        <LocationDetails Direction="NW" Distance="7.5" ExtendedLocationCode="C008" LocationCode="LAX" LocationName="LAXC08 W LOS ANGELES BRENTW" UnitOfMeasure="MI">
+                            <Address Latitude="34.041900" Longitude="-118.460000">
+                                <CityName>WEST LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>11901 SANTA MONICA BLVD</StreetNmbr>
+                                <StreetNmbr>BETWEEN BARRINGTON AVE AND BUNDY DR</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZI" CompanyShortName="AVIS"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="47">
+                        <LocationDetails Direction="SE" Distance="7.5" ExtendedLocationCode="C021" LocationCode="TOA" LocationName="TOAC21 TORRANCE" UnitOfMeasure="MI">
+                            <Address Latitude="33.842800" Longitude="-118.354000">
+                                <CityName>TORRANCE</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>20625 HAWTHORNE BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="48">
+                        <LocationDetails Direction="N" Distance="7.6" ExtendedLocationCode="C010" LocationCode="LAX" LocationName="LAXC10 WESTWOOD CENTURY CIT" UnitOfMeasure="MI">
+                            <Address Latitude="34.050500" Longitude="-118.435000">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>10799 SANTA MONICA BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="49">
+                        <LocationDetails Direction="N" Distance="7.7" ExtendedLocationCode="C009" LocationCode="LAX" LocationName="LAXC09 LA CIENGA PICO" UnitOfMeasure="MI">
+                            <Address Latitude="34.052244" Longitude="-118.376159">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1435 S LA CIENEGA BLVD</StreetNmbr>
+                                <StreetNmbr>STE D</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="50">
+                        <LocationDetails Direction="N" Distance="7.8" ExtendedLocationCode="C028" LocationCode="LAX" LocationName="LAXC28  HYATT REGENCY CENTU" UnitOfMeasure="MI">
+                            <Address Latitude="34.055600" Longitude="-118.413100">
+                                <CityName>CENTURY CITY</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>2025 AVENUE OF THE STAR</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="51">
+                        <LocationDetails Direction="N" Distance="7.8" ExtendedLocationCode="W016" LocationCode="LAX" LocationName="LAXW16  RESIDENCE INN HLE" UnitOfMeasure="MI">
+                            <Address Latitude="34.055600" Longitude="-118.395800">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1177 SOUTH BEVERLY DRIVE</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="52">
+                        <LocationDetails Direction="N" Distance="7.8" ExtendedLocationCode="C012" LocationCode="LAX" LocationName="LAXC12  CROWNE PLAZA" UnitOfMeasure="MI">
+                            <Address Latitude="34.056100" Longitude="-118.396000">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1150 SOUTH BEVERLY DRIVE</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="53">
+                        <LocationDetails Direction="N" Distance="8.1" ExtendedLocationCode="C005" LocationCode="LAX" LocationName="LAXC05  LA CIENEGA HLE" UnitOfMeasure="MI">
+                            <Address Latitude="34.056956" Longitude="-118.376199">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1103 SOUTH LA CIENEGA BOULEVARD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="54">
+                        <LocationDetails Direction="N" Distance="8.2" ExtendedLocationCode="E001" LocationCode="LAX" LocationName="LAXE01 WESTWOOD BEVERLY HIL" UnitOfMeasure="MI">
+                            <Address Latitude="34.058100" Longitude="-118.443000">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1234 WESTWOOD BLVD</StreetNmbr>
+                                <StreetNmbr>CORNER OF WESTWOOD AND WILSHIRE</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZI" CompanyShortName="AVIS"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="55">
+                        <LocationDetails Direction="NE" Distance="8.4" ExtendedLocationCode="C025" LocationCode="LAX" LocationName="LAXC25 WILSHIRE LABREA" UnitOfMeasure="MI">
+                            <Address Latitude="34.052437" Longitude="-118.343978">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1234 S LA BREA AVE</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="56">
+                        <LocationDetails Direction="NE" Distance="8.5" ExtendedLocationCode="C006" LocationCode="LAX" LocationName="LAXC06  PICO HLE" UnitOfMeasure="MI">
+                            <Address Latitude="34.047993" Longitude="-118.329084">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>4334 W PICO BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="57">
+                        <LocationDetails Direction="N" Distance="8.6" ExtendedLocationCode="N001" LocationCode="LAX" LocationName="LAXN01 BEVERLY HILLS CA" UnitOfMeasure="MI">
+                            <Address Latitude="34.067100" Longitude="-118.411000">
+                                <CityName>BEVERLY HILLS</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>9815 WILSHIRE BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZD" CompanyShortName="BUDGET"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="58">
+                        <LocationDetails Direction="NE" Distance="8.6" ExtendedLocationCode="N001" LocationCode="LAX" LocationName="LAXN01   LOS ANGELES NORTH" UnitOfMeasure="MI">
+                            <Address Latitude="34.056287" Longitude="-118.345223">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1025 SOUTH LABREA AVENUE</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZR" CompanyShortName="DOLLAR"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="59">
+                        <LocationDetails Direction="SE" Distance="8.8" ExtendedLocationCode="S023" LocationCode="HHR" LocationName="HHRS23 CARSON COMPTON" UnitOfMeasure="MI">
+                            <Address Latitude="33.876300" Longitude="-118.275500">
+                                <CityName>GARDENA</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>17120 S MAIN ST</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="60">
+                        <LocationDetails Direction="NE" Distance="8.8" ExtendedLocationCode="C026" LocationCode="LAX" LocationName="LAXC26 KOREA TOWN" UnitOfMeasure="MI">
+                            <Address Latitude="34.047100" Longitude="-118.317700">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>3412 W PICO BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="61">
+                        <LocationDetails Direction="N" Distance="8.9" ExtendedLocationCode="W011" LocationCode="LAX" LocationName="LAXW11 BEVERLY HILLS" UnitOfMeasure="MI">
+                            <Address Latitude="34.070013" Longitude="-118.383771">
+                                <CityName>BEVERLY HILLS</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>265 N  ROBERTSON</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="62">
+                        <LocationDetails Direction="SE" Distance="9.1" ExtendedLocationCode="C001" LocationCode="TOA" LocationName="TOAC01 TORRANCE HARBOR GATE" UnitOfMeasure="MI">
+                            <Address Latitude="33.837420" Longitude="-118.309192">
+                                <CityName>TORRANCE</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>20537 S WESTERN AVE</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="63">
+                        <LocationDetails Direction="SE" Distance="9.2" ExtendedLocationCode="S001" LocationCode="LAX" LocationName="LAXS01 TORRANCE SEARS AUTO" UnitOfMeasure="MI">
+                            <Address Latitude="33.823234" Longitude="-118.335164">
+                                <CityName>TORRANCE</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>22100 HAWTHORNE BLVD</StreetNmbr>
+                                <StreetNmbr>DEL AMO FASION CENTER</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZI" CompanyShortName="AVIS"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="64">
+                        <LocationDetails Direction="N" Distance="9.6" ExtendedLocationCode="C003" LocationCode="LAX" LocationName="LAXC03  WEST HOLLYWOOD HLE" UnitOfMeasure="MI">
+                            <Address Latitude="34.079300" Longitude="-118.376500">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>450 NORTH LA CIENGA</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="65">
+                        <LocationDetails Direction="N" Distance="9.9" ExtendedLocationCode="C022" LocationCode="LAX" LocationName="LAXC22 BEVERLY HILLS LA BRE" UnitOfMeasure="MI">
+                            <Address Latitude="34.076170" Longitude="-118.344039">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>7100 BEVERLY BLVD</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="66">
+                        <LocationDetails Direction="NE" Distance="9.9" ExtendedLocationCode="C072" LocationCode="LAX" LocationName="LAXC72 DOWNTOWN LOS ANGELES" UnitOfMeasure="MI">
+                            <Address Latitude="34.033600" Longitude="-118.272400">
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1944 S FIGUEROA</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ET" CompanyShortName="ENTERPRISE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="67">
+                        <LocationDetails Direction="NA" LocationCode="LAX" LocationName="LOS ANGELES INTL AIRPORT">
+                            <Address>
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>1030 M MANCHESTER BLVD</StreetNmbr>
+                                <StreetNmbr>PLEASE GO TO ADVANTAGE COUNTER</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="EP" CompanyShortName="EUROPCAR"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="68">
+                        <LocationDetails Direction="NA" ExtendedLocationCode="S022" LocationCode="LAX" LocationName="LAXS22  TORRANCE MARRIOTT">
+                            <Address>
+                                <CityName>TORRANCE</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>FASHION WAY</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="69">
+                        <LocationDetails Direction="NA" LocationCode="LAX" LocationName="LAXO01 LOS ANGELES INTL AIR">
+                            <Address>
+                                <CityName>LOS ANGELES</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>5250 WEST CENTURY BLVD</StreetNmbr>
+                                <StreetNmbr>SUITE 106</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="AC" CompanyShortName="ACE"/>
+                    </VehVendorAvail>
+                    <VehVendorAvail RPH="70">
+                        <LocationDetails Direction="NA" ExtendedLocationCode="C024" LocationCode="LAX" LocationName="LAXC24  BEVERLY HILLS AREA">
+                            <Address>
+                                <CityName>BEVERLY HILLS</CityName>
+                                <CountryCode>US</CountryCode>
+                                <StateProv StateCode="CA"/>
+                                <StreetNmbr>BEVERLY HILLS</StreetNmbr>
+                            </Address>
+                        </LocationDetails>
+                        <Vendor Code="ZE" CompanyShortName="HERTZ"/>
+                    </VehVendorAvail>
+                </VehVendorAvails>
+            </VehAvailRSCore>
+        </VehLocationListRS>
+    </soap-env:Body>
+</soap-env:Envelope>

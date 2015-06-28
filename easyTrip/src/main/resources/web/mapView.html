@@ -5,74 +5,74 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <title>Route 99 - Hands on map</title>
+ 
     <link rel="stylesheet" href="css/ol.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
-    <title>Map Viewer (2-column layout)</title>
     <link rel="stylesheet" href="css/mapView.css" />
-    <script type="text/javascript" src="js/ol.js"></script>
-    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/mapView.js"></script>
-    <script type="text/javascript" src="js/mapLogic.js"></script>
+    <link href='css/font-rock-salt.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
 
     <div class="container">
       <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
         <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" 
-              data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <img src="img/route99.png"/>
+          <div class="collapse navbar-collapse" id="top-bar">
+            <h3>
+              <img src="img/route99.png" height="24"/>
+              <a href="landing.html">Route 99</a>
+              <img src="img/route99.png" height="24"/>
+            </h3>
           </div>
 
-
-          </nav>
         </div>
       </nav>
+
       <div class="navbar-offset"></div>
+
       <div id="map">
       </div>
+
       <div class="row main-row">
         <div class="col-sm-4 col-md-3 sidebar sidebar-left pull-left">
-          <div class="panel-group sidebar-body" id="accordion-left">
+          <div class="panel-group sidebar-body" id="accordion-left">          
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
                   <a data-toggle="collapse" href="#layers">
                     <i class="fa fa-list-alt"></i>
-                    Layers
+                    Step overs
                   </a>
                   <span class="pull-right slide-submenu">
                     <i class="fa fa-chevron-left"></i>
                   </span>
                 </h4>
               </div>
+
               <div id="layers" class="panel-collapse collapse in">
                 <div class="panel-body list-group">
                   <a href="#" class="list-group-item">
-                    <i class="fa fa-globe"></i> Open Street Map
+                    <i class="fa fa-globe"></i> 1/7/15: MILAN - PISA
                   </a>
                   <a href="#" class="list-group-item">
-                    <i class="fa fa-globe"></i> Bing
+                    <i class="fa fa-globe"></i> 2/7/15: PISA - ROMA
                   </a>
                   <a href="#" class="list-group-item">
-                    <i class="fa fa-globe"></i> WMS
+                    <i class="fa fa-globe"></i> 3/7/15: ROMA - NAPOLES
                   </a>
+
+                  <a href="#" id="all-aboard-submit" class="btn btn-dark btn-lg">All aboard!</a>
                 </div>
               </div>
+
+
             </div>
+
+            <!-- TO BE REMOVED IF FINALLY WE DON'T USE IT 
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
@@ -82,6 +82,7 @@
                   </a>
                 </h4>
               </div>
+
               <div id="properties" class="panel-collapse collapse in">
                 <div class="panel-body">
                   <p>
@@ -99,6 +100,8 @@
                 </div>
               </div>
             </div>
+            -->
+
           </div>
         </div>
       </div>
@@ -106,6 +109,14 @@
         <i class="fa fa-list-alt"></i>
       </div>
     </div>
+
+    <script type="text/javascript" src="js/ol.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mapView.js"></script>
+    <script type="text/javascript" src="js/mapLogic.js"></script>
+    <script type="text/javascript" src="js/bootbox.min.js"></script>
+    <script type="text/javascript" src="js/jquery.blockUI.js"></script>
 
     <script src="http://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyAe0IA9kruinTHHqWgHkXoANJjyspRQO08&libraries=drawing,places" type="text/javascript"></script>
 

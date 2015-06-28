@@ -1,7 +1,9 @@
 package trip.Services;
 
-import trip.pojo.Hotel;
+import org.json.simple.parser.ParseException;
+import trip.parse.TabParser;
 import trip.pojo.Ticket;
+import trip.utils.UtilsParse;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -12,6 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +22,7 @@ import java.util.List;
  */
 public class TabService {
 
-    public List<Ticket> getTabTickets(String dateFrom, String dateTo, String lat, String lon) {
+    public List<Ticket> getTabTickets(String dateFrom, String dateTo, String lat, String lon, int night) {
 
         // Create a trust manager that does not validate certificate chains
         TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager(){
@@ -38,20 +41,22 @@ public class TabService {
         }
 
         String soapXml = createTabRequest(dateFrom, dateTo, lat, lon);
+        StringBuilder response = new StringBuilder();
+
         try {
             URL url = new URL("https://actapiint.activitiesbank.com/actdis-api/public/v2/activity/search");
             java.net.URLConnection conn = url.openConnection();
             conn.setRequestProperty("Authorization", "Bearer coh169ama2fm6dvoudd4rjcn213m93l1");
-            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             conn.setDoOutput(true);
             java.io.OutputStreamWriter wr = new java.io.OutputStreamWriter(conn.getOutputStream());
             wr.write(soapXml);
             wr.flush();
             // Read the response
-            java.io.BufferedReader rd = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
+            java.io.BufferedReader rd = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream(), "UTF8"));
             String line;
             while ((line = rd.readLine()) != null) {
-                System.out.println(line);
+                response.append(line);
             }
 
         } catch (MalformedURLException e) {
@@ -59,8 +64,14 @@ public class TabService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //TODO RETURN
-        return null;
+
+        List<Ticket> services = new ArrayList<>();
+        try {
+            services = TabParser.parse(response.toString(), night);
+        } catch (ParseException e) {
+        } catch (IOException e) {
+        }
+        return services;
     }
 
 

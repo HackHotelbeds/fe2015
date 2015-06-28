@@ -36,6 +36,7 @@ public class easyTripController {
             connection.connectSabreAPI();
             try {
                 connection.callloginSoap(connection.createSecurityRequest(),"https://sws3-crt.cert.sabre.com");
+                connection.callLoginSoap(connection.createSecurityRequest(), "https://sws3-crt.cert.sabre.com");
             } catch (Exception ex){
                 return "connection problem";
             }
@@ -43,6 +44,7 @@ public class easyTripController {
         }
         Itinerary itinerary= new Itinerary();
         itinerary.setListCar(carServices.getRentalCars("","","","",1,connection.getRestToken()));
+        itinerary.setListCar(carServices.getRentalCars(startAirport,"",startDate,finishDate,1,connection));
 
         return new UtilsParse().convertObjectToJson(itinerary);
     }

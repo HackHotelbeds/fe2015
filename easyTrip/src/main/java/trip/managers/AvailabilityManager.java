@@ -125,8 +125,10 @@ public class AvailabilityManager {
             TicketTask ticketTask = new TicketTask();
             ticketCompService.submit(ticketTask);
         }
+        StepoverElement[] steps = entrada.getStepovers();
         for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
-            TabTask tabTask = new TabTask();
+            TabTask tabTask = new TabTask(dateFrom, dateTo, steps[executingThreads].getLat().toString(),
+                    steps[executingThreads].getLng().toString(), executingThreads + 1);
             tabCompService.submit(tabTask);
         }
 
@@ -368,29 +370,30 @@ public class AvailabilityManager {
 
     private final class TabTask implements Callable<List<Ticket>> {
         TabService tabService;
+        String dateFrom;
+        String dateTo;
+        String lat;
+        String lon;
+        int night;
 
-        TabTask(){
+        TabTask(String pdateFrom, String pdateTo, String plat, String plon, int pnight){
             tabService = new TabService();
+            dateFrom=pdateFrom;
+            dateTo=pdateTo;
+            lat=plat;
+            lon=plon;
+            night=pnight;
         }
 
         @Override
         public List<Ticket> call() throws Exception {
             //FIXME DUMMY DATA
-            List<Ticket> services = tabService.getTabTickets("2015-09-19","2015-09-20","2.646633999999949","39.57119", 1);
+            List<Ticket> services = tabService.getTabTickets(dateFrom, dateTo, lat, lon, night);
             for (int i = 0; i < services.size(); i++) {
                 ticketServices.add(services.get(i));
             }
             return null;
         }
     }
-
-    private void addCorsHeaders(HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with, x-requested-by");
-    }
-
-
 
 }

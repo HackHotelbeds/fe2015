@@ -43,7 +43,7 @@ public class HotelParser {
             hotelOptions.getListHotel().add(service);
         }*/
 
-    public void parse(Document doc)  {
+    public void parse(Document doc, int nights)  {
 
         NodeList nodes = doc.getElementsByTagName("BasicPropertyInfo");
         for (int i = 0; i < nodes.getLength(); i++) {
@@ -58,17 +58,15 @@ public class HotelParser {
             service.setRate("RAC");
             service.setPrice("USD");
             service.setPrice(new Double(Math.random()*5010).toString());
+            service.setNight(nights);
             listHotel.add(service);
-
         }
-        hotelOptions.setListHotel(listHotel);
-
 
 
     }
 
-    public HotelOptions getHotelOptions() {
-        return hotelOptions;
+    public ArrayList<Hotel> getListHotel() {
+        return listHotel;
     }
 
 }

@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.*;
 import trip.Services.CarServices;
+import trip.managers.AvailabilityManager;
 import trip.pojo.Entrada;
 import trip.pojo.Itinerary;
 import trip.utils.Connection;
@@ -49,22 +50,13 @@ public class easyTripController {
 
         Gson gs = new Gson();
         Entrada obj = gs.fromJson(inputJsonObj, Entrada.class);
-
-
-        if((connection.getRestToken()==null || connection.getRestToken().equals("")) && (connection.getSoapToken()==null || connection.getSoapToken().equals(""))){
-            connection.connectSabreAPI();
-            try {
-                connection.callLoginSoap(connection.createSecurityRequest(), "https://sws3-crt.cert.sabre.com");
-            } catch (Exception ex){
-                return "connection problem";
-            }
-
-        }
-        Itinerary itinerary= new Itinerary();
-        itinerary.setListCar(carServices.getRentalCars(obj.getOriginAirport().getIata(), obj.getDestinationAirport().getIata(), obj.getStartDate(), obj.getEndDate(), Integer.valueOf(obj.getPaxes()), connection));
-
         addCorsHeaders(response);
-        return new UtilsParse().convertObjectToJson(itinerary);
+        AvailabilityManager availabilityManager = new AvailabilityManager();
+        try {
+            return availabilityManager.manager(obj);
+        } catch (InterruptedException e) {
+            return "connection problem";
+        }
     }
 
 

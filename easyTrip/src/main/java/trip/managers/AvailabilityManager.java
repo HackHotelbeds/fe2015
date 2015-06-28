@@ -64,11 +64,6 @@ public class AvailabilityManager {
         HotelbedsTask hotelbedsStartTask = new HotelbedsTask(entrada.getStartDate(), entrada.getEndDate(), entrada.getPaxes(),
                 entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), 1, entrada.getOriginAirport().getIata());
         hotelbedsCompService.submit(hotelbedsStartTask);
-        //FIXME
-        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(entrada.getStartDate(), entrada.getEndDate(), entrada.getPaxes(),
-                entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), 1, entrada.getOriginAirport().getIata());
-        hotelbedsCompService.submit(hotelbedsStartTask);
-        hotelbedsCompService.submit(hotelbedsEndTask);
 
         int hotelId = 1;
         //FIXME
@@ -119,8 +114,12 @@ public class AvailabilityManager {
         dateFrom=sdf.format(dateFromNew);
 
         //FIXME HotelTask hotelTask3 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
-        HotelTask hotelTask3 = new HotelTask(dateTo, dateFrom, entrada.getPaxes(), entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), connection, hotelId);
+        HotelTask hotelTask3 = new HotelTask(dateFrom,dateTo, entrada.getPaxes(), entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), connection, hotelId);
         hotelCompService.submit(hotelTask3);
+
+        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(dateFrom,dateTo, entrada.getPaxes(),
+                entrada.getDestinationAirport().getLat().toString(), entrada.getDestinationAirport().getLng().toString(), hotelId, entrada.getOriginAirport().getIata());
+        hotelbedsCompService.submit(hotelbedsEndTask);
 
         for(int executingThreads = 0; executingThreads < numbOfThreads; executingThreads++) {
             TicketTask ticketTask = new TicketTask();

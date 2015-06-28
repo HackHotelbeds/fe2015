@@ -55,9 +55,9 @@ function buildResultsPanel(name, title, values, useCheckbox) {
     resultsPanel += '<div class="input-group">';
     resultsPanel += '  <span class="input-group-addon rate-option">';
     if (useCheckbox) {
-      resultsPanel += '    <input type="checkbox" name="' + name + values[v].id + '">';
+      resultsPanel += '    <input type="checkbox" id="' + name + '_' + v + '" name="' + name + '_' + v + '">';
     } else {
-      resultsPanel += '    <input type="radio" name="' + name + 'Rate" value="'+ values[v].id + '">';
+      resultsPanel += '    <input type="radio" id="' + name + '_' + v + '" name="' + name + '_' + v + '" value="'+ values[v].id + '">';
     }
     resultsPanel += '  </span>';
     resultsPanel += '  <div class="col-md-7 result-item no-shadow">' + values[v].text + '</div>';
@@ -74,6 +74,8 @@ function buildResultsPanel(name, title, values, useCheckbox) {
 
 function showItineraryWithRates(rates) {
   var summary = '';
+
+  localStorage.setItem('route99-rates', rates);
 
   var arrivalFlights = [];
   if (rates.ida != null) {
@@ -191,7 +193,7 @@ function showItineraryWithRates(rates) {
           label: "Go pay!",
           className: "btn-success",
           callback: function () {
-              // guardar formulario con seleccion
+              localStorage.setItem('route99-ratesSelected', $('#rateSelection').serialize());
               showPaymentForm(rates);
           }
       }
@@ -350,11 +352,35 @@ function showPaymentForm() {
             label: "Pay now!",
             className: "btn-success",
             callback: function () {
-              bootbox.alert('...confirmando...');
+              sendConfirmationData();
             }
         }
     }
   });  
+}
+
+function sendConfirmationData() {
+
+  localStorage.setItem('route99-paymentForm', $('#payment-form').serialize());
+  $.blockUI({ message: 'Sending all of the confirmation data...', overlayCSS: { backgroundColor: '#876146' } }); 
+
+  setTimeout($.unblockUI, 2000); 
+  setTimeout("window.location.href ='tripVoucher.html';", 2000); 
+  /*
+  $.ajax({
+      type: 'post',      
+      url: 'tripVoucher.html',
+      data: JSON.stringify(packJsonForSearchRequest()),
+      contentType: 'text/plain',
+      beforeSend: function() {
+        $.blockUI({ message: 'Sending all of the confirmation data...', overlayCSS: { backgroundColor: '#876146' } }); 
+      },
+      error: function() {              
+          $.unblockUI();
+          bootbox.alert({message: 'Cant confirm the booking!'});
+      }
+  });
+  */
 }
 
 $(document).ready(function() {
@@ -501,8 +527,8 @@ $(document).ready(function() {
     }]
 };
 
-    //showItineraryWithRates(rates);
-
+      showItineraryWithRates(rates);
+/*
       $.ajax({
           type: 'post',
           url: 'http://localhost:9999/getItinerary',
@@ -520,7 +546,7 @@ $(document).ready(function() {
               bootbox.alert({message: 'Cant get any rates! Try again later!'});
           }
       });
-
+*/
 
 
   });

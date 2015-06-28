@@ -167,7 +167,7 @@
 
 .results-panel .price-selected,
 .results-panel .input-group,
-#stopover-list {
+#stopover-list, #payment-form input, #payment-form select {
   font-family: Helvetica, sans-serif;
   font-size: 20px;
 }

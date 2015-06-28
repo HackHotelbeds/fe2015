@@ -66,9 +66,13 @@ body {
 }
 
 .panel {
-  background-image: url('../img/sidebar-white-wood.jpg');
-  background-size: cover;
+  background: #876146;
+  border: 2px solid black;
 }
+.panel-group .panel {
+  margin-bottom: 0;
+  border-radius: 0px 0px 15px 15px;  
+}  
 
 .panel-default > .panel-heading {
   background-color: transparent;
@@ -102,12 +106,33 @@ body {
   display: block;
   text-decoration: none;
   color: #FFB500;  
+  white-space: nowrap;
+  font-size: 0.75em;
 }
+
 .list-group-item:hover {
   display: block;
   text-decoration: none;
   color: #FFB500;;
   background: rgba(255,255,255,0.2);
+}
+.list-group .btn-dark {  
+  margin-top: 25px;
+  border-radius: 0;
+  color: #fff;
+  background-color: rgba(75,15,0,0.9);
+  border-radius: 15px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active {
+    color: #fff;
+    background-color: #666;
+    border: 1px solid black;
 }
 
 .main-row { position: relative; top: 0; }
@@ -122,4 +147,23 @@ body {
   padding: 0 8px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/* Model window */
+.modal-title * {
+  width: 100%;
+  text-align: center;
+}
+
+.blockMsg {
+  border-radius: 15px;
+  padding: 35px !important;
+  padding-top: 15px !important;
+  background-color: #876146 !important;
+  color: #f5b500 !important;
+
+  background: rgba( 255, 255, 255, 1 ) 
+                url('../img/ajax-loader.gif') 
+                50% 75% 
+                no-repeat;  
 }

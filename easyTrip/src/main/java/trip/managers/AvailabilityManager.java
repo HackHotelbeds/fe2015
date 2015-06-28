@@ -6,7 +6,9 @@ import trip.Services.HotelbedsService;
 import trip.Services.TabService;
 import trip.pojo.*;
 import trip.utils.Connection;
+import trip.utils.UtilsParse;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -18,23 +20,32 @@ public class AvailabilityManager {
 
     List<Ticket> ticketServices = new ArrayList<>();
     List<Hotel> hotelServices = new ArrayList<>();
+    CarServices carServices= new CarServices();
 
-    public Itinerary manager() throws InterruptedException {
-        //public Itinerary manager(String actualAirport,String startAirport,String endAirport,
-        // String startDate,String finishDate,String passenger,String waypoints) {
-        String actualAirport = "PMI";
-        String startAirport= "BCN";
-        String endAirport = "MAD";
-        String startDate = "25082015";
-        String finishDate= "30082015";
-        String passenger = "1";
+    private Connection connection=new Connection();
+
+    public String manager(Entrada entrada) throws InterruptedException {
+
         //String waypoints = "1.123,9.987;2.369,7.741";
         String waypoints = "1.123,9.987";
 
         String[] waypointList = waypoints.split(";");
-        int numbOfThreads = 7 + waypointList.length;
+        int numbOfThreads = waypointList.length;
 
 
+        if((connection.getRestToken()==null || connection.getRestToken().equals("")) && (connection.getSoapToken()==null || connection.getSoapToken().equals(""))){
+            connection.connectSabreAPI();
+            try {
+                connection.callLoginSoap(connection.createSecurityRequest(), "https://sws3-crt.cert.sabre.com");
+            } catch (Exception ex){
+                return "connection problem";
+            }
+
+        }
+
+
+        //FIXME
+        // itinerary.setListCar(carServices.getRentalCars(obj.getOriginAirport().getIata(), obj.getDestinationAirport().getIata(), obj.getStartDate(), obj.getEndDate(), Integer.valueOf(obj.getPaxes()), connection));
 
 
 
@@ -54,15 +65,28 @@ public class AvailabilityManager {
         carCompService.submit(carTask);
         vueloIdaCompService.submit(vueloIdaTask);
         vueloVueltaCompService.submit(vueloVueltaTask);
-        HotelbedsTask hotelbedsStartTask = new HotelbedsTask(startAirport);
+        HotelbedsTask hotelbedsStartTask = new HotelbedsTask(entrada.getOriginAirport().getIata());
         hotelbedsCompService.submit(hotelbedsStartTask);
-        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(endAirport);
+        HotelbedsTask hotelbedsEndTask = new HotelbedsTask(entrada.getDestinationAirport().getIata());
         hotelbedsCompService.submit(hotelbedsEndTask);
 
+        int hotelId = 1;
+        //FIXME
+        // HotelTask hotelTask = new HotelTask(entrada.getStartDate(), dateTo, entrada.getPaxes(), entrada.getOriginAirport().getLat(),
+        //entrada.getOriginAirport().getLng(), connection, hotelId);
+        HotelTask hotelTask = new HotelTask(entrada.getStartDate(), "", entrada.getPaxes(), entrada.getOriginAirport().getLat().toString(),
+                entrada.getOriginAirport().getLng().toString(), connection, hotelId);
+        hotelCompService.submit(hotelTask);
+        hotelId++;
         for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
-            HotelTask hotelTask = new HotelTask();
-            hotelCompService.submit(hotelTask);
+            //FIXME HotelTask hotelTask2 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
+            HotelTask hotelTask2 = new HotelTask("", "", entrada.getPaxes(), "", "", connection, hotelId);
+            hotelCompService.submit(hotelTask2);
+            hotelId++;
         }
+        //FIXME HotelTask hotelTask3 = new HotelTask(dateFrom, dateTo, entrada.getPaxes(), lat, lon, connection, hotelId);
+        HotelTask hotelTask3 = new HotelTask("", "", entrada.getPaxes(), "", "", connection, hotelId);
+        hotelCompService.submit(hotelTask3);
 
         for(int executingThreads = 0; executingThreads < waypointList.length; executingThreads++) {
             TicketTask ticketTask = new TicketTask();
@@ -152,7 +176,7 @@ public class AvailabilityManager {
         }
 
 
-        return itinerary;
+        return new UtilsParse().convertObjectToJson(itinerary);
     }
 
     private final class CarTask implements Callable<List<Car>> {
@@ -286,5 +310,14 @@ public class AvailabilityManager {
             return null;
         }
     }
+
+    private void addCorsHeaders(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with, x-requested-by");
+    }
+
+
 
 }

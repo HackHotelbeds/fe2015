@@ -142,14 +142,25 @@ input[type=number] {
 }
 
 #travellerList {
-    margin: 0px;
+    margin: auto;
     padding: 0px;
+    width: 224px;
 }
-img.traveller {
+
+.traveller {
+    display: table-cell;
     width: 32px;
-    content: url('../img/bagpacker-inactive.png');
+    height: 32px;
+
+    background: url('../img/bagpacker-inactive.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+
     cursor: pointer;
 }
-img.traveller.active {
-    content: url('../img/bagpacker-active.png');
+.traveller.active {
+    background: url('../img/bagpacker-active.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
+

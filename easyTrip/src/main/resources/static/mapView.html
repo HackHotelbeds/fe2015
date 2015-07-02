@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -22,13 +23,13 @@
     <meta name="msapplication-TileImage" content="img/icons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Route 99 - Congratulations! This is your trip</title>
+    <title>Route 99 - Hands on map</title>
  
     <link rel="stylesheet" href="css/ol.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/route99.css" />
-    <link rel="stylesheet" href="css/voucher.css" />
+    <link rel="stylesheet" href="css/mapView.css" />
     <link href='css/font-rock-salt.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
@@ -37,10 +38,11 @@
       <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
         <div class="container-fluid">
 
+          <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="top-bar">
             <h3>
               <img src="img/route99.png" height="24"/>
-              <a href="landing.html">Route 99</a>
+              <a href="index.html">Route 99</a>
               <img src="img/route99.png" height="24"/>
             </h3>
           </div>
@@ -48,50 +50,54 @@
         </div>
       </nav>
 
-    <div class="container">
+      <div class="navbar-offset"></div>
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h2>Congratulations!</h2>
-        <p>You have booked a great trip! And we want you to share it with us and all of your friends this experience at <a href="#fb-link">facebook</a></p>
+      <div id="map">
       </div>
 
-      	<div class="voucher container-fluid vertical-center">
-      		<div class="col-md-8"><h3>Trip voucher by Route99</h3></div>
-      		<div class="col-md-4"><h4>Route99 locator: [LC123]</h4></div>
+      <div class="row main-row">
+        <div class="col-sm-4 col-md-4 sidebar sidebar-left pull-left">
+          <div class="panel-group sidebar-body" id="accordion-left">          
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#layers">
+                    <i class="fa fa-list-alt"></i>
+                    Step overs
+                  </a>
+                  <span class="pull-right slide-submenu">
+                    <i class="fa fa-chevron-left"></i>
+                  </span>
+                </h4>
+              </div>
 
-      		<div class="col-md-12 supplier-result panel">
-	      		<div class="col-md-6 panel-heading"><h4>Arrival flight</h4></div>
-	      		<div class="col-md-12 " id="arrival-flight-selected">...flight info...</div>
-      		</div>
+              <div id="layers" class="panel-collapse collapse in">
+                <div id="stopover-list" class="panel-body list-group"></div>
 
-      		<div class="col-md-12 supplier-result">
-	      		<div class="col-md-6 "><h4>Car rental</h4></div>
-	      		<div class="col-md-12 " id="car-selected">...car rental info...</div>
-      		</div>
+                <div class="panel-body list-group">
+                  <a href="#" id="all-aboard-submit" class="btn btn-dark btn-lg">All aboard!</a>
+                </div>
+              </div>
 
-      		<div class="col-md-12 supplier-result">
-	      		<div class="col-md-6 "><h4>Hotels</h4></div>
-	      		<div class="col-md-12 " id="hotels-selected">...hotel info...</div>
-      		</div>
+            </div>
 
-      		<div class="col-md-12 supplier-result">
-	      		<div class="col-md-6 "><h4>Tickets</h4></div>
-	      		<div class="col-md-12 " id="tickets-selected">...ticket info...</div>
-      		</div>
-
-      		<div class="col-md-12 supplier-result">
-	      		<div class="col-md-6 "><h4>Returning flight</h4></div>
-	      		<div class="col-md-12 " id="returning-flight-selected">...flight info...</div>
-      		</div>
-      	</div>
-
+          </div>
+        </div>
+      </div>
+      <div class="mini-submenu mini-submenu-left pull-left">
+        <i class="fa fa-list-alt"></i>
+      </div>
     </div>
 
-    </div>
+    <script type="text/javascript" src="js/ol.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mapView.js"></script>
+    <script type="text/javascript" src="js/mapLogic.js"></script>
+    <script type="text/javascript" src="js/bootbox.min.js"></script>
+    <script type="text/javascript" src="js/jquery.blockUI.js"></script>
 
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/tripVoucher.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyAe0IA9kruinTHHqWgHkXoANJjyspRQO08&libraries=drawing,places" type="text/javascript"></script>
 
   </body>
 </html>

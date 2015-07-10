@@ -23,7 +23,7 @@ import java.net.URLDecoder;
 @RestController
 public class easyTripController {
 
-    @RequestMapping("/")
+    @RequestMapping("/api")
     public String isAlive(HttpServletRequest request, HttpServletResponse response) {
         addCorsHeaders(response);
         return "Server UP";
@@ -36,7 +36,7 @@ public class easyTripController {
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with, x-requested-by");
     }
 
-    @RequestMapping(value="/getItinerary")
+    @RequestMapping(value="/api/getItinerary")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @ResponseBody

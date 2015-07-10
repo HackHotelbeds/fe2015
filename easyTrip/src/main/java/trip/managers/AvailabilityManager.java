@@ -87,7 +87,7 @@ public class AvailabilityManager {
             StepoverElement stepowerElement= stepower[executingThreads];
             Calendar c1 = GregorianCalendar.getInstance();
             Calendar c2 = GregorianCalendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date dateFromNew= sdf.parse(dateFrom);
             c1.setTimeInMillis(dateFromNew.getTime());
             c1.add(Calendar.DATE,1);

@@ -238,7 +238,7 @@ function workOutMostPopulatedCities() {
 
 function getNearbyCities(top, bottom, left, right, expectedCalls) {
     /*if (true) { return false; }*/
-    var requestUrl = 'http://api.geonames.org/citiesJSON?north=' + top + '&south=' + bottom + '&east=' + right + '&west=' + left + '&lang=en&username=pablogdt';
+    var requestUrl = 'http://api.geonames.org/citiesJSON?north=' + top + '&south=' + bottom + '&east=' + right + '&west=' + left + '&lang=en&username=cholou2';
 
     //var coord = new google.maps.LatLng(top, left);
     //hb.addMarker(coord, icons.destination, hb.map, false, false);

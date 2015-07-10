@@ -44,6 +44,7 @@ public class HotelServices {
 
 
     public List<Hotel> getHotels(String dateFrom, String dateTo, String paxes, String lat, String lon, Connection connection, int night) throws ProtocolException, IOException, URISyntaxException, ParserConfigurationException, SAXException, InterruptedException {
+        //"2015-09-19","2015-09-20","2","32.3899","-96.8880";
         String request = getRequest(dateFrom, dateTo, paxes, lat, lon, connection.getSoapToken());
         String xmlInput = connection.callSoapConnection(request, "https://sws3-crt.cert.sabre.com");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

@@ -423,11 +423,6 @@ $(document).ready(function() {
         {"name":"Hotel La Toscana","price":"82.30","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
         {"name":"Cesare Hotel","price":"63.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
       ], "day": "3/7/15"},
-      {"listHotel": [
-        {"name":"Il Napolitano","price":"91.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
-        {"name":"Windham Napoli","price":"62.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
-        {"name":"Iberostar Napoli","price":"83.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
-      ], "day": "4/7/15"},
     ],
     "ida": [{
       "id": "125676789",
@@ -436,14 +431,6 @@ $(document).ready(function() {
       "departureDate": "1/7/15", "departureHour": "11:20",
       "arrivalDate": "1/7/15", "arrivalHour": "13:00",
       "flightNumber": "A123", "price": "123.27", "currency": "EUR",
-            "company": "SABRE"      
-    },{
-      "id": "452349153",
-      "startAirport": "LGW",
-      "endAirport": "NAP",
-      "departureDate": "4/7/15", "departureHour": "16:50",
-      "arrivalDate": "4/7/15", "arrivalHour": "18:30",
-      "flightNumber": "A321", "price": "98.27", "currency": "EUR",
             "company": "SABRE"      
     }],
     "listCar": [
@@ -457,7 +444,7 @@ $(document).ready(function() {
             "garanty": "G",
             "numDays": null,
             "participationLevel": "B",
-            "price": "1496.57",
+            "price": "196.57",
             "rateCode": "WEB",
             "startString": null,
             "company": "SABRE",
@@ -473,7 +460,7 @@ $(document).ready(function() {
             "garanty": "G",
             "numDays": null,
             "participationLevel": "B",
-            "price": "1620.83",
+            "price": "160.83",
             "rateCode": "WEB",
             "startString": null,
             "company": "SABRE",
@@ -489,7 +476,7 @@ $(document).ready(function() {
             "garanty": "G",
             "numDays": null,
             "participationLevel": "B",
-            "price": "1752.72",
+            "price": "175.72",
             "rateCode": "WEB",
             "startString": null,
             "company": "SABRE",

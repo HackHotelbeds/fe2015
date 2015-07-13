@@ -68,8 +68,22 @@ $(function () {
 
         hb.tripLength = calculateDaysBetweenDates(hb.startDate, hb.endDate);
 
-        getCloserAirportWithCityName(fromCityName, "FROM");
-        getCloserAirportWithCityName(toCityName, "TO");
+        var fromCityLat = getUrlParameter("origin-lat");
+        var fromCityLng = getUrlParameter("origin-lng");
+        var toCityLat = getUrlParameter("dest-lat");
+        var toCityLng = getUrlParameter("dest-lng");
+        if (fromCityLat != null && fromCityLng != null && toCityLat != null && toCityLng != null) {
+            hb.from = {};
+            hb.to = {};
+            hb.from.lat = fromCityLat;
+            hb.from.lng = fromCityLng;
+            hb.to.lat = toCityLat;
+            hb.to.lng = toCityLng;
+            getCloserAirportsToLocation(5, hb.from.lng, hb.from.lat, "FROM");
+        } else {
+            getCloserAirportWithCityName(fromCityName, "FROM");
+            getCloserAirportWithCityName(toCityName, "TO");
+        }
 
         getCloserAirports();
     }
@@ -174,9 +188,10 @@ function getUrlParameter(sParam)
         var sParameterName = sURLVariables[i].split('=');
         if (sParameterName[0] == sParam)
         {
-            return sParameterName[1];
+            return decodeURIComponent(sParameterName[1].replace(/\+/g, '%20'));
         }
     }
+    return null;
 }
 
 function calculateRoute(origin, destination) {

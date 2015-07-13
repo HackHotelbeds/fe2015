@@ -46,6 +46,31 @@ $(document).ready(function() {
         window.location = ev.currentTarget.href+"?"+params;
     });
 
+    $("#origin").geocomplete()
+        .bind("geocode:result", function(event, result){
+            console.log("Result: " + result.formatted_address);
+            $("#origin-lat").val(result.geometry.location.A);
+            $("#origin-lng").val(result.geometry.location.F);
+        })
+        .bind("geocode:error", function(event, status){
+            console.log("ERROR: " + status);
+        })
+        .bind("geocode:multiple", function(event, results){
+            console.log("Multiple: " + results.length + " results found");
+        });
+    $("#destination").geocomplete()
+        .bind("geocode:result", function(event, result){
+            console.log("Result: " + result.formatted_address);
+            $("#dest-lat").val(result.geometry.location.A);
+            $("#dest-lng").val(result.geometry.location.F);
+        })
+        .bind("geocode:error", function(event, status){
+            console.log("ERROR: " + status);
+        })
+        .bind("geocode:multiple", function(event, results){
+            console.log("Multiple: " + results.length + " results found");
+        });
+
     updatePaxes();
     $('.traveller').click(function(e) {
         var travellerPicked = $(this).index() + 1;

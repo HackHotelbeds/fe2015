@@ -94,12 +94,16 @@
             <!-- HERE GOES THE SEARCH FORM -->           
             <form id="form">
                 <fieldset>
-                    <input type="text" name="origin" placeholder="Origin of the trip"/>
+                    <input type="text" id="origin" name="origin" placeholder="Origin of the trip"/>
+                    <input type="hidden" id="origin-lat" name="origin-lat"/>
+                    <input type="hidden" id="origin-lng" name="origin-lng"/>
                     <input type="text" name="start-date" class="datepicker" placeholder="And date"/>
                 </fieldset>
 
                 <fieldset>
-                    <input type="text" name="destination" placeholder="End of your trip"/>
+                    <input type="text" id="destination" name="destination" placeholder="End of your trip"/>
+                    <input type="hidden" id="dest-lat" name="dest-lat"/>
+                    <input type="hidden" id="dest-lng" name="dest-lng"/>
                     <input type="text" name="end-date" class="datepicker" placeholder="And date"/>
                 </fieldset>
 
@@ -130,6 +134,9 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/landing.js"></script>
+
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script src="js/jquery.geocomplete.js"></script>
 
 </body>
 

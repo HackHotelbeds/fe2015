@@ -19,6 +19,6 @@ public class viewsController {
         model.put("customJsList", Arrays.asList("landing"));
         model.put("customCssList", Arrays.asList("landing", "rotating-background"));
 
-        return "landing";
+        return "landing/index";
     }
 }

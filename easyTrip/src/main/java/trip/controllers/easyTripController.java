@@ -1,4 +1,4 @@
-package trip;
+package trip.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;

@@ -14,8 +14,6 @@
             <br>
             <!-- HERE GOES THE SEARCH FORM -->
             <#include "searchForm.ftl">
-
-            <a href="mapView.html" id="submit-form" class="btn btn-dark btn-lg">Find me a trip!</a>
         </div>
     </header>
 </@webLayout.webLayout>

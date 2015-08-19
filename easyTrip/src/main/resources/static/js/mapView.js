@@ -365,11 +365,11 @@ function sendConfirmationData() {
   $.blockUI({ message: 'Sending all of the confirmation data...', overlayCSS: { backgroundColor: '#876146' } }); 
 
   setTimeout($.unblockUI, 2000); 
-  setTimeout("window.location.href ='tripVoucher.html';", 2000); 
+  setTimeout("window.location.href ='/tripVoucher';", 2000);
   /*
   $.ajax({
       type: 'post',      
-      url: 'tripVoucher.html',
+      url: '/tripVoucher',
       data: JSON.stringify(packJsonForSearchRequest()),
       contentType: 'text/plain',
       beforeSend: function() {

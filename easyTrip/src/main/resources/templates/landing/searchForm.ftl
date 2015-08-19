@@ -20,6 +20,8 @@
             <div id="pax6" class="traveller"></div>
             <div id="pax7" class="traveller"></div>
         </ul>
-        <input type="hidden" id="paxes" value="2"/>
+        <input type="hidden" id="paxes" name="paxes" value="2"/>
     </fieldset>
+
+    <a href="routeMap" id="submit-form" class="btn btn-dark btn-lg">Find me a trip!</a>
 </form>

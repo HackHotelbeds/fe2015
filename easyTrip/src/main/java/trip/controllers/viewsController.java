@@ -1,7 +1,9 @@
 package trip.controllers;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -14,11 +16,41 @@ import java.util.Map;
 public class viewsController {
 
     @RequestMapping("/")
-    public String landing(Map<String, Object> model) {
+    public String landing(final Map<String, Object> model) {
         model.put("pageTitle", "Trips made easy");
-        model.put("customJsList", Arrays.asList("landing"));
+
         model.put("customCssList", Arrays.asList("landing", "rotating-background"));
+        model.put("customJsList", Arrays.asList("landing", "jquery-ui", "jquery.cycle.all"));
 
         return "landing/index";
+    }
+
+    @RequestMapping("/routeMap")
+    public String mapView(
+            @RequestParam("origin") String origin,
+            @RequestParam("start-date") @DateTimeFormat(pattern="yyyy-MM-dd") Date startDate,
+            @RequestParam("destination") String destination,
+            @RequestParam("end-date") @DateTimeFormat(pattern="yyyy-MM-dd") Date endDate,
+            @RequestParam("paxes") int paxes,
+            final Map<String, Object> model
+    ) {
+        model.put("pageTitle", "Hands on map");
+
+        model.put("customCssList", Arrays.asList("mapView"));
+        model.put("customJsList", Arrays.asList("ol", "mapView", "mapLogic", "bootbox", "jquery.blockUI"));
+
+        return "mapView/index";
+    }
+
+    @RequestMapping("/tripVoucher")
+    public String tripVoucher(
+            final Map<String, Object> model
+    ) {
+        model.put("pageTitle", "Congratulations! This is your trip");
+
+        model.put("customCssList", Arrays.asList("voucher"));
+        model.put("customJsList", Arrays.asList("tripVoucher"));
+
+        return "tripVoucher/index";
     }
 }

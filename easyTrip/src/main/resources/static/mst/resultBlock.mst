@@ -1,0 +1,36 @@
+<div class="panel panel-default results-panel ">
+    <div class="panel-heading resultsPanel-heading">
+        <h4 class="panel-title">
+            <div class="col-md-7">
+                <a data-toggle="collapse" href="#{{name}}"><i class="fa fa-list-alt"></i>{{title}}</a>
+            </div>
+            <div class="text-right price-selected">{{price}}</div>
+        </h4>
+    </div>
+
+    <div id="{{name}}" class="panel-collapse collapse in">
+        <div class="panel-body">
+        {{#useCheckbox}}
+            <div class="input-group">
+                <span class="input-group-addon rate-option">
+                <input type="radio" name="{{name}}EmptyRate" value="null">
+                </span>
+                <div class="form-control no-shadow">No ticket for this day</div>
+            </div>
+        {{/useCheckbox}}
+
+        {{#values}}
+            <div class="input-group">
+                <span class="input-group-addon rate-option">
+                {{#useCheckbox}}<input type="checkbox" id="{{name}}_{{@index}}" name="{{name}}_{{@index}}">{{/useCheckbox}}
+                {{^useCheckbox}}<input type="radio" id="{{name}}_{{@index}}" name="{{name}}_{{@index}}" value="{{id}} + '">{{/useCheckbox}}
+                </span>
+                <div class="col-md-7 result-item no-shadow">{{text}}</div>
+                <div class="col-md-3 result-price no-shadow">{{price}}</div>
+                <div class="col-md-2 result-company no-shadow" data-company-name="{{company}}"></div>
+            </div>
+        {{/values}}
+
+        </div>
+    </div>
+</div>

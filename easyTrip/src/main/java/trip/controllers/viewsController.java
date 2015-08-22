@@ -19,6 +19,9 @@ public class viewsController {
     public String landing(final Map<String, Object> model) {
         model.put("pageTitle", "Trips made easy");
 
+        model.put("maxPax", 7);
+        model.put("numBackground", 12);
+
         model.put("customCssList", Arrays.asList("landing", "rotating-background"));
         model.put("customJsList", Arrays.asList("landing", "jquery-ui", "jquery.cycle.all"));
 
@@ -37,7 +40,7 @@ public class viewsController {
         model.put("pageTitle", "Hands on map");
 
         model.put("customCssList", Arrays.asList("mapView"));
-        model.put("customJsList", Arrays.asList("ol", "mapView", "mapLogic", "bootbox", "jquery.blockUI"));
+        model.put("customJsList", Arrays.asList("ol", "mapView", "mapLogic", "bootbox.min", "jquery.blockUI"));
 
         return "mapView/index";
     }

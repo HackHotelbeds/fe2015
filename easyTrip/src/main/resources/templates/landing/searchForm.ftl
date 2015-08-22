@@ -11,14 +11,9 @@
 
     <fieldset>
         <ul id="travellerList">
-            <div id="pax1" class="traveller"></div>
-            <div id="pax1" class="traveller"></div>
-            <div id="pax2" class="traveller"></div>
-            <div id="pax3" class="traveller"></div>
-            <div id="pax4" class="traveller"></div>
-            <div id="pax5" class="traveller"></div>
-            <div id="pax6" class="traveller"></div>
-            <div id="pax7" class="traveller"></div>
+            <#list 1..maxPax as pax>
+                <div id="pax${pax}" class="traveller"></div>
+            </#list>
         </ul>
         <input type="hidden" id="paxes" name="paxes" value="2"/>
     </fieldset>

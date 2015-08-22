@@ -1,21 +1,21 @@
 
 function applyMargins() {
-var leftToggler = $(".mini-submenu-left");
-if (leftToggler.is(":visible")) {
-  $("#map .ol-zoom")
-    .css("margin-left", 0)
-    .removeClass("zoom-top-opened-sidebar")
-    .addClass("zoom-top-collapsed");
-} else {
-  $("#map .ol-zoom")
-    .css("margin-left", $(".sidebar-left").width())
-    .removeClass("zoom-top-opened-sidebar")
-    .removeClass("zoom-top-collapsed");
-}
+  var leftToggler = $(".mini-submenu-left");
+  if (leftToggler.is(":visible")) {
+    $("#map .ol-zoom")
+      .css("margin-left", 0)
+      .removeClass("zoom-top-opened-sidebar")
+      .addClass("zoom-top-collapsed");
+  } else {
+    $("#map .ol-zoom")
+      .css("margin-left", $(".sidebar-left").width())
+      .removeClass("zoom-top-opened-sidebar")
+      .removeClass("zoom-top-collapsed");
+  }
 }
 
 function isConstrained() {
-return $(".sidebar").width() == $(window).width();
+  return $(".sidebar").width() == $(window).width();
 }
 
 function applyInitialUIState() {
@@ -30,46 +30,13 @@ function getPoints() {
 }
 
 function buildResultsPanel(name, title, values, useCheckbox) {
-  var resultsPanel = '';
-  resultsPanel += '<div class="panel panel-default results-panel ">';
-  resultsPanel += '<div class="panel-heading resultsPanel-heading">';
-  resultsPanel += '<h4 class="panel-title">';
-  resultsPanel += '<div class="col-md-7"><a data-toggle="collapse" href="#' + name + '"><i class="fa fa-list-alt"></i> ' + title + '</a></div>';
-  resultsPanel += '<div class="text-right price-selected"> ? </div>'
-  resultsPanel += '</h4>';
-  resultsPanel += '</div>';
-
-  resultsPanel += '<div id="' + name + '" class="panel-collapse collapse in">';
-  resultsPanel += '<div class="panel-body">';
-
-  if (useCheckbox) {
-    resultsPanel += '<div class="input-group">';
-    resultsPanel += '  <span class="input-group-addon rate-option">';
-    resultsPanel += '    <input type="radio" name="' + name + 'EmptyRate" value="null">';
-    resultsPanel += '  </span>';
-    resultsPanel += '  <div class="form-control no-shadow">No ticket for this day</div>';
-    resultsPanel += '</div>';
-  }
-
-  for (var v = 0; v < values.length; v++) {
-    resultsPanel += '<div class="input-group">';
-    resultsPanel += '  <span class="input-group-addon rate-option">';
-    if (useCheckbox) {
-      resultsPanel += '    <input type="checkbox" id="' + name + '_' + v + '" name="' + name + '_' + v + '">';
-    } else {
-      resultsPanel += '    <input type="radio" id="' + name + '_' + v + '" name="' + name + '_' + v + '" value="'+ values[v].id + '">';
-    }
-    resultsPanel += '  </span>';
-    resultsPanel += '  <div class="col-md-7 result-item no-shadow">' + values[v].text + '</div>';
-    resultsPanel += '  <div class="col-md-3 result-price no-shadow">' + values[v].price + '</div>';
-    resultsPanel += '  <div class="col-md-2 result-company no-shadow" data-company-name="' + values[v].company + '"></div>';
-    resultsPanel += '</div>';
-  }
-  resultsPanel += '</div>';
-  resultsPanel += '</div>';
-  resultsPanel += '</div>';
-
-  return resultsPanel;
+  data = {
+    name: name,
+    title: title,
+    values: values,
+    useCheckbox: useCheckbox
+  };
+  return Mustache.render(MST['resultBlock'], data);
 }
 
 function showItineraryWithRates(rates) {
@@ -229,116 +196,20 @@ function showItineraryWithRates(rates) {
 
 function showPaymentForm() {
 
-  var formBody = '';
+  data = {
+    field: [
+      {'id': 'holders-first-name', 'label': 'Holder\'s first name'},
+      {'id': 'holders-last-name', 'label': 'Holder\'s last name'},
+      {'id': 'passport-or-id', 'label': 'Passport / ID', 'placeholder': 'Passport number or ID'},
+      {'id': 'address', 'label': 'Address'},
+      {'id': 'email', 'label': 'Email', 'placeholder': 'you@somewhere.com', 'type': 'email'},
+      {'id': 'card-holder-name', 'label': 'Name on card', 'placeholder': 'Card holder\'s full name'},
+      {'id': 'card-number', 'label': 'Credit card number', 'placeholder': 'Debit/Credit Card Number'}
+    ],
+    cvv: {'id': 'cvv', 'label': 'Card CVV', 'placeholder': 'Security code'}
+  };
 
-  formBody += '<fieldset>';  
-
-  formBody += '<div class="form-group">';
-  formBody += '  <label class="col-sm-4 control-label" for="holder-title">Title</label>';
-  formBody += '  <div class="col-sm-8">';
-  formBody += '    <select class="form-control" name="holder-title" id="holder-title">';
-  formBody += '    <option value=""></option>';
-  formBody += '    <option value="1">Mr.</option>';
-  formBody += '    <option value="2">Mrs.</option>';
-  formBody += '    <option value="3">Ms.</option>';
-  formBody += '    </select>';
-  formBody += '  </div>';
-  formBody += '</div>';
-
-  formBody += '<div class="form-group">';
-  formBody += '  <label class="col-sm-4 control-label" for="holder-first-name">Holder\' first name</label>';
-  formBody += '  <div class="col-sm-8">';
-  formBody += '    <input type="text" class="form-control" name="holder-first-name" id="holder-first-name" placeholder="Holder\'s first name">';
-  formBody += '  </div>';
-  formBody += '</div>';
-
-  formBody += '<div class="form-group">';
-  formBody += '  <label class="col-sm-4 control-label" for="card-holder-name">Holder\' last name</label>';
-  formBody += '  <div class="col-sm-8">';
-  formBody += '    <input type="text" class="form-control" name="holder-last-name" id="holder-last-name" placeholder="Holder\'s last name">';
-  formBody += '  </div>';
-  formBody += '</div>';
-
-  formBody += '<div class="form-group">';
-  formBody += '  <label class="col-sm-4 control-label" for="passport-or-id">Passport / ID</label>';
-  formBody += '  <div class="col-sm-8">';
-  formBody += '    <input type="text" class="form-control" name="passport-or-id" id="passport-or-id" placeholder="Passport code or ID">';
-  formBody += '  </div>';
-  formBody += '</div>';
-
-  formBody += '<div class="form-group">';
-  formBody += '  <label class="col-sm-4 control-label" for="address">Address</label>';
-  formBody += '  <div class="col-sm-8">';
-  formBody += '    <input type="text" class="form-control" name="address" id="address" placeholder="Address">';
-  formBody += '  </div>';
-  formBody += '</div>';
-
-  formBody += '<div class="form-group">';
-  formBody += '  <label class="col-sm-4 control-label" for="email">Email</label>';
-  formBody += '  <div class="col-sm-8">';
-  formBody += '    <input type="email" class="form-control" name="email" id="email" placeholder="Email">';
-  formBody += '  </div>';
-  formBody += '</div>';
-
-  formBody += '<div class="form-group">';
-  formBody += '  <label class="col-sm-4 control-label" for="card-holder-name">Name on Card</label>';
-  formBody += '  <div class="col-sm-8">';
-  formBody += '    <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder\'s Name">';
-  formBody += '  </div>';
-  formBody += '</div>';
-  formBody += '<div class="form-group">';
-  formBody += '  <label class="col-sm-4 control-label" for="card-number">Card Number</label>';
-  formBody += '  <div class="col-sm-8">';
-  formBody += '    <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">';
-  formBody += '  </div>';
-  formBody += '</div>';
-  formBody += '<div class="form-group">';
-  formBody += '  <label class="col-sm-4 control-label" for="expiry-month">Expiration Date</label>';
-  formBody += '  <div class="col-sm-8">';
-  formBody += '    <div class="row">';
-  formBody += '      <div class="col-xs-3">';
-  formBody += '        <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">';
-  formBody += '          <option>Month</option>';
-  formBody += '          <option value="01">Jan (01)</option>';
-  formBody += '          <option value="02">Feb (02)</option>';
-  formBody += '          <option value="03">Mar (03)</option>';
-  formBody += '          <option value="04">Apr (04)</option>';
-  formBody += '          <option value="05">May (05)</option>';
-  formBody += '          <option value="06">June (06)</option>';
-  formBody += '          <option value="07">July (07)</option>';
-  formBody += '          <option value="08">Aug (08)</option>';
-  formBody += '          <option value="09">Sep (09)</option>';
-  formBody += '          <option value="10">Oct (10)</option>';
-  formBody += '          <option value="11">Nov (11)</option>';
-  formBody += '          <option value="12">Dec (12)</option>';
-  formBody += '        </select>';
-  formBody += '      </div>';
-  formBody += '      <div class="col-xs-3">';
-  formBody += '        <select class="form-control" name="expiry-year">';
-  formBody += '          <option value="13">2013</option>';
-  formBody += '          <option value="14">2014</option>';
-  formBody += '          <option value="15">2015</option>';
-  formBody += '          <option value="16">2016</option>';
-  formBody += '          <option value="17">2017</option>';
-  formBody += '          <option value="18">2018</option>';
-  formBody += '          <option value="19">2019</option>';
-  formBody += '          <option value="20">2020</option>';
-  formBody += '          <option value="21">2021</option>';
-  formBody += '          <option value="22">2022</option>';
-  formBody += '          <option value="23">2023</option>';
-  formBody += '        </select>';
-  formBody += '      </div>';
-  formBody += '    </div>';
-  formBody += '  </div>';
-  formBody += '</div>';
-  formBody += '<div class="form-group">';
-  formBody += '  <label class="col-sm-4 control-label" for="cvv">Card CVV</label>';
-  formBody += '  <div class="col-sm-4">';
-  formBody += '    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Security Code">';
-  formBody += '  </div>';
-  formBody += '</div>';
-
-  formBody += '</fieldset>';
+  formBody = Mustache.render(MST['paymentForm'], data);
 
   bootbox.dialog({
     title: '<h4>Complete your personal information for paying</h4>',
@@ -383,7 +254,22 @@ function sendConfirmationData() {
   */
 }
 
+var MST = {};
+
+function loadMstTemplates() {
+  templates = ['resultBlock', 'paymentForm'];
+
+  $.each(templates, function(ndx, tmpName){
+    $.get('/mst/' + tmpName + '.mst', function(template) {
+      MST[tmpName] = template;
+      Mustache.parse(template);
+    });
+  });
+}
+
 $(document).ready(function() {
+  loadMstTemplates();
+
   $('.sidebar-left .slide-submenu').on('click',function() {
     var thisEl = $(this);
     thisEl.closest('.sidebar-body').fadeOut('slide',function(){

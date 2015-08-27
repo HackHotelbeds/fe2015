@@ -63,7 +63,6 @@
     text-decoration: none;
 }
 
-}
 .pull-right.slide-submenu {
     border-radius: 15px;
     color: #333;
@@ -172,6 +171,14 @@
   font-size: 20px;
 }
 
+.results-panel-heading {
+  min-height: 2.5em;
+}
+
+.results-panel small {
+  font-size: 65%;
+}
+
 .price-selected {
   text-shadow: none;
 }
@@ -186,4 +193,62 @@
 
 .result-company img {
   height: 18px;
+}
+
+.hotel-stay-list {
+  padding: 0px;
+  height: 20px;
+  margin-top: 3px;
+}
+
+#stopover-list .list-group-item {
+  clear: left;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.hotel-stay {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+
+  background: url('../img/alojamiento-inactive.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+}
+.hotel-stay.active {
+  background: url('../img/alojamiento-active.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.leg-start-end {
+  display: table;
+}
+
+.stopover-date {
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.stopover-month {
+  text-align: center;
+  background-color: saddlebrown;
+  border-radius: 5px 5px 0px 0px;
+  padding: 3px 5px 3px 5px;
+  margin-bottom: 0px;
+  border: 2px solid burlywood;
+  box-shadow: inset;
+}
+
+.stopover-day {
+  text-align: center;
+  background-color: silver;
+  border-radius: 0px 0px 5px 5px;
+  margin-top: 0px;
+  border: 2px solid burlywood;
 }

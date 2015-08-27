@@ -40,7 +40,7 @@ public class viewsController {
         model.put("pageTitle", "Hands on map");
 
         model.put("customCssList", Arrays.asList("mapView"));
-        model.put("customJsList", Arrays.asList("ol", "mapView", "mapLogic", "bootbox.min", "jquery.blockUI"));
+        model.put("customJsList", Arrays.asList("ol", "jquery-ui", "mapView", "mapLogic", "bootbox.min", "jquery.blockUI"));
 
         return "mapView/index";
     }

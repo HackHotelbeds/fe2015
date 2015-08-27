@@ -1,5 +1,5 @@
 <div class="panel panel-default results-panel ">
-    <div class="panel-heading resultsPanel-heading">
+    <div class="panel-heading results-panel-heading">
         <h4 class="panel-title">
             <div class="col-md-7">
                 <a data-toggle="collapse" href="#{{name}}"><i class="fa fa-list-alt"></i>{{title}}</a>
@@ -25,7 +25,9 @@
                 {{#useCheckbox}}<input type="checkbox" id="{{name}}_{{@index}}" name="{{name}}_{{@index}}">{{/useCheckbox}}
                 {{^useCheckbox}}<input type="radio" id="{{name}}_{{@index}}" name="{{name}}_{{@index}}" value="{{id}} + '">{{/useCheckbox}}
                 </span>
-                <div class="col-md-7 result-item no-shadow">{{text}}</div>
+                <div class="col-md-7 result-item no-shadow">{{text}}
+                    {{#timing}}&nbsp;<small>{{.}}</small>{{/timing}}
+                </div>
                 <div class="col-md-3 result-price no-shadow">{{price}}</div>
                 <div class="col-md-2 result-company no-shadow" data-company-name="{{company}}"></div>
             </div>

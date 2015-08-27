@@ -29,6 +29,53 @@ function getPoints() {
   return [{}];
 }
 
+function loadStopovers() {
+    if (typeof(hb.route) == "undefined") {
+        return false;
+    }
+    $("#stopover-list").empty();
+    var legs = hb.route.routes[0].legs;
+    var today = new Date(hb.startDate);
+    for (i=0; i < legs.length; i++) {
+        var leg = legs[i];
+        var stays = [];
+        for (s = 0; s < 5; s++) {
+            stays[s] = {
+                index: s,
+                icon: leg.stayDays > s ? 'active' : ''
+            }
+        }
+        data = {
+            legIndex: i,
+            date: formattedDate_ddM(today),
+            startAddress: formatStopover(leg.start_address),
+            endAddress: formatStopover(leg.end_address),
+            stay: stays
+        }
+        today.setDate(today.getDate() + leg.stayDays);
+        $("#stopover-list").append(
+            Mustache.render(MST['stopOver'], data)
+        );
+    }
+}
+
+function formattedDate_ddM(date) {
+
+    var day = date.getDate();
+
+    return {
+            day: (day < 10 ? '0' : '') + day,
+            month: $.datepicker.formatDate('M', date)
+    };
+}
+
+function formatStopover(address) {
+    var addressParts = address.split(", ");
+    var formattedAddress = addressParts[addressParts.length-2]+","+addressParts[addressParts.length-1];
+    formattedAddress = formattedAddress.substr(formattedAddress.indexOf(" ")+1);
+    return formattedAddress;
+}
+
 function buildResultsPanel(name, title, values, useCheckbox) {
   data = {
     name: name,
@@ -49,12 +96,13 @@ function showItineraryWithRates(rates) {
     for (var f = 0; f < rates.ida.length; f++) {
       var flight = rates.ida[f];
       var flightText = flight.startAirport+'-'+flight.endAirport;
-      flightText += ' ('+flight.departureDate+' '+flight.departureHour+'-'+flight.arrivalDate+' '+flight.arrivalHour+')';
+      var flightTimes = flight.departureDate+' '+flight.departureHour + ' - ' + flight.arrivalDate+' '+flight.arrivalHour;
       var flightPrice = '  ' + flight.price + ' ' + flight.currency;
 
       arrivalFlights[f] = {
         "id": flight.id,
         "text": flightText,
+        "timing": flightTimes,
         "price": flightPrice,
         "company": flight.company
       }
@@ -135,12 +183,13 @@ function showItineraryWithRates(rates) {
     for (var f = 0; f < rates.vuelta.length; f++) {
       var flight = rates.vuelta[f];
       var flightText = flight.startAirport + '-' + flight.endAirport;
-      flightText += ' (' + flight.departureDate + ' ' + flight.departureHour + '-' + flight.arrivalDate + ' ' + flight.arrivalHour + ')';
+      var flightTimes = flight.departureDate + ' ' + flight.departureHour + ' - ' + flight.arrivalDate + ' ' + flight.arrivalHour;
       var flightPrice = '  ' + flight.price + ' ' + flight.currency;
 
       departureFlights[f] = {
         "id": flight.id,
         "text": flightText,
+        "timing": flightTimes,
         "price": flightPrice,
         "company": flight.company
       }
@@ -257,7 +306,7 @@ function sendConfirmationData() {
 var MST = {};
 
 function loadMstTemplates() {
-  templates = ['resultBlock', 'paymentForm'];
+  templates = ['resultBlock', 'paymentForm', 'stopOver'];
 
   $.each(templates, function(ndx, tmpName){
     $.get('/mst/' + tmpName + '.mst', function(template) {
@@ -290,107 +339,107 @@ $(document).ready(function() {
   $('#all-aboard-submit').click(function(e) {
 
     var rates = {
-    "hotelOptionDays": [
-      {
-        "listHotel": [
-          {"name":"Grand Hotel Milano","price":"75.40","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
-          {"name":"Gran Melia Milano","price":"102.75","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
-          {"name":"Hilton Milano","price":"213.30","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
-        ], 
-        "day": "1/7/15"
-      },
-      {"listHotel": [
-        {"name":"Hilton","price":"107.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
-        {"name":"Grande Italia Hotel","price":"192.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
-        {"name":"Gran Hotel","price":"73.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
-      ], "day": "2/7/15"},
-      {"listHotel": [
-        {"name":"Hilton","price":"59.40","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
-        {"name":"Hotel La Toscana","price":"82.30","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
-        {"name":"Cesare Hotel","price":"63.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
-      ], "day": "3/7/15"},
-    ],
-    "ida": [{
-      "id": "125676789",
-      "startAirport": "LGW",
-      "endAirport": "MIL",
-      "departureDate": "1/7/15", "departureHour": "11:20",
-      "arrivalDate": "1/7/15", "arrivalHour": "13:00",
-      "flightNumber": "A123", "price": "123.27", "currency": "EUR",
-            "company": "SABRE"      
-    }],
-    "listCar": [
-        {
-            "addionalString": null,
-            "capacity": "4",
-            "carCode": "ECAR",
-            "carName": "HYUNDAI ACCENT OR SIMILAR",
-            "carType": "ECAR",
-            "endString": null,
-            "garanty": "G",
-            "numDays": null,
-            "participationLevel": "B",
-            "price": "196.57",
-            "rateCode": "WEB",
-            "startString": null,
-            "company": "SABRE",
-            "currency": "EUR"
-        },
-        {
-            "addionalString": null,
-            "capacity": "4",
-            "carCode": "CCAR",
-            "carName": "NISSAN VERSA OR SIMILAR",
-            "carType": "CCAR",
-            "endString": null,
-            "garanty": "G",
-            "numDays": null,
-            "participationLevel": "B",
-            "price": "160.83",
-            "rateCode": "WEB",
-            "startString": null,
-            "company": "SABRE",
-            "currency": "EUR"
-        },
-        {
-            "addionalString": null,
-            "capacity": "5",
-            "carCode": "ICAR",
-            "carName": "TOYOTA COROLLA OR SIMILAR",
-            "carType": "ICAR",
-            "endString": null,
-            "garanty": "G",
-            "numDays": null,
-            "participationLevel": "B",
-            "price": "175.72",
-            "rateCode": "WEB",
-            "startString": null,
-            "company": "SABRE",
-            "currency": "EUR"
-        }
-    ],
-    "ticketOptionDays": [
-      {"listTicket": [
-        {"name":"City Sightseeing Milano", "price":"7.00", "currency":"EUR", "company":"HOTELBEDS"},
-        {"name":"Milan Zoo", "price":"18.00", "currency":"EUR", "company":"GETYOURGUIDE"},
-        {"name":"San Siro Tour", "price":"15.00", "currency":"EUR", "company":"HOTELBEDS"}
-      ], "day": "1/7/15"},
-      {"listTicket": [
-        {"name":"City sightseeing", "price":"7.00", "currency":"EUR", "company":"HOTELBEDS"},
-        {"name":"National Museum", "price":"8.00", "currency":"EUR", "company":"HOTELBEDS"},
-        {"name":"Modern Art Gallery", "price":"9.00", "currency":"EUR", "company":"GETYOURGUIDE"}
-      ], "day": "3/7/15"},
-    ],
-    "vuelta": [{
-      "id": "123456789",
-      "startAirport": "NAP",
-      "endAirport": "LGW",
-      "departureDate": "4/7/15", "departureHour": "12:20",
-      "arrivalDate": "4/7/15", "arrivalHour": "15:00",
-      "flightNumber": "A321", "price": "98.27", "currency": "EUR",
-      "company": "SABRE"          
-    }]
-};
+        "hotelOptionDays": [
+          {
+            "listHotel": [
+              {"name":"Grand Hotel Milano","price":"75.40","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+              {"name":"Gran Melia Milano","price":"102.75","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+              {"name":"Hilton Milano","price":"213.30","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
+            ],
+            "day": "1/7/15"
+          },
+          {"listHotel": [
+            {"name":"Hilton","price":"107.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+            {"name":"Grande Italia Hotel","price":"192.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+            {"name":"Gran Hotel","price":"73.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
+          ], "day": "2/7/15"},
+          {"listHotel": [
+            {"name":"Hilton","price":"59.40","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+            {"name":"Hotel La Toscana","price":"82.30","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+            {"name":"Cesare Hotel","price":"63.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
+          ], "day": "3/7/15"},
+        ],
+        "ida": [{
+          "id": "125676789",
+          "startAirport": "LGW",
+          "endAirport": "MIL",
+          "departureDate": "1/7/15", "departureHour": "11:20",
+          "arrivalDate": "1/7/15", "arrivalHour": "13:00",
+          "flightNumber": "A123", "price": "123.27", "currency": "EUR",
+                "company": "SABRE"
+        }],
+        "listCar": [
+            {
+                "addionalString": null,
+                "capacity": "4",
+                "carCode": "ECAR",
+                "carName": "HYUNDAI ACCENT OR SIMILAR",
+                "carType": "ECAR",
+                "endString": null,
+                "garanty": "G",
+                "numDays": null,
+                "participationLevel": "B",
+                "price": "196.57",
+                "rateCode": "WEB",
+                "startString": null,
+                "company": "SABRE",
+                "currency": "EUR"
+            },
+            {
+                "addionalString": null,
+                "capacity": "4",
+                "carCode": "CCAR",
+                "carName": "NISSAN VERSA OR SIMILAR",
+                "carType": "CCAR",
+                "endString": null,
+                "garanty": "G",
+                "numDays": null,
+                "participationLevel": "B",
+                "price": "160.83",
+                "rateCode": "WEB",
+                "startString": null,
+                "company": "SABRE",
+                "currency": "EUR"
+            },
+            {
+                "addionalString": null,
+                "capacity": "5",
+                "carCode": "ICAR",
+                "carName": "TOYOTA COROLLA OR SIMILAR",
+                "carType": "ICAR",
+                "endString": null,
+                "garanty": "G",
+                "numDays": null,
+                "participationLevel": "B",
+                "price": "175.72",
+                "rateCode": "WEB",
+                "startString": null,
+                "company": "SABRE",
+                "currency": "EUR"
+            }
+        ],
+        "ticketOptionDays": [
+          {"listTicket": [
+            {"name":"City Sightseeing Milano", "price":"7.00", "currency":"EUR", "company":"HOTELBEDS"},
+            {"name":"Milan Zoo", "price":"18.00", "currency":"EUR", "company":"GETYOURGUIDE"},
+            {"name":"San Siro Tour", "price":"15.00", "currency":"EUR", "company":"HOTELBEDS"}
+          ], "day": "1/7/15"},
+          {"listTicket": [
+            {"name":"City sightseeing", "price":"7.00", "currency":"EUR", "company":"HOTELBEDS"},
+            {"name":"National Museum", "price":"8.00", "currency":"EUR", "company":"HOTELBEDS"},
+            {"name":"Modern Art Gallery", "price":"9.00", "currency":"EUR", "company":"GETYOURGUIDE"}
+          ], "day": "3/7/15"},
+        ],
+        "vuelta": [{
+          "id": "123456789",
+          "startAirport": "NAP",
+          "endAirport": "LGW",
+          "departureDate": "4/7/15", "departureHour": "12:20",
+          "arrivalDate": "4/7/15", "arrivalHour": "15:00",
+          "flightNumber": "A321", "price": "98.27", "currency": "EUR",
+          "company": "SABRE"
+        }]
+    };
 
       showItineraryWithRates(rates);
 /*
@@ -400,13 +449,13 @@ $(document).ready(function() {
           data:  JSON.stringify(packJsonForSearchRequest()),
           contentType: 'text/plain',
           beforeSend: function() {
-            $.blockUI({ message: 'Looking for the best rates...', overlayCSS: { backgroundColor: '#876146' } }); 
+            $.blockUI({ message: 'Looking for the best rates...', overlayCSS: { backgroundColor: '#876146' } });
           },
           success: function(data) {
             $.unblockUI();
             showItineraryWithRates($.parseJSON(data));
           },
-          error: function() {              
+          error: function() {
               $.unblockUI();
               bootbox.alert({message: 'Cant get any rates! Try again later!'});
           }

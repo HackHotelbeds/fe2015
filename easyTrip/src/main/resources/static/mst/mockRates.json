@@ -1,0 +1,102 @@
+{
+  "hotelOptionDays": [
+    {
+      "listHotel": [
+        {"name":"Grand Hotel Milano","price":"75.40","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+        {"name":"Gran Melia Milano","price":"102.75","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+        {"name":"Hilton Milano","price":"213.30","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
+      ],
+      "day": "1/7/15"
+    },
+    {"listHotel": [
+      {"name":"Hilton","price":"107.00","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+      {"name":"Grande Italia Hotel","price":"192.00","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"SABRE"},
+      {"name":"Gran Hotel","price":"73.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
+    ], "day": "2/7/15"},
+    {"listHotel": [
+      {"name":"Hilton","price":"59.40","category":"3","code":"123","currency":"EUR","lat":"1.004","lon":"2.003","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+      {"name":"Hotel La Toscana","price":"82.30","category":"3","code":"124","currency":"EUR","lat":"1.014","lon":"2.013","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"},
+      {"name":"Cesare Hotel","price":"63.00","category":"3","code":"125","currency":"EUR","lat":"1.024","lon":"2.023","roomtype":"DBL","board":"RO","night":"1","company":"HOTELBEDS"}
+    ], "day": "3/7/15"}
+  ],
+  "ida": [{
+    "id": "125676789",
+    "startAirport": "LGW",
+    "endAirport": "MIL",
+    "departureDate": "1/7/15", "departureHour": "11:20",
+    "arrivalDate": "1/7/15", "arrivalHour": "13:00",
+    "flightNumber": "A123", "price": "123.27", "currency": "EUR",
+    "company": "SABRE"
+  }],
+  "listCar": [
+    {
+      "addionalString": null,
+      "capacity": "4",
+      "carCode": "ECAR",
+      "carName": "HYUNDAI ACCENT OR SIMILAR",
+      "carType": "ECAR",
+      "endString": null,
+      "garanty": "G",
+      "numDays": null,
+      "participationLevel": "B",
+      "price": "196.57",
+      "rateCode": "WEB",
+      "startString": null,
+      "company": "SABRE",
+      "currency": "EUR"
+    },
+    {
+      "addionalString": null,
+      "capacity": "4",
+      "carCode": "CCAR",
+      "carName": "NISSAN VERSA OR SIMILAR",
+      "carType": "CCAR",
+      "endString": null,
+      "garanty": "G",
+      "numDays": null,
+      "participationLevel": "B",
+      "price": "160.83",
+      "rateCode": "WEB",
+      "startString": null,
+      "company": "SABRE",
+      "currency": "EUR"
+    },
+    {
+      "addionalString": null,
+      "capacity": "5",
+      "carCode": "ICAR",
+      "carName": "TOYOTA COROLLA OR SIMILAR",
+      "carType": "ICAR",
+      "endString": null,
+      "garanty": "G",
+      "numDays": null,
+      "participationLevel": "B",
+      "price": "175.72",
+      "rateCode": "WEB",
+      "startString": null,
+      "company": "SABRE",
+      "currency": "EUR"
+    }
+  ],
+  "ticketOptionDays": [
+    {"listTicket": [
+      {"name":"City Sightseeing Milano", "price":"7.00", "currency":"EUR", "company":"HOTELBEDS"},
+      {"name":"Milan Zoo", "price":"18.00", "currency":"EUR", "company":"GETYOURGUIDE"},
+      {"name":"San Siro Tour", "price":"15.00", "currency":"EUR", "company":"HOTELBEDS"}
+    ], "day": "1/7/15"},
+    {"listTicket": [
+      {"name":"City sightseeing", "price":"7.00", "currency":"EUR", "company":"HOTELBEDS"},
+      {"name":"National Museum", "price":"8.00", "currency":"EUR", "company":"HOTELBEDS"},
+      {"name":"Modern Art Gallery", "price":"9.00", "currency":"EUR", "company":"GETYOURGUIDE"}
+    ], "day": "3/7/15"}
+  ],
+  "vuelta": [{
+    "id": "123456789",
+    "startAirport": "NAP",
+    "endAirport": "LGW",
+    "departureDate": "4/7/15", "departureHour": "12:20",
+    "arrivalDate": "4/7/15", "arrivalHour": "15:00",
+    "flightNumber": "A321", "price": "98.27", "currency": "EUR",
+    "company": "SABRE"
+  }]
+}

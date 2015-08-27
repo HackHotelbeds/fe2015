@@ -50,6 +50,10 @@
   border: 0px;
 }
 
+.panel-default > .panel-heading h4 {
+  padding: 5px;
+}
+
 .panel-default > .panel-heading a {
   color: #FFB500;
   text-decoration: none;
@@ -86,8 +90,12 @@
   color: #FFB500;;
   background: rgba(255,255,255,0.2);
 }
+
+.panel-body {
+  padding: 10px;
+}
+
 .btn-dark {
-  margin-top: 25px;
   border-radius: 0;
   color: #fff;
   background-color: rgba(75,15,0,0.9);
@@ -197,8 +205,13 @@
 
 .hotel-stay-list {
   padding: 0px;
+  min-width: 124px !important;
   height: 20px;
   margin-top: 3px;
+}
+
+#stopover-list {
+  padding: 0px;
 }
 
 #stopover-list .list-group-item {
@@ -225,14 +238,22 @@
   background-repeat: no-repeat;
 }
 
+#accordion-left {
+  min-width: 224px !important;
+}
+
 .leg-start-end {
   display: table;
+  min-width: 124px !important;
 }
 
 .stopover-date {
   float: left;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  -ms-transform: rotate(10deg);
+  -webkit-transform: rotate(10deg);
+  transform: rotate(-10deg);
 }
 
 .stopover-month {
@@ -241,8 +262,7 @@
   border-radius: 5px 5px 0px 0px;
   padding: 3px 5px 3px 5px;
   margin-bottom: 0px;
-  border: 2px solid burlywood;
-  box-shadow: inset;
+  box-shadow: 1px 1px 3px 3px burlywood;
 }
 
 .stopover-day {
@@ -250,5 +270,5 @@
   background-color: silver;
   border-radius: 0px 0px 5px 5px;
   margin-top: 0px;
-  border: 2px solid burlywood;
+  box-shadow: 1px 1px 3px 3px burlywood;
 }

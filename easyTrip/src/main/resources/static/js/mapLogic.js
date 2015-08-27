@@ -28,11 +28,14 @@ $(function () {
         hb.directionsService = new google.maps.DirectionsService();
         hb.directionsDisplay = new google.maps.DirectionsRenderer(directionsRendererOptions);
         hb.directionsDisplay.setMap(hb.map);
+        hb.stays = {};
 
         google.maps.event.addListener(hb.directionsDisplay, 'directions_changed', function() {
             hb.route = hb.directionsDisplay.getDirections();
-            for (l = 0; l < hb.route.routes[0].legs.length; l++) {
-                hb.route.routes[0].legs[l]['stayDays'] = 1;
+            if (Object.keys(hb.stays).length == 0) {
+                for (l = 0; l < hb.route.routes[0].legs.length; l++) {
+                    hb.stays['leg_' + l] = 1;
+                }
             }
             loadStopovers();
         });

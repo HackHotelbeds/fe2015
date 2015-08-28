@@ -16,4 +16,6 @@
             <#include "searchForm.ftl">
         </div>
     </header>
+
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 </@webLayout.webLayout>

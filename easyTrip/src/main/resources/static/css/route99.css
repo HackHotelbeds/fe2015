@@ -86,3 +86,19 @@ body {
 a {
 	text-decoration: none;
 }
+
+.pac-item {
+    text-shadow: none;
+    font-family: "Rock Salt";
+    color: black;
+}
+
+.pac-item-selected * {
+    color: orange;
+}
+.pac-item .pac-matched {
+    text-shadow: -1px 0 orange, 0 2px orange, 1px 0 orange, 0 -1px orange;
+}
+.pac-item-selected .pac-matched {
+    text-shadow: -1px 0 black, 0 2px black, 1px 0 black, 0 -1px black;
+}

@@ -294,7 +294,8 @@ function packJsonForSearchRequest() {
 
     for (i=0; i < hb.route.routes[0].legs.length; i++) {
         var leg = hb.route.routes[0].legs[i];
-        jsonData.stepovers.push({ address : leg.end_address, lat: leg.end_location.A, lng: leg.end_location.F });
+        var geoEndLocation = leg.end_location;
+        jsonData.stepovers.push({ address : leg.end_address, lat: geoEndLocation.lat(), lng: geoEndLocation.lng() });
     }
 
     return jsonData;

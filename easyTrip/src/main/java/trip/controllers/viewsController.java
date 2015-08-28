@@ -23,7 +23,7 @@ public class viewsController {
         model.put("numBackground", 12);
 
         model.put("customCssList", Arrays.asList("landing", "rotating-background"));
-        model.put("customJsList", Arrays.asList("landing", "jquery-ui", "jquery.cycle.all"));
+        model.put("customJsList", Arrays.asList("landing", "jquery-ui", "jquery.cycle.all", "jquery.geocomplete"));
 
         return "landing/index";
     }

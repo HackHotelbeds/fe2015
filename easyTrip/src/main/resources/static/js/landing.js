@@ -49,8 +49,9 @@ $(document).ready(function() {
     $("#origin").geocomplete()
         .bind("geocode:result", function(event, result){
             console.log("Result: " + result.formatted_address);
-            $("#origin-lat").val(result.geometry.location.A);
-            $("#origin-lng").val(result.geometry.location.F);
+            var geoLocation = result.geometry.location;
+            $("#origin-lat").val(geoLocation.lat());
+            $("#origin-lng").val(geoLocation.lng());
         })
         .bind("geocode:error", function(event, status){
             console.log("ERROR: " + status);
@@ -61,8 +62,8 @@ $(document).ready(function() {
     $("#destination").geocomplete()
         .bind("geocode:result", function(event, result){
             console.log("Result: " + result.formatted_address);
-            $("#dest-lat").val(result.geometry.location.A);
-            $("#dest-lng").val(result.geometry.location.F);
+            $("#dest-lat").val(result.geometry.location.G);
+            $("#dest-lng").val(result.geometry.location.K);
         })
         .bind("geocode:error", function(event, status){
             console.log("ERROR: " + status);

@@ -50,6 +50,10 @@
   border: 0px;
 }
 
+.panel-default > .panel-heading h4 {
+  padding: 5px;
+}
+
 .panel-default > .panel-heading a {
   color: #FFB500;
   text-decoration: none;
@@ -63,7 +67,6 @@
     text-decoration: none;
 }
 
-}
 .pull-right.slide-submenu {
     border-radius: 15px;
     color: #333;
@@ -87,23 +90,34 @@
   color: #FFB500;;
   background: rgba(255,255,255,0.2);
 }
-.btn-dark {
-  margin-top: 25px;
+
+.panel-body {
+  padding: 10px;
+}
+
+#stopovers-panel .btn-dark {
   border-radius: 0;
   color: #fff;
   background-color: rgba(75,15,0,0.9);
   border-radius: 15px;
   text-align: center;
-  width: 100%;
   box-sizing: border-box;
+
+  width: 40%;
+  font-size: small;
+  float: right;
+  margin: 2%;
+  margin-top: 0px;
+  box-shadow: inset -5px -5px 10px;
 }
 
-.btn-dark:hover,
-.btn-dark:focus,
-.btn-dark:active {
-    color: #fff;
-    background-color: #666;
-    border: 1px solid black;
+#stopovers-panel .btn-dark:hover,
+#stopovers-panel .btn-dark:focus {
+  background-color: rgba(75,15,0,0.9);
+}
+#stopovers-panel .btn-dark:active {
+  background-color: rgba(75,15,0,0.9);
+  box-shadow: inset 5px 5px 10px;
 }
 
 .main-row { position: relative; top: 0; }
@@ -172,6 +186,14 @@
   font-size: 20px;
 }
 
+.results-panel-heading {
+  min-height: 2.5em;
+}
+
+.results-panel small {
+  font-size: 65%;
+}
+
 .price-selected {
   text-shadow: none;
 }
@@ -186,4 +208,95 @@
 
 .result-company img {
   height: 18px;
+}
+
+.hotel-stay-list {
+  padding: 0px;
+  min-width: 124px !important;
+  height: 20px;
+  margin-top: 3px;
+}
+
+
+#stopovers-panel {
+  background: transparent;
+  border: none;
+  background-image: url('../img/notebook-route99.png');
+  background-size: 100% 100%;
+  min-width: 400px;
+  margin-top: 10px;
+}
+#stopovers-panel .panel-body {
+  border: none;
+}
+
+#stopover-list {
+  padding: 0px;
+}
+
+#stopover-list .list-group-item {
+  float: left;
+  margin: 0px;
+  width: 50%;
+}
+#stopover-list .list-group-item:nth-child(odd) {
+  padding-left: 10px;
+  padding-right: 0px;
+}
+#stopover-list .list-group-item:nth-child(even) {
+  padding-left: 0px;
+  padding-right: 10px;
+}
+
+.hotel-stay {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+
+  background: url('../img/alojamiento-inactive.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+}
+.hotel-stay.active {
+  background: url('../img/alojamiento-active.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.leg-start-end {
+  display: table;
+  min-width: 124px !important;
+  font-family: 'Rock Salt';
+  font-size: x-small;
+  color: black;
+  text-shadow: none;
+}
+
+.stopover-date {
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  -ms-transform: rotate(10deg);
+  -webkit-transform: rotate(10deg);
+  transform: rotate(-10deg);
+}
+
+.stopover-month {
+  text-align: center;
+  background-color: saddlebrown;
+  border-radius: 5px 5px 0px 0px;
+  padding: 3px 5px 3px 5px;
+  margin-bottom: 0px;
+  box-shadow: 1px 1px 3px 3px burlywood;
+}
+
+.stopover-day {
+  text-align: center;
+  background-color: silver;
+  border-radius: 0px 0px 5px 5px;
+  margin-top: 0px;
+  box-shadow: 1px 1px 3px 3px burlywood;
 }

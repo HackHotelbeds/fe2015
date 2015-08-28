@@ -1,0 +1,14 @@
+<div id="leg_{{legIndex}}" class="list-group-item">
+    <div class="stopover-date">
+        <h5 class="stopover-month">{{date.month}}</h5>
+        <h4 class="stopover-day">{{date.day}}</h4>
+    </div>
+    <div>
+        <div class="leg-start-end">{{startAddress}}<br>{{endAddress}}</div>
+        <div class="hotel-stay-list">
+        {{#stay}}
+            <div id="hotelStay_{{legIndex}}_{{index}}" class="hotel-stay {{icon}}"></div>
+        {{/stay}}
+        </div>
+    </div>
+</div>

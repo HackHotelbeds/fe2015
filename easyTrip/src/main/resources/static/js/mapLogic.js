@@ -12,28 +12,6 @@ var icons = {
     destination: "http://maps.gstatic.com/intl/en_ALL/mapfiles/dd-end.png"
 };
 
-function loadStopovers() {
-    if (typeof(hb.route) == "undefined") {
-        return false;
-    }
-    $("#stopover-list").empty();
-    var legs = hb.route.routes[0].legs;
-    for (i=0;i<legs.length;i++) {
-        var leg = legs[i];
-        var formattedStartAddress = formatStopover(leg.start_address);
-        var formattedEndAddress = formatStopover(leg.end_address);
-        $("#stopover-list").append('<a class="list-group-item" href="#">Day '+(i+1)+':<br/>'+formattedStartAddress+' - '+formattedEndAddress+'</a>');
-    }
-
-}
-
-function formatStopover(address) {
-    var addressParts = address.split(", ");
-    var formattedAddress = addressParts[addressParts.length-2]+","+addressParts[addressParts.length-1];
-    formattedAddress = formattedAddress.substr(formattedAddress.indexOf(" ")+1);
-    return formattedAddress;
-}
-
 $(function () {
 
     function initialize() {
@@ -50,9 +28,15 @@ $(function () {
         hb.directionsService = new google.maps.DirectionsService();
         hb.directionsDisplay = new google.maps.DirectionsRenderer(directionsRendererOptions);
         hb.directionsDisplay.setMap(hb.map);
+        hb.stays = {};
 
         google.maps.event.addListener(hb.directionsDisplay, 'directions_changed', function() {
             hb.route = hb.directionsDisplay.getDirections();
+            if (Object.keys(hb.stays).length == 0) {
+                for (l = 0; l < hb.route.routes[0].legs.length; l++) {
+                    hb.stays['leg_' + l] = 1;
+                }
+            }
             loadStopovers();
         });
 
@@ -308,8 +292,7 @@ function packJsonForSearchRequest() {
 
     jsonData.stepovers = [];
 
-
-    for (i=0;i<hb.route.routes[0].legs.length;i++) {
+    for (i=0; i < hb.route.routes[0].legs.length; i++) {
         var leg = hb.route.routes[0].legs[i];
         jsonData.stepovers.push({ address : leg.end_address, lat: leg.end_location.A, lng: leg.end_location.F });
     }

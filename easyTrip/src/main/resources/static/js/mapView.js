@@ -345,7 +345,8 @@ function registerHotelStaysClicks() {
         var legId = $(this).parents('.list-group-item').attr('id');
 
         hb.stays[legId] = hotelStayPicked;
-        updateStaysInLeg(legId);
+//        updateStaysInLeg(legId);
+        loadStopovers();
     });
 }
 

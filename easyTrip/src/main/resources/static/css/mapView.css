@@ -95,22 +95,29 @@
   padding: 10px;
 }
 
-.btn-dark {
+#stopovers-panel .btn-dark {
   border-radius: 0;
   color: #fff;
   background-color: rgba(75,15,0,0.9);
   border-radius: 15px;
   text-align: center;
-  width: 100%;
   box-sizing: border-box;
+
+  width: 40%;
+  font-size: small;
+  float: right;
+  margin: 2%;
+  margin-top: 0px;
+  box-shadow: inset -5px -5px 10px;
 }
 
-.btn-dark:hover,
-.btn-dark:focus,
-.btn-dark:active {
-    color: #fff;
-    background-color: #666;
-    border: 1px solid black;
+#stopovers-panel .btn-dark:hover,
+#stopovers-panel .btn-dark:focus {
+  background-color: rgba(75,15,0,0.9);
+}
+#stopovers-panel .btn-dark:active {
+  background-color: rgba(75,15,0,0.9);
+  box-shadow: inset 5px 5px 10px;
 }
 
 .main-row { position: relative; top: 0; }
@@ -210,14 +217,35 @@
   margin-top: 3px;
 }
 
+
+#stopovers-panel {
+  background: transparent;
+  border: none;
+  background-image: url('../img/notebook-route99.png');
+  background-size: 100% 100%;
+  min-width: 400px;
+  margin-top: 10px;
+}
+#stopovers-panel .panel-body {
+  border: none;
+}
+
 #stopover-list {
   padding: 0px;
 }
 
 #stopover-list .list-group-item {
-  clear: left;
-  margin-left: 0px;
+  float: left;
+  margin: 0px;
+  width: 50%;
+}
+#stopover-list .list-group-item:nth-child(odd) {
+  padding-left: 10px;
+  padding-right: 0px;
+}
+#stopover-list .list-group-item:nth-child(even) {
   padding-left: 0px;
+  padding-right: 10px;
 }
 
 .hotel-stay {
@@ -238,13 +266,13 @@
   background-repeat: no-repeat;
 }
 
-#accordion-left {
-  min-width: 224px !important;
-}
-
 .leg-start-end {
   display: table;
   min-width: 124px !important;
+  font-family: 'Rock Salt';
+  font-size: x-small;
+  color: black;
+  text-shadow: none;
 }
 
 .stopover-date {

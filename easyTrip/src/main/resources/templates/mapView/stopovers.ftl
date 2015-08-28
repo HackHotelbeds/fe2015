@@ -1,7 +1,7 @@
 <div class="row main-row">
     <div class="col-sm-4 col-md-4 sidebar sidebar-left pull-left">
-        <div class="panel-group sidebar-body" id="accordion-left">
-            <div class="panel panel-default">
+        <div class="panel-group sidebar-body">
+            <div class="panel panel-default" id="stopovers-panel">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#layers">
